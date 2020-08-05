@@ -8,9 +8,9 @@
         <version>1.0.0</version>
         <relativePath/>
     </parent>
-    <artifactId>turing-java</artifactId>
+    <artifactId>algorithm</artifactId>
     <version>1.0.0</version>
-    <name>turing-java</name>
+    <name>algorithm</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 

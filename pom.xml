@@ -6,8 +6,10 @@
     <groupId>com.java</groupId>
     <artifactId>turing</artifactId>
     <version>1.0.0</version>
+
     <name>turing</name>
     <packaging>pom</packaging>
+
     <description>Demo project for Spring Boot</description>
 
     <repositories>
@@ -35,6 +37,7 @@
 
     <modules>
         <module>turing-java</module>
+        <module>algorithm</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
