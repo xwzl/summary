@@ -13,8 +13,8 @@ import java.util.function.Supplier;
 @Slf4j
 public class ExecutionTime {
 
-    public static <T> void executionTime(Supplier<T> supplier) {
-        log.info(doExecutionTime(supplier) + "");
+    public static <T> long executionTime(Supplier<T> supplier) {
+        return doExecutionTime(supplier);
     }
 
     private static <T> long doExecutionTime(Supplier<T> supplier) {

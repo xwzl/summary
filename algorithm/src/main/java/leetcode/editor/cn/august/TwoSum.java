@@ -1,7 +1,6 @@
 package leetcode.editor.cn.august;
 
 import leetcode.editor.cn.utils.ExecutionTime;
-import leetcode.editor.cn.utils.NioUtil;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,56 +19,57 @@ import java.util.Random;
  */
 public class TwoSum {
 
-    int target = 10000000;
+    int target = 50000000;
     int[] nums = new int[target];
 
     @Before
     public void init() {
         File file = new File("a.txt");
-        if (!file.exists()) {
-            Random random = new Random(1);
-            for (int i = 0; i < nums.length; i++) {
-                nums[i] = random.nextInt(target);
-            }
-            NioUtil.write(nums, "a.txt");
-        } else {
-            String read = NioUtil.read("a.txt");
-            String substring = read.substring(1, read.length() - 1);
-            String[] split = substring.split(",");
-            for (int i = 0; i < nums.length; i++) {
-                nums[i] = Integer.parseInt(split[i]);
-            }
+        //if (!file.exists()) {
+        Random random = new Random(1);
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = random.nextInt(target);
         }
+        //NioUtil.write(nums, "a.txt");
+        //} else {
+        //    String read = NioUtil.read("a.txt");
+        //    String substring = read.substring(1, read.length() - 1);
+        //    String[] split = substring.split(",");
+        //    for (int i = 0; i < nums.length; i++) {
+        //        nums[i] = Integer.parseInt(split[i]);
+        //    }
+        //}
 
     }
 
     @Test
     public void test() {
-        target = 18422222;
-        for (int i = 0; i < 100; i++) {
-            target++;
-            ExecutionTime.executionTime(this::twoSum);
-
+        long result1 = 0l;
+        long result2 = 0l;
+        long result3 = 0l;
+        int index = 10;
+        int[] results = new int[index];
+        Random random = new Random(1);
+        for (int i = 0; i < index; i++) {
+            results[i] = random.nextInt(target);
         }
-        for (int i = 0; i < 100; i++) {
-            target--;
-            ExecutionTime.executionTime(this::violence);
-
+        for (int i = 0; i < index; i++) {
+            target = results[i];
+            result1 += ExecutionTime.executionTime(this::twoSum);
+            result2 += ExecutionTime.executionTime(this::violence);
+            //result3 += ExecutionTime.executionTime(() -> twoSum(nums, target));
         }
-        for (int i = 0; i < 100; i++) {
-            target++;
-            ExecutionTime.executionTime(() -> twoSum(nums, target));
-        }
-
-
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
     }
 
     private Object violence() {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target) {
-                    System.out.println("" + i + " " + j);
-                    System.out.println(nums[i] + " + " + nums[j] + " = " + target);
+                    //System.out.println("" + i + " " + j);
+                    //System.out.println(nums[i] + " + " + nums[j] + " = " + target);
                     return null;
                 }
             }
@@ -85,7 +85,7 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement) && map.get(complement) != i) {
-                System.out.println(i);
+                //System.out.println(i);
                 return new int[]{i, map.get(complement)};
             }
         }
@@ -97,14 +97,12 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+                return new int[]{map.get(complement), i};
             }
             map.put(nums[i], i);
         }
         throw new IllegalArgumentException("No two sum solution");
     }
-
-
 
 
 }
