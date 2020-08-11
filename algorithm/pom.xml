@@ -6,7 +6,6 @@
         <groupId>com.java</groupId>
         <artifactId>turing</artifactId>
         <version>1.0.0</version>
-        <relativePath/>
     </parent>
     <artifactId>algorithm</artifactId>
     <version>1.0.0</version>
