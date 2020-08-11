@@ -2,14 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.java</groupId>
+    <groupId>com.learn.java</groupId>
     <artifactId>turing</artifactId>
     <version>1.0.0</version>
-
-    <name>turing</name>
     <packaging>pom</packaging>
-
+    <modules>
+        <module>turing-java</module>
+        <module>algorithm</module>
+    </modules>
+    <name>turing</name>
     <description>Demo project for Spring Boot</description>
 
     <repositories>
@@ -34,24 +35,26 @@
         </repository>
     </repositories>
 
-
-    <modules>
-        <module>turing-java</module>
-        <module>algorithm</module>
-    </modules>
     <properties>
+        <skipTests>true</skipTests>
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
         <spring-boot.version>2.3.2.RELEASE</spring-boot.version>
+        <spring-alibaba-cloud.version>2.2.1.RELEASE</spring-alibaba-cloud.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -71,6 +74,7 @@
         </dependency>
     </dependencies>
 
+    <!-- 加入这个不用加 SpringBoot-parent 依赖，也可以管理依赖 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -87,6 +91,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-alibaba-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -95,8 +106,39 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
+      <!--      <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/resources/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>-->
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 </project>
