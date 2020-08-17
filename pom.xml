@@ -9,6 +9,8 @@
     <modules>
         <module>turing-java</module>
         <module>algorithm</module>
+        <module>tomcat</module>
+        <module>web-app</module>
     </modules>
     <name>turing</name>
     <description>Demo project for Spring Boot</description>
