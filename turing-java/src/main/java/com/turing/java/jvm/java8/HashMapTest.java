@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * HashMap 测试
@@ -13,6 +14,7 @@ import java.util.HashMap;
  */
 @Slf4j
 public class HashMapTest {
+
 
     /**
      * 低位与高位取模
@@ -31,5 +33,26 @@ public class HashMapTest {
         log.info("hashcode2 right shift:{}", Integer.toBinaryString(hashCode2 >>> 16));
         log.info("hashcode2 hash map key:{}", Integer.toBinaryString(hashCode2 ^ (hashCode2 >>> 16)));
         log.info("hashcode2 hash map key:{}", hashCode2 ^ (hashCode2 >>> 16));
+    }
+
+    @Test
+    public void putTest() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            hashMap.put(i + "", 1);
+        }
+        System.out.println("");
+    }
+
+    @Test
+    public void valueInitTest() {
+        Random random = new Random();
+        int i = 0;
+        if ((i = random.nextInt(100)) > 50) {
+            log.info("{}", i);
+        } else if (i < 20) {
+            log.info("{}", i);
+        }
+        log.info("{}", i);
     }
 }
