@@ -1,0 +1,30 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>MyTestWeb</display-name>
+    <listener>
+        <listener-class>MyContextListener</listener-class>
+    </listener>
+
+<!--    <filter>-->
+<!--        <filter-name>FilterDemo</filter-name>-->
+<!--        <filter-class>Myfilter</filter-class>-->
+<!--    </filter>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>FilterDemo</filter-name>-->
+<!--        &lt;!&ndash; 指过滤哪些资源  /*拦截所有 &ndash;&gt;-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+    <servlet>
+        <servlet-name>myServletName</servlet-name>
+        <servlet-class>MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>myServletName</servlet-name>
+        <url-pattern>/myservlet</url-pattern>
+    </servlet-mapping>
+</web-app>
