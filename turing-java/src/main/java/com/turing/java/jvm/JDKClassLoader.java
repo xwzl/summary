@@ -12,11 +12,10 @@ import java.net.URL;
  *
  * <p>
  * 双亲委派机制主要依赖于 {@link ClassLoader#loadClass(String)} 方法实现：
- *
+ * <p>
  * 如果当前类加载器不是 BootstrapClassLoader 加载，依次委托给父类加载器.
- *
+ * <p>
  * {@link ClassLoader#findClass(String)} 进行真正的类加载。
- *
  *
  * @author xuweizhi
  * @since 2020/08/03 11:27

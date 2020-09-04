@@ -3,7 +3,9 @@ package com.turing.java.jvm.java8;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -15,6 +17,14 @@ import java.util.Random;
 @Slf4j
 public class HashMapTest {
 
+
+    @Test
+    public void arrayTest() {
+        List<String> a = new ArrayList<>(1);
+        for (int i = 0; i < 20; i++) {
+            a.add("i");
+        }
+    }
 
     /**
      * 低位与高位取模
@@ -37,9 +47,9 @@ public class HashMapTest {
 
     @Test
     public void putTest() {
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            hashMap.put(i + "", 1);
+        HashMap<String, Integer> hashMap = new HashMap<>(16, 10f);
+        for (int i = 0; i < 12200; i++) {
+            hashMap.put(i + "", i);
         }
         System.out.println("");
     }
