@@ -4,7 +4,8 @@ public class Interrupted {
 
     public static void main(String[] args) throws InterruptedException {
         Thread thread = new Thread(() -> {
-            while (true) {}
+            while (true) {
+            }
         });
         thread.start();
         thread.interrupt();
