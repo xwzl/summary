@@ -1,11 +1,11 @@
-package com.turing.java.jvm.concurrent.jmm.util;
+package com.turing.java.jvm.concurrent.util;
 
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
-public class UnsafeInstance {
 
+public class UnsafeInstance {
     public static Unsafe reflectGetUnsafe() {
         try {
             Field field = Unsafe.class.getDeclaredField("theUnsafe");
@@ -16,5 +16,6 @@ public class UnsafeInstance {
         }
         return null;
     }
+
 
 }
