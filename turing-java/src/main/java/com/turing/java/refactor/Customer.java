@@ -38,9 +38,9 @@ public class Customer {
 
     public static void main(String[] args) {
         Customer customer = new Customer("杨林");
-        customer.addRental(new Rental(new Movie("泰坦尼克号", 1), 15));
-        customer.addRental(new Rental(new Movie("Halloween", 2), 25));
-        customer.addRental(new Rental(new Movie("ketty", 1), 35));
+        customer.addRental(new Rental(new Movie("泰坦尼克号", new NewReleasePrice()), 15));
+        customer.addRental(new Rental(new Movie("Halloween", new ChildrenPrice()), 25));
+        customer.addRental(new Rental(new Movie("ketty", new NewReleasePrice()), 35));
         System.out.println(customer.statement());
     }
 

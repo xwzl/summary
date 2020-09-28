@@ -12,15 +12,17 @@ public class Movie {
 
     Price price;
 
-    public Movie(String title, int priceCode) {
+    public Movie(String title, Price price) {
         this.title = title;
-        setPriceCode(priceCode);
+        //setPriceCode(priceCode);
+        this.price = price;
     }
 
     public Price getPrice() {
         return price;
     }
 
+    // 多态干掉 switch
     private void setPriceCode(int priceCode) {
         switch (priceCode) {
             case Price.REGULAR:
