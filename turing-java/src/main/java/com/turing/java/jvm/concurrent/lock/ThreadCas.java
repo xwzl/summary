@@ -1,6 +1,6 @@
 package com.turing.java.jvm.concurrent.lock;
 
-import com.turing.java.jvm.concurrent.util.UnsafeInstance;
+import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 
