@@ -27,6 +27,33 @@ public class HashMapTest {
     }
 
     /**
+     * n =10 1010
+     * 1010 - 1 => 1001
+     * 1001 | 1000 =? 1100
+     * 1100 | 11
+     */
+    @Test
+    public void testBitOperation() {
+        for (int i = 1; i <16 ; i++) {
+            tableSizeFor(i);
+        }
+    }
+
+    static final void tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1; // 1
+        System.out.printf(n + " ");
+        n |= n >>> 2;
+        System.out.printf(n + " ");
+        n |= n >>> 4;
+        System.out.printf(n + " ");
+        n |= n >>> 8;
+        System.out.printf(n + " ");
+        n |= n >>> 16;
+        System.out.printf(n + " \n");
+    }
+
+    /**
      * 低位与高位取模
      */
     @Test
@@ -47,7 +74,7 @@ public class HashMapTest {
 
     @Test
     public void putTest() {
-        HashMap<String, Integer> hashMap = new HashMap<>(16, 10f);
+        HashMap<String, Integer> hashMap = new HashMap<>(3);
         for (int i = 0; i < 12200; i++) {
             hashMap.put(i + "", i);
         }
