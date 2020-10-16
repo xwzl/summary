@@ -1,4 +1,4 @@
-package com.turing.java.jvm.concurrent.util;
+package com.turing.java.jvm.concurrent.utils;
 
 import sun.misc.Unsafe;
 
