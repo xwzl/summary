@@ -1,11 +1,12 @@
 package com.turing.java.jvm.concurrent.collections.map;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapDump {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /*HashMap hashMap = new HashMap<Object, String>(11);
 
         hashMap.put("杨过","2020");
@@ -20,12 +21,12 @@ public class MapDump {
         test();
     }
 
-    public static void test(){
-        HashMap hashMap = new HashMap<Integer, Integer>();
+    public static void test() {
+        Map<Integer, Integer> hashMap = new HashMap<>();
         int j = 0;
-        for (int i=0;i<9;i++){
-            hashMap.put(j,i);
-            j = j+16;
+        for (int i = 0; i < 9; i++) {
+            hashMap.put(j, i);
+            j = j + 16;
         }
     }
 
