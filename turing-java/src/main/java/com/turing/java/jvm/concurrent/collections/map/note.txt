@@ -1,0 +1,28 @@
+void transfer(Entry[] newTable, boolean rehash) {
+    //新数组容量
+    int newCapacity = newTable.length;
+    //旧数组，将桶为的每一个链表转移到新数组中，注意这里是从链表的头部开始遍历的
+    for (Entry<K,V> e : table) {
+        while(null != e) {
+            //关键位置1
+            Entry<K,V> next = e.next;
+            //关键位置2
+            /*hashCode-->扰动算法-->h & (length-1) 计算在新数组中的位置*/
+            if (rehash) {
+                e.hash = null == e.key ? 0 : hash(e.key);
+            }
+            int i = indexFor(e.hash, newCapacity);
+            /*这三步，就是头插法的运用,后续的节点将会插入到新数组链表头部*/
+            e.next = newTable[i];
+            newTable[i] = e;
+            e = next;
+        }
+    }
+}
+
+// x y 两个元素
+
+1. 假设 x1 x2 两个线程同到关键位置 1,x1 挂起，x2 完成扩容操作。
+2. 数组中 i 节点顺序 y -> x, x1 线程 e -> x, next -> y
+3. x->y->x, e -> y ，判断 e 不等于 null
+4. e.next = x, e->y
