@@ -12,12 +12,12 @@ public class ScheduleThreadPoolRunner {
         ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(1);
 
         scheduledThreadPoolExecutor.schedule(() -> {
-            System.out.println("我要延迟3s执行");
+            System.out.println("我要延迟5s执行");
             return 1;
         }, 5000, TimeUnit.MILLISECONDS);
 
         scheduledThreadPoolExecutor.schedule(() -> {
-            System.out.println("我要延迟3s执行");
+            System.out.println("我要延迟10s执行");
             return 1;
         }, 10000, TimeUnit.MILLISECONDS);
 
@@ -27,7 +27,7 @@ public class ScheduleThreadPoolRunner {
         }, 3000, TimeUnit.MILLISECONDS);
 
         scheduledThreadPoolExecutor.schedule(() -> {
-            System.out.println("我要延迟3s执行");
+            System.out.println("我要延迟1s执行");
             return 1;
         }, 1000, TimeUnit.MILLISECONDS);
         //提交任务的线程-接着干活
@@ -45,7 +45,7 @@ public class ScheduleThreadPoolRunner {
 
         //发心跳，service1->service2,每次过5s，发送一个心跳，证明s2可用
         scheduledThreadPoolExecutor.scheduleWithFixedDelay(() -> {
-            log.info("send heart beat");
+            log.info("send heart 1");
             long starttime = System.currentTimeMillis(), nowtime = starttime;
             while ((nowtime - starttime) < 5000) {
                 nowtime = System.currentTimeMillis();
@@ -59,6 +59,7 @@ public class ScheduleThreadPoolRunner {
             throw new RuntimeException("unexpected error , stop working");
         }, 1000, 2000, TimeUnit.MILLISECONDS);
 
+        // 异常会导致线程任务中断但是不会导致任务线程池中线程中断
         scheduledThreadPoolExecutor.scheduleAtFixedRate(() -> {
             log.info("send heart beat");
             long starttime = System.currentTimeMillis(), nowtime = starttime;

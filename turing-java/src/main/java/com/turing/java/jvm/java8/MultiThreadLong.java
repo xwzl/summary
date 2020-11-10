@@ -4,21 +4,24 @@ package com.turing.java.jvm.java8;
  * -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly
  */
 public class MultiThreadLong {
-    public volatile static long t = 0;
+    public static long t = 0;
 
     public static class ChangeT implements Runnable {
         private long to;
+
         public ChangeT(long to) {
             this.to = to;
         }
+
         @Override
         public void run() {
             while (true) {
                 MultiThreadLong.t = to;     //赋值临界区的t
-                Thread.yield();            //让出资源
+                //Thread.yield();            //让出资源
             }
         }
     }
+
     public static class ReadT implements Runnable {
         @Override
         public void run() {
@@ -27,19 +30,16 @@ public class MultiThreadLong {
                 if (tmp != 111L && tmp != -999L && tmp != 333L && tmp != -444L) {
                     System.out.println(tmp);    //打印非正常值
                 }
-                Thread.yield();            //让出资源
+                //Thread.yield();            //让出资源
             }
         }
     }
+
     public static void main(String[] args) {
         new Thread(new ChangeT(111L)).start();
         new Thread(new ChangeT(-999L)).start();
         new Thread(new ChangeT(333L)).start();
         new Thread(new ChangeT(-444L)).start();
         new Thread(new ReadT()).start();
-        //在32位虚拟机下运行,将可能输出:
-        //-4294966963
-        //4294966852
-        //-4294966963
     }
 }
