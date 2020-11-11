@@ -11,6 +11,7 @@
         <module>algorithm</module>
         <module>tomcat</module>
         <module>web-app</module>
+        <module>spring-redis</module>
     </modules>
     <name>turing</name>
     <description>Demo project for Spring Boot</description>

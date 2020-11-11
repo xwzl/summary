@@ -21,4 +21,5 @@ public class ChildrenPrice implements Price {
         }
         return result;
     }
+
 }
