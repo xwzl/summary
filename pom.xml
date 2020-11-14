@@ -12,6 +12,7 @@
         <module>tomcat</module>
         <module>web-app</module>
         <module>spring-redis</module>
+        <module>spring-config</module>
     </modules>
     <name>turing</name>
     <description>Demo project for Spring Boot</description>
@@ -45,7 +46,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.4.0</spring-boot.version>
         <spring-alibaba-cloud.version>2.2.1.RELEASE</spring-alibaba-cloud.version>
     </properties>
 

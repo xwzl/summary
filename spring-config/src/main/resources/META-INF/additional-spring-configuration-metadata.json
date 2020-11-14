@@ -1,0 +1,54 @@
+{
+  "properties": [
+    {
+      "name": "ip.host",
+      "type": "java.lang.String",
+      "description": "Description for ip.host."
+    },
+    {
+      "name": "ip.port",
+      "type": "java.lang.String",
+      "description": "Description for ip.port."
+    },
+    {
+      "name": "ip.name",
+      "type": "java.lang.String",
+      "description": "Description for ip.name."
+    },
+    {
+      "name": "ip.additional",
+      "type": "java.lang.String",
+      "description": "Description for ip.additional."
+    },
+    {
+      "name": "random.secret",
+      "type": "java.lang.String",
+      "description": "Description for random.secret."
+    },
+    {
+      "name": "random.number",
+      "type": "java.lang.String",
+      "description": "Description for random.number."
+    },
+    {
+      "name": "random.bignumber",
+      "type": "java.lang.String",
+      "description": "Description for random.bignumber."
+    },
+    {
+      "name": "random.uuid",
+      "type": "java.lang.String",
+      "description": "Description for random.uuid."
+    },
+    {
+      "name": "random.number-less-than-ten",
+      "type": "java.lang.String",
+      "description": "Description for random.number-less-than-ten."
+    },
+    {
+      "name": "random.number-in-range",
+      "type": "java.lang.String",
+      "description": "Description for random.number-in-range."
+    }
+  ]
+}

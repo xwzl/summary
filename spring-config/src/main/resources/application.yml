@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+ip:
+  host: 192.168.208.128
+  port: 8000
+  name: xuweizhi
+  additional: default filed
+
+random:
+  secret: "${random.value}"
+  number: "${random.int}"
+  bignumber: "${random.long}"
+  #  uuid: "${random.uuid}"
+  number-less-than-ten: "${random.int(10)}"
+  number-in-range: "${random.int[1024,65536]}"
+
+spring:
+  config:
+    # spring.config.import值为optional:file:./myconfig.properties，即使myconfig.properties文件丢失，也允许您的应用程序启动。
+    #    import: "optional:file:fileNot.yaml"
+    import: classpath:config/application-name.yml # 必须是外部文件,且必须放在 resources 下面,addtional.yml 不是以 Spring 开头的文件一样可以识别
+    #    import: "file:D:/root/turing/spring-config/src/main/resources/addtional.yml" # 感觉有点鸡肋
+    #    import: "file:D:/root/turing/spring-config/src/main/resources/addtional.yml" # 感觉有点鸡肋
+#    activate:
+#      on-profile: local
+#      on-cloud-platform: kubernetes
+# spring 2.3.4 默认会激活 --- 分割得数据源，最后面得属性将会覆盖前面得配置信息
+
+
+#---
+#spring.config.activate.on-cloud-platform: kubernetes
+#spring:
+#  application:
+#    name: test
+#  config:
+#    name: local
+#ip:
+#  host: 192.192.192.192
+#
+#---
+#spring.config.name: port
+#
+#ip:
+#  host: 192.192.192.191
+#  port: 20
+
