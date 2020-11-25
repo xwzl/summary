@@ -27,4 +27,8 @@ public class RedssionConfig {
 
         return (Redisson) Redisson.create(config);
     }
+
+    public static void main(String[] args) {
+        System.out.println(System.currentTimeMillis());
+    }
 }
