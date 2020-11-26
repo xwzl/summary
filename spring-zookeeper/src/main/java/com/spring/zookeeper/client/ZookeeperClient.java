@@ -1,10 +1,8 @@
-package com.spring.zookeeper;
+package com.spring.zookeeper.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.zookeeper.utils.ZookeeperUtils;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.lf5.viewer.LogFactor5Dialog;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;

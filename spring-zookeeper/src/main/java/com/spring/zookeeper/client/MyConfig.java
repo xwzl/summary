@@ -1,4 +1,4 @@
-package com.spring.zookeeper;
+package com.spring.zookeeper.client;
 
 
 import lombok.Data;

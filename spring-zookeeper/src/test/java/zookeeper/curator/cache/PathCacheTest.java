@@ -18,7 +18,6 @@ public class PathCacheTest extends CuratorBaseOperations{
     public void testPathCache() throws Exception {
 
         CuratorFramework curatorFramework = getCuratorFramework();
-
         createIfNeed(PATH);
         // https://github.com/apache/curator/blob/master/curator-examples/src/main/java/cache/PathCacheExample.java
         PathChildrenCache pathChildrenCache = new PathChildrenCache(curatorFramework, PATH, true);

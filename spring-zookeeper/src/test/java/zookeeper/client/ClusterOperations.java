@@ -16,21 +16,22 @@ public class ClusterOperations extends ClusterBase {
 
 
     @Test
+    @SuppressWarnings("all")
     public void testReconnect() throws InterruptedException {
 
-        while (true){
+        while (true) {
             try {
                 Stat stat = new Stat();
                 byte[] data = getZooKeeper().getData("/zookeeper", false, stat);
                 log.info("get data : {}", new String(data));
 
                 TimeUnit.SECONDS.sleep(5);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
                 log.info(" 开始重连......");
 
-                while (true){
-                    log.info("zookeeper status :{}",getZooKeeper().getState().name());
+                while (true) {
+                    log.info("zookeeper status :{}", getZooKeeper().getState().name());
                     if (getZooKeeper().getState().isConnected()) {
                         break;
                     }
@@ -55,23 +56,23 @@ public class ClusterOperations extends ClusterBase {
                         || event.getState() == Event.KeeperState.ConnectedReadOnly)
                         && event.getType() == Event.EventType.NodeDataChanged) {
                     byte[] data = zooKeeper.getData("/node", this, stat);
-                    log.info("数据发生变化: {}",new String(data));
+                    log.info("数据发生变化: {}", new String(data));
                 }
             }
         };
-        while (true){
+        while (true) {
             try {
                 byte[] data = zooKeeper.getData("/node", watcher, stat);
-                log.info("session:{},  data from test node :{} ",zooKeeper.getSessionId(),new String(data));
+                log.info("session:{},  data from test node :{} ", zooKeeper.getSessionId(), new String(data));
                 TimeUnit.SECONDS.sleep(3);
-            }catch (Exception e){
+            } catch (Exception e) {
                 int count = 0;
                 while (zooKeeper.getState() != ZooKeeper.States.CONNECTED
-                        && zooKeeper.getState() != ZooKeeper.States.CONNECTEDREADONLY ){
+                        && zooKeeper.getState() != ZooKeeper.States.CONNECTEDREADONLY) {
 
 
                     TimeUnit.SECONDS.sleep(3);
-                    log.info("now state: {} , try: {} times ",zooKeeper.getState().name(), ++count);
+                    log.info("now state: {} , try: {} times ", zooKeeper.getState().name(), ++count);
                 }
             }
 
