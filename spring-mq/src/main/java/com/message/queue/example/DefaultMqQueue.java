@@ -11,8 +11,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class DefaultMqQueue extends Thread implements MqQueue {
 
-    public Connection connection;
-
+    protected Connection connection;
     public DefaultMqQueue(Connection connection) {
         this.connection = connection;
     }
@@ -39,5 +38,15 @@ public class DefaultMqQueue extends Thread implements MqQueue {
 
     public void close() throws IOException {
         connection.close();
+    }
+
+    protected void startUp() {
+        this.start();
+        try {
+            Thread.sleep(5000);
+            this.close();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
