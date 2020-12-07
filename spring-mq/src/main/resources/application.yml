@@ -1,0 +1,8 @@
+spring:
+  rabbitmq:
+    host: 123.57.107.76
+    port: 8001
+    virtual-host: /test
+    username: guest
+    password: guest
+
