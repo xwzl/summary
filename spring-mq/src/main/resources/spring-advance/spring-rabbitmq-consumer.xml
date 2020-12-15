@@ -27,8 +27,8 @@
       prefetch="1":每次抓取多少条消息
     -->
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="2">
-        <!--        <rabbit:listener ref="ackListener" queue-names="test_queue_confirm"/>-->
-        <rabbit:listener ref="qosListener" queue-names="test_queue_confirm"/>
+                <rabbit:listener ref="ackListener" queue-names="test_queue_confirm"/>
+<!--        <rabbit:listener ref="qosListener" queue-names="test_queue_confirm"/>-->
         <!--定义监听器，监听正常队列-->
         <!--<rabbit:listener ref="dlxListener" queue-names="test_queue_dlx"></rabbit:listener>-->
 

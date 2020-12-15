@@ -63,7 +63,7 @@ public class ProducerAdvanceTest {
         });
         //进行消息发送
         rabbitTemplate.convertAndSend("test_exchange_confirm", "confirm", "message return...");
-        rabbitTemplate.convertAndSend("test_exchange_confirm", "confirm1", "message return...");
+        //rabbitTemplate.convertAndSend("test_exchange_confirm", "confirm1", "message return...");
 
         //进行睡眠操作
         try {
@@ -76,11 +76,31 @@ public class ProducerAdvanceTest {
     //批量发送消息，让消费者每次拉去指定的数量
     @Test
     public void testQos() {
-
         for (int i = 0; i < 10; i++) {
             // 发送消息
             rabbitTemplate.convertAndSend("test_exchange_confirm", "confirm", "message confirm....");
         }
+    }
 
+    /**
+     * 测试 ttl 队列
+     */
+    @Test
+    public void testTtl(){
+        for (int i = 0; i < 10; i++) {
+            // 发送消息
+            rabbitTemplate.convertAndSend("test_exchange_ttl", "ttl.test", "message confirm....");
+        }
+    }
+
+    /**
+     * 测试 ttl 队列
+     */
+    @Test
+    public void testDeathLetterQueue(){
+        for (int i = 0; i < 10; i++) {
+            // 发送消息
+            rabbitTemplate.convertAndSend("test_exchange_dlx", "test.dlx..test", "message confirm....");
+        }
     }
 }
