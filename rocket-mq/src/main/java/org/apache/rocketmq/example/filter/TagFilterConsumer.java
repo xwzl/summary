@@ -22,6 +22,7 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.example.untils.IpAddressConfig;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +32,7 @@ public class TagFilterConsumer {
     public static void main(String[] args) throws InterruptedException, MQClientException, IOException {
 
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
+        consumer.setNamesrvAddr(IpAddressConfig.getRabbitMqAddress());
 
         consumer.subscribe("TagFilterTest", "TagA || TagC");
 
