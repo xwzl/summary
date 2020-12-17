@@ -12,6 +12,7 @@
         <module>tomcat</module>
         <module>web-app</module>
         <module>spring-mq</module>
+        <module>rocket-mq</module>
         <module>spring-redis</module>
         <module>spring-config</module>
         <module>spring-zookeeper</module>
