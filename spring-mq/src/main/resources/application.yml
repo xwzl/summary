@@ -6,3 +6,9 @@ spring:
     username: guest
     password: guest
 
+rocketmq:
+  name-server: 192.168.232.10:9876
+  producer:
+    group: spring-boot-group
+    retry-times-when-send-failed: 10
+    send-message-timeout: 10000
