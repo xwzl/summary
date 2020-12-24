@@ -95,23 +95,7 @@ public class MsgConsumer {
             //            record.offset(), record.key(), record.value());
             //}
 
-          /*  if (records.count() > 0) {
-                // 手动同步提交offset，当前线程会阻塞直到offset提交成功
-                // 一般使用同步提交，因为提交之后一般也没有什么逻辑代码了
-                consumer.commitSync();
 
-                // 手动异步提交offset，当前线程提交offset不会阻塞，可以继续处理后面的程序逻辑
-                consumer.commitAsync(new OffsetCommitCallback() {
-                    @Override
-                    public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
-                        if (exception != null) {
-                            System.err.println("Commit failed for " + offsets);
-                            System.err.println("Commit failed exception: " + exception.getStackTrace());
-                        }
-                    }
-                });
-
-            }*/
         }
     }
 }
