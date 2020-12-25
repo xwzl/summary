@@ -1,6 +1,7 @@
 package com.turing.java.database.kafka;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -10,18 +11,18 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class MsgConsumer {
-    private final static String TOPIC_NAME = "topic_test";
+    private final static String TOPIC_NAME = "my-replicated-topic";
     private final static String CONSUMER_GROUP_NAME = "testGroup";
 
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.208.128:9092,192.168.208.128:9093,192.168.208.128:9094");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.232.10:9092,192.168.232.10:9093,192.168.232.10:9094");
         // 消费分组名
         props.put(ConsumerConfig.GROUP_ID_CONFIG, CONSUMER_GROUP_NAME);
         // 是否自动提交offset，默认就是true
-        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
         // 自动提交offset的间隔时间
-        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "3000");
+        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
         //props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
         /*
         当消费主题的是一个新的消费组，或者指定offset的消费方式，offset不存在，那么应该如何消费
@@ -33,10 +34,10 @@ public class MsgConsumer {
       consumer给broker发送心跳的间隔时间，broker接收到心跳如果此时有rebalance发生会通过心跳响应将
       rebalance方案下发给consumer，这个时间可以稍微短一点
       */
-        props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 2000);
+        props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, 1000);
         /*
-            服务端broker多久感知不到一个consumer心跳就认为他故障了，会将其踢出消费组，
-            对应的Partition也会被重新分配给其他consumer，默认是10秒
+        服务端broker多久感知不到一个consumer心跳就认为他故障了，会将其踢出消费组，
+        对应的Partition也会被重新分配给其他consumer，默认是10秒
         */
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 10 * 1000);
         //一次poll最大拉取消息的条数，如果消费者处理速度很快，可以设置大点，如果处理速度一般，可以设置小点
@@ -89,13 +90,29 @@ public class MsgConsumer {
             /*
              * poll() API 是拉取消息的长轮询
              */
-            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(10000));
-            //for (ConsumerRecord<String, String> record : records) {
-            //    System.out.printf("收到消息：partition = %d,offset = %d, key = %s, value = %s%n", record.partition(),
-            //            record.offset(), record.key(), record.value());
-            //}
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(1000));
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("收到消息：partition = %d,offset = %d, key = %s, value = %s%n", record.partition(),
+                        record.offset(), record.key(), record.value());
+            }
 
+            /*if (records.count() > 0) {
+                // 手动同步提交offset，当前线程会阻塞直到offset提交成功
+                // 一般使用同步提交，因为提交之后一般也没有什么逻辑代码了
+                consumer.commitSync();
 
+                // 手动异步提交offset，当前线程提交offset不会阻塞，可以继续处理后面的程序逻辑
+                consumer.commitAsync(new OffsetCommitCallback() {
+                    @Override
+                    public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
+                        if (exception != null) {
+                            System.err.println("Commit failed for " + offsets);
+                            System.err.println("Commit failed exception: " + exception.getStackTrace());
+                        }
+                    }
+                });
+
+            }*/
         }
     }
 }
