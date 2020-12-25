@@ -1,9 +1,6 @@
 package com.turing.java.util;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * @author xuweizhi
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserSignConfig {
