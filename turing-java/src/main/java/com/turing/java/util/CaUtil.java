@@ -99,7 +99,7 @@ public class CaUtil {
 
     private static void getUserSignConfig(CaResponse<CertEnrollRes> extracted) throws IllegalAccessException {
         String base64Str = imageToBase64Str("D:\\root\\turing\\turing-java\\kubernetes.png");
-        // UserSignConfig userSignConfig1 = UserSignConfig.builder().userId(userId).configKey(userId).keypairType("3")
+        // UserSignConfig userSignConfig1 = UserSignConfig.builder().id(id).configKey(id).keypairType("3")
         // .certSn(extracted.getBody().getCertSerialnumber()).signType("4").sealImg(base64Str).sealType("1")
         // .signTemplate("1").build();
         UserSignConfig userSignConfig1 = UserSignConfig.builder().userId(userId).configKey(userId).keypairType("3")

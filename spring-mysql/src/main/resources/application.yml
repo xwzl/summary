@@ -23,8 +23,13 @@
 #
 #spring.shardingsphere.props.sql.show = true
 #spring.main.allow-bean-definition-overriding=true
+
+# 主键必须为 id ?
 spring:
   profiles:
-    active: base
-#    active: strategy
-#    active: test
+#    active: master-salve
+    active: key
+#    active: base
+#    active: standard
+#    active: complex #这种有问题，只能用于查询
+#    active: binding

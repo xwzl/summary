@@ -13,11 +13,11 @@ public class MyRangeTableShardingAlgorithm implements RangeShardingAlgorithm<Lon
 
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<Long> shardingValue) {
-        //select * from course where cid between 1 and 100;
+        //select * from course where id between 1 and 100;
         Long upperVal = shardingValue.getValueRange().upperEndpoint();//100
         Long lowerVal = shardingValue.getValueRange().lowerEndpoint();//1
 
         String logicTableName = shardingValue.getLogicTableName();
-        return Arrays.asList(logicTableName + "_1", logicTableName + "_2");
+        return Arrays.asList(logicTableName + "_1", logicTableName + "_0");
     }
 }

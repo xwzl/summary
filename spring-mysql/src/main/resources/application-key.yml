@@ -1,0 +1,28 @@
+#垂直分表策略
+spring:
+  shardingsphere:
+    datasource:
+      names: test0 # 配置真实数据源
+      test0: # 配置第 1 个数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.208.128:3306/sharding?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+        username: root
+        password: root
+    sharding:
+      tables:
+        course:
+          # 指定表的分布情况 配置表在哪个数据库里，表名是什么。水平分表，分两个表：test.course_1,test.course_2
+          actual-data-nodes: test0.course_$->{0..1}
+          # 指定表的主键生成策略
+          key-generator:
+            column: id
+            type: MYKEY
+          table-strategy.inline:
+            sharding-column: id # 根据计算的字段算出对应的表名。
+            algorithm-expression: course_$->{id%2}
+    props:
+      sql:
+        show: true
+  main:
+    allow-bean-definition-overriding: true

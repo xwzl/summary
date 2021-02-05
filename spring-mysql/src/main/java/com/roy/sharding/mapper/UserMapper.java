@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface UserMapper extends BaseMapper<User> {
 
-    @Select("select u.user_id,u.username,d.uvalue ustatus from user u left join t_dict d on u.ustatus = d.ustatus")
+    @Select("select u.id,u.username,d.value status from user u left join dict d on u.status = d.status")
     public List<User> queryUserStatus();
 }

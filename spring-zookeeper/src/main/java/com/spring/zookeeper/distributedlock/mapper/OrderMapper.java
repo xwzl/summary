@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Options;
 public interface OrderMapper {
 
     @Options(useGeneratedKeys = true,keyColumn = "id",keyProperty = "id")
-    @Insert(" insert into `order`(user_id,pid) values(#{userId},#{pid}) ")
+    @Insert(" insert into `order`(user_id,pid) values(#{id},#{pid}) ")
     int insert(Order order);
 }

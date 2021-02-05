@@ -9,18 +9,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author ：楼兰
- * @date ：Created in 2021/1/6
- * @description:
- **/
-
 public class MyComplexDSShardingAlgorithm implements ComplexKeysShardingAlgorithm<Long> {
-//    SELECT  cid,cname,user_id,cstatus  FROM course
-//    WHERE  cid BETWEEN ? AND ? AND user_id = ?
+//    SELECT  id,name,user_id,status  FROM course
+//    WHERE  id BETWEEN ? AND ? AND user_id = ?
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, ComplexKeysShardingValue<Long> shardingValue) {
-        Range<Long> cidRange = shardingValue.getColumnNameAndRangeValuesMap().get("cid");
+        Range<Long> cidRange = shardingValue.getColumnNameAndRangeValuesMap().get("id");
         Collection<Long> userIdCol = shardingValue.getColumnNameAndShardingValuesMap().get("user_id");
 
         Long upperVal = cidRange.upperEndpoint();
@@ -31,9 +25,9 @@ public class MyComplexDSShardingAlgorithm implements ComplexKeysShardingAlgorith
         for(Long userId: userIdCol){
             //course_{userID%2+1}
             BigInteger userIdB = BigInteger.valueOf(userId);
-            BigInteger target = (userIdB.mod(new BigInteger("2"))).add(new BigInteger("1"));
+            BigInteger target = (userIdB.mod(new BigInteger("2")));
 
-            res.add("m"+target);
+            res.add("test"+target);
         }
 
         return res;

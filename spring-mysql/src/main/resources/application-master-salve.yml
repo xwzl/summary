@@ -1,0 +1,37 @@
+#垂直分表策略
+spring:
+  shardingsphere:
+    datasource:
+      names: test0,test1
+      test0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.208.128:3306/sharding?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+      test1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.208.128:3306/sharding1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+    sharding:
+      tables:
+        dict:
+          actual-data-nodes: ds0.dict
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props.worker.id: 1
+      # 主从配置
+      master-slave-rules:
+        ds0:
+          master-data-source-name: test0
+          slave-data-source-names:
+            - test1
+    props:
+      sql:
+        show: true
+  main:
+    allow-bean-definition-overriding: true
+

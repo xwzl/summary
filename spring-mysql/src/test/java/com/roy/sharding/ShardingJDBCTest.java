@@ -28,17 +28,19 @@ public class ShardingJDBCTest {
     UserMapper userMapper;
 
     SecureRandom secureRandom = new SecureRandom();
+
     @Test
     public void addCourse() {
         for (int i = 0; i < 10; i++) {
             Course c = new Course();
-            // c.setCid(Long.valueOf(i));
-            c.setCname("shardingsphere");
-            c.setUserId(secureRandom.nextLong());
-            c.setCstatus("1");
+            // c.setId(Long.valueOf(i));
+            c.setName("shardingsphere");
+            long userId = secureRandom.nextLong();
+            c.setUserId(userId < 0 ? -userId : userId);
+            c.setStatus("1");
             courseMapper.insert(c);
         }
-        courseMapper.selectList(null).forEach(System.out::println);
+        // courseMapper.selectList(null).forEach(System.out::println);
     }
 
     @Test
@@ -50,31 +52,29 @@ public class ShardingJDBCTest {
     public void queryCourse() {
         //select * from course
         QueryWrapper<Course> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("cid");
-        wrapper.eq("cid", 553684818806706177L);
+        wrapper.orderByDesc("id");
+        wrapper.eq("id", 553684818806706177L);
 //        wrapper.in()
         List<Course> courses = courseMapper.selectList(wrapper);
-        courses.forEach(course -> System.out.println(course));
+        courses.forEach(System.out::println);
     }
 
     @Test
     public void queryOrderRange() {
         //select * from course
         QueryWrapper<Course> wrapper = new QueryWrapper<>();
-        wrapper.between("cid", 553684818806706177L, 553684819184193537L);
-//        wrapper.in()
+        wrapper.between("id", 553684818806706177L, 553684819184193537L);
         List<Course> courses = courseMapper.selectList(wrapper);
-        courses.forEach(course -> System.out.println(course));
+        courses.forEach(System.out::println);
     }
 
     @Test
     public void queryCourseComplex() {
         QueryWrapper<Course> wrapper = new QueryWrapper<>();
-        wrapper.between("cid", 553684818806706177L, 553684819184193537L);
+        wrapper.between("id", 553684818806706177L, 553684819184193537L);
         wrapper.eq("user_id", 1009L);
-//        wrapper.in()
         List<Course> courses = courseMapper.selectList(wrapper);
-        courses.forEach(course -> System.out.println(course));
+        courses.forEach(System.out::println);
     }
 
     @Test
@@ -82,27 +82,27 @@ public class ShardingJDBCTest {
         HintManager hintManager = HintManager.getInstance();
         hintManager.addTableShardingValue("course", 2);
         List<Course> courses = courseMapper.selectList(null);
-        courses.forEach(course -> System.out.println(course));
+        courses.forEach(System.out::println);
         hintManager.close();
     }
 
     @Test
     public void addDict() {
         Dict d1 = new Dict();
-        d1.setUstatus("1");
-        d1.setUvalue("正常");
+        d1.setStatus("1");
+        d1.setValue("正常");
         dictMapper.insert(d1);
 
         Dict d2 = new Dict();
-        d2.setUstatus("0");
-        d2.setUvalue("不正常");
+        d2.setStatus("0");
+        d2.setValue("不正常");
         dictMapper.insert(d2);
 
         for (int i = 0; i < 10; i++) {
             User user = new User();
             user.setUsername("user No " + i);
-            user.setUstatus("" + (i % 2));
-            user.setUage(i * 10);
+            user.setStatus("" + (i % 2));
+            user.setAge(i * 10);
             userMapper.insert(user);
         }
     }
@@ -110,26 +110,26 @@ public class ShardingJDBCTest {
     @Test
     public void queryUserStatus() {
         List<User> users = userMapper.queryUserStatus();
-        users.forEach(user -> System.out.println(user));
+        users.forEach(System.out::println);
     }
 
     @Test
     public void addDictByMS() {
         Dict d1 = new Dict();
-        d1.setUstatus("1");
-        d1.setUvalue("正常");
+        d1.setStatus("1");
+        d1.setValue("正常");
         dictMapper.insert(d1);
 
         Dict d2 = new Dict();
-        d2.setUstatus("0");
-        d2.setUvalue("不正常");
+        d2.setStatus("0");
+        d2.setValue("不正常");
         dictMapper.insert(d2);
     }
 
     @Test
     public void queryDictByMS() {
         List<Dict> dicts = dictMapper.selectList(null);
-        dicts.forEach(dict -> System.out.println(dict));
+        dicts.forEach(System.out::println);
     }
 
 }

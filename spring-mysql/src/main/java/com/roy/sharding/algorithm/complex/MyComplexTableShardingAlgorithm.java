@@ -9,16 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author ：楼兰
- * @date ：Created in 2021/1/6
- * @description:
- **/
-
 public class MyComplexTableShardingAlgorithm implements ComplexKeysShardingAlgorithm<Long> {
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, ComplexKeysShardingValue<Long> shardingValue) {
-        Range<Long> cidRange = shardingValue.getColumnNameAndRangeValuesMap().get("cid");
+        Range<Long> cidRange = shardingValue.getColumnNameAndRangeValuesMap().get("id");
         Collection<Long> userIdCol = shardingValue.getColumnNameAndShardingValuesMap().get("user_id");
 
         Long upperVal = cidRange.upperEndpoint();
@@ -29,7 +23,7 @@ public class MyComplexTableShardingAlgorithm implements ComplexKeysShardingAlgor
         for(Long userId: userIdCol){
             //course_{userID%2+1}
             BigInteger userIdB = BigInteger.valueOf(userId);
-            BigInteger target = (userIdB.mod(new BigInteger("2"))).add(new BigInteger("1"));
+            BigInteger target = (userIdB.mod(new BigInteger("2")));
 
             res.add(shardingValue.getLogicTableName()+"_"+target);
         }

@@ -3,14 +3,14 @@ spring:
   shardingsphere:
     datasource:
       # 多数据源
-      names: test1,test2
+      names: test0,test1
       test1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://192.168.208.128:3306/sharding?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
         username: root
         password: root
-      test2:
+      test0:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://192.168.208.128:3306/sharding1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
@@ -20,10 +20,10 @@ spring:
       tables:
         course: # course 表
           # test1 或者 test2 库,course1course2 表
-          actual-data-nodes: test$->{1..2}.course_$->{1..2}
+          actual-data-nodes: test$->{0..1}.course_$->{0..1}
           # 主键生成策略
           key-generator:
-            column: cid
+            column: id
             type: SNOWFLAKE
             props.worker.id: 1
           # 分表策略
@@ -32,8 +32,8 @@ spring:
             precise-algorithm-class-name: com.roy.sharding.algorithm.standard.MyPreciseTableShardingAlgorithm
             range-algorithm-class-name: com.roy.sharding.algorithm.standard.MyRangeTableShardingAlgorithm
           # 分库策略
-          database-strategy:
-            sharding-column: cid
+          database-strategy.standard:
+            sharding-column: id
             precise-algorithm-class-name: com.roy.sharding.algorithm.standard.MyPreciseDSShardingAlgorithm
             range-algorithm-class-name: com.roy.sharding.algorithm.standard.MyRangeDSShardingAlgorithm
         # 强制路由

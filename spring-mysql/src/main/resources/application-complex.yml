@@ -1,0 +1,38 @@
+spring:
+  shardingsphere:
+    datasource:
+      # 多数据源
+      names: test0,test1
+      test0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.208.128:3306/sharding?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+      test1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.208.128:3306/sharding1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
+    sharding:
+      tables:
+        course: # course 表
+          # test1 或者 test2 库,course1course2 表
+          actual-data-nodes: test$->{0..1}.course_$->{0..1}
+          # 主键生成策略
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props.worker.id: 1
+          # 分表策略
+          table-strategy.complex:
+            sharding-columns: id,user_id
+            algorithm-class-name: com.roy.sharding.algorithm.complex.MyComplexTableShardingAlgorithm
+          # 分库策略
+          database-strategy.complex:
+            sharding-columns: id,user_id
+            algorithm-class-name: com.roy.sharding.algorithm.complex.MyComplexDSShardingAlgorithm
+    props.sql.show: true
+  main:
+    allow-bean-definition-overriding: true

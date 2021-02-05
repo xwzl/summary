@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 public class MyPreciseTableShardingAlgorithm implements PreciseShardingAlgorithm<Long> {
     /**
-     * select * from course where cid = ? or cid in (?,?)
+     * select * from course where id = ? or id in (?,?)
      */
     @Override
     public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Long> shardingValue) {
@@ -22,9 +22,9 @@ public class MyPreciseTableShardingAlgorithm implements PreciseShardingAlgorithm
         String cid = shardingValue.getColumnName();
         // 主键值
         Long cidValue = shardingValue.getValue();
-        //实现 course_$->{cid%2+1)
+        //实现 course_$->{id%2+1)
         BigInteger shardingValueB = BigInteger.valueOf(cidValue);
-        BigInteger resB = (shardingValueB.mod(new BigInteger("2"))).add(new BigInteger("1"));
+        BigInteger resB = (shardingValueB.mod(new BigInteger("2")));
         String key = logicTableName + "_" + resB;
         if (availableTargetNames.contains(key)) {
             return key;

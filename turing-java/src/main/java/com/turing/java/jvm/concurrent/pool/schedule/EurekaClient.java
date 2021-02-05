@@ -27,7 +27,7 @@ public class EurekaClient {
                 HeartBeat heartBeat = new HeartBeat();
                 heartBeat.setIp("192.56.88.199");
                 heartBeat.setPort(8888);
-                heartBeat.setAppName("order-service");
+                heartBeat.setAppName("order-META-INF.META-INF.META-INF.");
                 heartBeat.setInstanceId(UUID.randomUUID().toString());
 
                 ObjectMapper objectMapper = new ObjectMapper();
