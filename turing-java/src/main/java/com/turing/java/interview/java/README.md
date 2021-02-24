@@ -1,0 +1,8 @@
+- final 关键字：
+    - private 方法隐式地被指定为 final
+    - 如果在子类中定义的方法和基类中的一个 private 方法签名相同，此时子类的方法不是重写基类方法
+    - 而是在子类中定义了一个新的方法。
+-  a = a + b 与 a += b 的区别:
+   -  += 隐式的将加操作的结果类型强制转换为持有结果的类型。如果两这个整型相加，如 byte、short 或者 int，首先会将它们提升到 int 类型，然后在执行加法操作。
+    - byte a = 127; byte b = 127; b = a + b; // error : cannot convert from int to byte b += a; // ok(因为 a+b 操作会将 a、b 提升为 int 类型，所以将 int 类型赋值给 byte 就会编译出错)
+- [Exception 详细介绍](https://www.tianmaying.com/tutorial/Java-Exception)

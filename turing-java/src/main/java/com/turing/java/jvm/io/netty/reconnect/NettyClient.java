@@ -38,6 +38,7 @@ public class NettyClient {
         //创建客户端启动对象
         // bootstrap 可重用, 只需在NettyClient实例化的时候初始化即可.
         bootstrap = new Bootstrap();
+
         bootstrap.group(group)
                 .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<SocketChannel>() {
