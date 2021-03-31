@@ -7,6 +7,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.NettyRuntime;
+import io.netty.util.internal.SystemPropertyUtil;
+import org.junit.Test;
 
 public class ChatServer {
 
@@ -41,5 +44,11 @@ public class ChatServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+    }
+
+    @Test
+    public void eventLoopDefaultThreadNums() {
+        int max = Math.max(1, SystemPropertyUtil.getInt("io.netty.eventLoopThreads", NettyRuntime.availableProcessors() * 2));
+        System.out.println(max);
     }
 }
