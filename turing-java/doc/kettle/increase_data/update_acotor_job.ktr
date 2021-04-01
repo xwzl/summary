@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>job-1</name>
+    <name>update_actor_config</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -491,11 +492,6 @@
     </attributes>
   </connection>
   <order>
-    <hop>
-      <from>表输入</from>
-      <to>表输出</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
   <step>
     <name>表输入</name>
@@ -509,11 +505,11 @@
       <schema_name/>
     </partitioning>
     <connection>target</connection>
-    <sql>select * from actor where update_time > ${date_prefix}2017-11-12 15:27:18${date_suffix}</sql>
-    <limit>0</limit>
+    <sql>UPDATE kettle_config SET start_time = (SELECT DATE_ADD(max( update_time ), INTERVAL 1 SECOND) FROM actor_copy1 ) WHERE target_table = 'actor'</sql>
+    <limit/>
     <lookup/>
     <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
+    <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <cached_row_meta_active>N</cached_row_meta_active>
     <row-meta>
@@ -596,64 +592,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>表输出</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>target</connection>
-    <schema/>
-    <table>actor_copy1</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>id</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
-        <column_name>name</column_name>
-        <stream_name>name</stream_name>
-      </field>
-      <field>
-        <column_name>update_time</column_name>
-        <stream_name>update_time</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>256</yloc>
+      <xloc>240</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
