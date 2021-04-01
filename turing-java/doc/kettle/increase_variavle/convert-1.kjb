@@ -388,7 +388,7 @@
       <description/>
       <type>SQL</type>
       <attributes/>
-      <sql>UPDATE kettle_config SET start_time = (SELECT DATE_ADD(max( update_time ), INTERVAL 1 SECOND) FROM actor_copy1 ) WHERE target_table = "actor"</sql>
+      <sql>UPDATE kettle_config SET start_time = (SELECT DATE_ADD(max( update_time ), INTERVAL 1 SECOND) FROM actor_copy1 ) WHERE target_table = "${config.table}"</sql>
       <useVariableSubstitution>T</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>

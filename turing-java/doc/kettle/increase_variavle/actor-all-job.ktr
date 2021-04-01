@@ -514,7 +514,7 @@
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema/>
-      <table>actor_copy1</table>
+      <table>${target.table}</table>
       <key>
         <name>id</name>
         <field>id</field>
@@ -651,7 +651,7 @@
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>160</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -668,7 +668,7 @@
     </partitioning>
     <connection>target</connection>
     <schema/>
-    <table>actor_copy1</table>
+    <table>${target.table}</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>

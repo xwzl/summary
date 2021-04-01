@@ -516,7 +516,7 @@
 FROM
 	kettle_config 
 WHERE
-	target_table = "actor";</sql>
+	target_table = "${config.table}";</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
