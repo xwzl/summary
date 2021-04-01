@@ -621,7 +621,7 @@ WHERE
     </remotesteps>
     <GUI>
       <xloc>464</xloc>
-      <yloc>160</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

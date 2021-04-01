@@ -563,7 +563,7 @@
       <schema_name/>
     </partitioning>
     <connection>target</connection>
-    <sql>select * from ${origin.table} where update_time >= ${date_prefix}${start_time}${date_suffix} and update_time &lt;= ${date_prefix}${end_time}${date_suffix}</sql>
+    <sql>select * from actor where update_time >= ${date_prefix}${start_time}${date_suffix} and update_time &lt;= ${date_prefix}${end_time}${date_suffix}</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
