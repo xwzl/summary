@@ -3,16 +3,18 @@ package com.turing.java.interview.java.base;
 import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
 import lombok.Data;
 import lombok.ToString;
-import org.apache.kafka.clients.producer.Producer;
 import org.junit.Test;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
@@ -25,6 +27,41 @@ import java.util.stream.Stream;
 public class PackageClass {
 
     public static class IntegerTest {
+
+        /**
+         * 通过构造方法将字节数组转换为字符串
+         */
+        @Test
+        public void byteToStringTest() {
+            byte[] bytes = new byte[10];
+            SecureRandom secureRandom = new SecureRandom();
+            for (int i = 0; i < bytes.length; i++) {
+                bytes[i] = (byte) secureRandom.nextInt(1000);
+            }
+            String randomChars = new String(bytes);
+            System.out.println(randomChars);
+
+            printStringByte("你");
+            printStringByte("how are you ");
+
+            System.out.println(new String(getBytes((byte) -28, (byte) -67, (byte) -96)));
+
+        }
+
+        private byte[] getBytes(byte... source) {
+            byte[] target = new byte[source.length];
+            System.arraycopy(source, 0, target, 0, source.length);
+            return target;
+        }
+
+        private void printStringByte(String soureChars) {
+            byte[] helloBytes = soureChars.getBytes(StandardCharsets.UTF_8);
+            for (byte helloByte : helloBytes) {
+                System.out.println(helloByte);
+            }
+
+            System.out.println("----------------");
+        }
 
         @Test
         public void baseCacheTest() {
@@ -131,8 +168,29 @@ public class PackageClass {
             ArrayList<Book> books = new ArrayList<>();
 
             System.out.println(books);
-            Collections.copy(arrayList,books);
+            Collections.copy(arrayList, books);
             System.out.println(books);
+        }
+
+        @Test
+        public void multiplicationTest() {
+            double v = 3 * 0.1;
+            double v1 = 0.3;
+            System.out.println(v == v1);
+
+            System.out.println(v);
+            System.out.println(v1);
+
+            BigDecimal x1 = BigDecimal.valueOf(0.3);
+            BigDecimal x2 = BigDecimal.valueOf(3).multiply(BigDecimal.valueOf(0.1));
+            System.out.println(x1 == x2);
+            System.out.println(x1.equals(x2));
+        }
+
+        @Test
+        public void enumTest() {
+            ConstructEnum constructEnum1 = ConstructEnum.JAVA;
+            ConstructEnum constructEnum2 = ConstructEnum.PYTHON;
         }
 
         /**
@@ -182,5 +240,22 @@ public class PackageClass {
         }
     }
 
+    public static class A {
+    }
+
+    public static class B extends A {
+
+    }
+
+    public static class C extends B {
+
+        @Test
+        public void castClassTest() {
+            B b = new B();
+
+            //C c = (C) b;
+            //B c1 = c;
+        }
+    }
 
 }
