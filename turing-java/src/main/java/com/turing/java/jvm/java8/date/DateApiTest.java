@@ -8,7 +8,11 @@ import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Java 8 date api 测试
@@ -82,5 +86,16 @@ public class DateApiTest {
         // Stream.iterate(0, i -> i + 1).limit(10).forEach(i -> {
         //     log.info("random2 第 {} 次生成的随机数：{}", i, random2.nextDouble());
         // });
+    }
+
+
+    @Test
+    public void test(){
+        List<String> list = new ArrayList<>();
+        List<String> collect = Stream.of("1", "2", "3", "4", "5", "6").collect(Collectors.toList());
+
+
+
+
     }
 }
