@@ -1,4 +1,4 @@
-package com.turing.java.interview.java.base;
+package com.java.interview.java.base;
 
 import lombok.extern.java.Log;
 import org.junit.Test;

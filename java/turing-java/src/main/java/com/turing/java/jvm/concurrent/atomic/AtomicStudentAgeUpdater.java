@@ -1,7 +1,7 @@
 package com.turing.java.jvm.concurrent.atomic;
 
 
-import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
+import com.java.tool.concurrent.UnsafeInstance;
 import org.openjdk.jol.info.ClassLayout;
 import sun.misc.Unsafe;
 

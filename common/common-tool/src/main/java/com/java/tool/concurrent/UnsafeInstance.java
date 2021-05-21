@@ -1,4 +1,4 @@
-package com.turing.java.jvm.concurrent.utils;
+package com.java.tool.concurrent;
 
 import sun.misc.Unsafe;
 
@@ -16,6 +16,4 @@ public class UnsafeInstance {
         }
         return null;
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.turing.java.interview.java.clone;
+package com.java.interview.java.clone;
 
 /**
  * Clone 的替代方案：

@@ -1,4 +1,4 @@
-package com.turing.java.interview.java.base;
+package com.java.interview.java.base;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -91,7 +91,7 @@ public class ReflectionExample {
 
         @Test
         public void reflectionApiTest() throws ClassNotFoundException {
-            Class<?> aClass = Class.forName("com.turing.java.interview.java.base.ConstructEnum");
+            Class<?> aClass = Class.forName("com.java.interview.java.base.ConstructEnum");
         }
 
         @Test

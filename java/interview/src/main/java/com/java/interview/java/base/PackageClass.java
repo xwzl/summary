@@ -1,6 +1,6 @@
-package com.turing.java.interview.java.base;
+package com.java.interview.java.base;
 
-import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
+import com.java.tool.concurrent.UnsafeInstance;
 import lombok.Data;
 import lombok.ToString;
 import org.junit.Test;

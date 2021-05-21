@@ -1,4 +1,4 @@
-package com.turing.java.interview.java.clone;
+package com.java.interview.java.clone;
 
 /**
  * 浅拷贝：拷贝对象和原始对象的引用类型引用同一对象。

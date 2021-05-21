@@ -1,4 +1,4 @@
-package com.turing.java.interview.java.base;
+package com.java.interview.java.base;
 
 import lombok.ToString;
 import org.junit.Before;

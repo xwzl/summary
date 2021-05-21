@@ -1,6 +1,6 @@
 package com.turing.java.jvm.concurrent;
 
-import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
+import com.java.tool.concurrent.UnsafeInstance;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.Unsafe;
 

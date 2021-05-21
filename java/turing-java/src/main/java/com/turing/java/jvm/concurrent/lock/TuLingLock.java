@@ -1,7 +1,7 @@
 package com.turing.java.jvm.concurrent.lock;
 
 
-import com.turing.java.jvm.concurrent.utils.UnsafeInstance;
+import com.java.tool.concurrent.UnsafeInstance;
 import sun.misc.Unsafe;
 
 import java.util.concurrent.ConcurrentLinkedQueue;

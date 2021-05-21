@@ -12,6 +12,7 @@
         <module>message-queue</module>
         <module>spring</module>
         <module>java</module>
+        <module>common</module>
         <module>spring-cloud</module>
     </modules>
     <description>Demo project for Spring Boot</description>
