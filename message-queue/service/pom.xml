@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.summary.java</groupId>
+            <artifactId>common-tool</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.16.Final</version>

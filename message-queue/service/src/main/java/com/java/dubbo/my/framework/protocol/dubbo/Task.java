@@ -1,7 +1,11 @@
-package com.java.dubbo.framework.protocol;
+package com.java.dubbo.my.framework.protocol.dubbo;
 
 import io.netty.channel.ChannelHandlerContext;
 
+/**
+ * 防止黄色下划线提示
+ */
+@SuppressWarnings("all")
 public class Task implements Runnable {
 
     private Invocation invocation;

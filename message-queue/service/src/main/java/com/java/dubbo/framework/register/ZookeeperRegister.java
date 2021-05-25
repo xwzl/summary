@@ -1,7 +1,7 @@
 package com.java.dubbo.framework.register;
 
 import com.alibaba.fastjson.JSONObject;
-import com.java.dubbo.framework.URL;
+import com.java.dubbo.my.framework.URL;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryNTimes;

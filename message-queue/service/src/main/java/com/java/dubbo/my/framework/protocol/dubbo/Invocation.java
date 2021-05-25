@@ -1,16 +1,22 @@
-package com.java.dubbo.framework.protocol;
+package com.java.dubbo.my.framework.protocol.dubbo;
 
 import java.io.Serializable;
 
+/**
+ * 请求入参对象
+ *
+ * @author xuweizhi
+ * @since 2021/05/25
+ */
 public class Invocation implements Serializable {
 
     private String interfaceName;
     private String methodName;
-    private Class[] paramTypes;
+    private Class<?>[] paramTypes;
     private Object[] params;
 
 
-    public Invocation(String interfaceName, String methodName, Class[] paramTypes, Object[] params) {
+    public Invocation(String interfaceName, String methodName, Class<?>[] paramTypes, Object[] params) {
         this.interfaceName = interfaceName;
         this.methodName = methodName;
         this.paramTypes = paramTypes;
@@ -41,11 +47,11 @@ public class Invocation implements Serializable {
         this.params = params;
     }
 
-    public Class[] getParamTypes() {
+    public Class<?>[] getParamTypes() {
         return paramTypes;
     }
 
-    public void setParamTypes(Class[] paramTypes) {
+    public void setParamTypes(Class<?>[] paramTypes) {
         this.paramTypes = paramTypes;
     }
 }

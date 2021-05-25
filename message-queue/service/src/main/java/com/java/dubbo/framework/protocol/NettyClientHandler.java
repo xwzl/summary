@@ -1,5 +1,6 @@
 package com.java.dubbo.framework.protocol;
 
+import com.java.dubbo.my.framework.protocol.dubbo.Invocation;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -22,6 +23,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter implements 
         notify();
     }
 
+    @Override
     public synchronized Object call() throws Exception {
         context.writeAndFlush(this.invocation);
         wait();

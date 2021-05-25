@@ -1,10 +1,10 @@
 package com.java.dubbo.framework.proxy;
 
-import com.java.dubbo.framework.LoadBalance;
-import com.java.dubbo.framework.URL;
-import com.java.dubbo.framework.protocol.Invocation;
+import com.java.dubbo.my.framework.LoadBalance;
+import com.java.dubbo.my.framework.protocol.dubbo.Invocation;
 import com.java.dubbo.framework.protocol.NettyClient;
 import com.java.dubbo.framework.register.ZookeeperRegister;
+import com.java.dubbo.my.framework.URL;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ProxyFactory<T> {
 
     @SuppressWarnings("unchecked")
-    public static <T> T getProxy(final Class interfaceClass) {
+    public static <T> T getProxy(final Class<?> interfaceClass) {
 
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class[]{interfaceClass}, new InvocationHandler() {
             @Override
@@ -29,8 +29,7 @@ public class ProxyFactory<T> {
                     URL url = LoadBalance.random(urls);
 
                     System.out.println("消费者选择的服务提供者地址是：" + url.toString());
-                    String result = nettyClient.send(url.getHostname(), url.getPort(), invocation);
-                    return result;
+                    return nettyClient.send(url.getHostname(), url.getPort(), invocation);
                 } catch (Exception e) {
                     return doMock(invocation);
                 }

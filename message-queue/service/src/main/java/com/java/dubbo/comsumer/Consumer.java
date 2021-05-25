@@ -3,6 +3,12 @@ package com.java.dubbo.comsumer;
 import com.java.dubbo.framework.proxy.ProxyFactory;
 import com.java.dubbo.provider.api.HelloService;
 
+/**
+ * 消费者
+ *
+ * @author xuweizhi
+ * @since 2021/05/25
+ */
 public class Consumer {
 
     public static void main(String[] args) {
@@ -11,7 +17,6 @@ public class Consumer {
 //        NettyClient nettyClient = new NettyClient();
 //        String result = nettyClient.send("localhost", 8080, invocation);
 //        System.out.println(result);
-
 
         HelloService helloService = ProxyFactory.getProxy(HelloService.class);
         for (int i = 0; i < 10; i++) {

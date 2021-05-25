@@ -1,8 +1,16 @@
-package com.java.dubbo.framework;
+package com.java.dubbo.my.framework;
 
 import java.io.Serializable;
 
+/**
+ * host + port 对象
+ *
+ * @author xuweizhi
+ * @since 2021/05/25 15:32
+ */
+@SuppressWarnings("all")
 public class URL implements Serializable {
+
     private String hostname;
     private Integer port;
 
@@ -25,13 +33,5 @@ public class URL implements Serializable {
 
     public void setPort(Integer port) {
         this.port = port;
-    }
-
-    @Override
-    public String toString() {
-        return "URL{" +
-                "hostname='" + hostname + '\'' +
-                ", port=" + port +
-                '}';
     }
 }

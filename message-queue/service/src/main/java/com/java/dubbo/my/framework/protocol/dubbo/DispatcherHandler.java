@@ -1,18 +1,32 @@
-package com.java.dubbo.framework.protocol;
+package com.java.dubbo.my.framework.protocol.dubbo;
 
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+/**
+ * 自定义 handler
+ *
+ * @author xuweizhi
+ * @since 2021/05/25
+ */
 public class DispatcherHandler implements ChannelHandler {
+    /**
+     * 处理类
+     */
+    private final ChannelHandler channelHandler;
 
-    private ChannelHandler channelHandler;
+    /**
+     * 线程池
+     */
+    private final ExecutorService executorService;
 
-    private ExecutorService executorService;
-
+    @SuppressWarnings("all")
     public DispatcherHandler(ChannelHandler channelHandler) {
         this.channelHandler = channelHandler;
+        // 自定义线程池
         executorService = Executors.newFixedThreadPool(10);
 
     }
