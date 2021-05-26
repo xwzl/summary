@@ -1,6 +1,8 @@
 package com.java.dubbo.my.utils.proxy;
 
 import com.java.dubbo.my.framework.Protocol;
+import com.java.dubbo.my.framework.config.ApplicationConfig;
+import com.java.dubbo.my.framework.config.ProtocolConfig;
 import com.java.dubbo.my.framework.protocol.dubbo.DubboProtocol;
 import com.java.dubbo.my.framework.protocol.http.HttpProtocol;
 
@@ -27,6 +29,12 @@ public class ProtocolProxyFactory {
         String name = System.getProperty(PROTOCOL_NAME);
         if (name == null || name.equals(BLANK_CHARACTER)) {
             name = HTTP_PROTOCOL;
+        }
+        if (ApplicationConfig.getApplicationFactory() != null) {
+            ProtocolConfig protocolConfig = ApplicationConfig.getApplicationFactory().getBean(ProtocolConfig.class);
+            if (protocolConfig.getProtocol() != null) {
+                name = protocolConfig.getProtocol();
+            }
         }
         switch (name) {
             case HTTP_PROTOCOL:

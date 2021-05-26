@@ -1,6 +1,7 @@
 package com.java.dubbo.my.api.impl;
 
 import com.java.dubbo.my.api.BookService;
+import com.java.dubbo.my.framework.protocol.auto.AutoService;
 import com.java.dubbo.my.model.BookVO;
 import com.java.dubbo.my.utils.BookDataUtil;
 import com.java.tool.model.vo.ResultVO;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2021/05/25 14:47
  */
 @Slf4j
+@AutoService
 public class BookServiceImpl implements BookService {
 
     @Override

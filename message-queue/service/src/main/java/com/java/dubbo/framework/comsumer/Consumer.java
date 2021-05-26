@@ -1,7 +1,7 @@
-package com.java.dubbo.comsumer;
+package com.java.dubbo.framework.comsumer;
 
 import com.java.dubbo.framework.proxy.ProxyFactory;
-import com.java.dubbo.provider.api.HelloService;
+import com.java.dubbo.framework.provider.api.HelloService;
 
 /**
  * 消费者

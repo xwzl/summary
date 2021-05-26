@@ -1,4 +1,4 @@
-package com.java.dubbo.provider.api;
+package com.java.dubbo.framework.provider.api;
 
 public interface HelloService {
 

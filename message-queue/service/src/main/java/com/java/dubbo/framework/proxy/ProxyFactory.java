@@ -3,7 +3,7 @@ package com.java.dubbo.framework.proxy;
 import com.java.dubbo.my.framework.LoadBalance;
 import com.java.dubbo.my.framework.protocol.dubbo.Invocation;
 import com.java.dubbo.framework.protocol.NettyClient;
-import com.java.dubbo.framework.register.ZookeeperRegister;
+import com.java.dubbo.my.framework.ZookeeperRegister;
 import com.java.dubbo.my.framework.URL;
 
 import java.lang.reflect.InvocationHandler;

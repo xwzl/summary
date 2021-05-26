@@ -1,7 +1,7 @@
-package com.java.dubbo.provider.impl;
+package com.java.dubbo.framework.provider.impl;
 
 
-import com.java.dubbo.provider.api.HelloService;
+import com.java.dubbo.framework.provider.api.HelloService;
 
 public class HelloServiceImpl implements HelloService {
 

@@ -43,6 +43,8 @@ public class ServiceProxyFactory {
                     String result = mock.replace("return:", "");
                     return result;
                 }
+                // 注册
+
 
                 // 普通调用
                 //return baseProxyModel();
@@ -72,10 +74,14 @@ public class ServiceProxyFactory {
      */
     private static String loadBlanceProxyModel(Method method, Object[] args, Class<?> sourceProxyClass) {
         Invocation invocation = new Invocation(sourceProxyClass.getName(), method.getName(), method.getParameterTypes(), args);
-        List<URL> urlList = RemoteMapRegister.get(sourceProxyClass.getName());
+        List<URL> urlList = getRemoteUrl(sourceProxyClass);
         URL url = LoadBalance.random(urlList);
         //String result = new HttpClient().send(url.getHostname(), url.getPort(), invocation);
         return ProtocolProxyFactory.getProtocol().send(url, invocation);
+    }
+
+    private static List<URL> getRemoteUrl(Class<?> sourceProxyClass) {
+        return RemoteMapRegister.get(sourceProxyClass.getName());
     }
 
     /**
