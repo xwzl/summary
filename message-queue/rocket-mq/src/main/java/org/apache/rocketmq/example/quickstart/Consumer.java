@@ -73,7 +73,6 @@ public class Consumer {
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
-        https://console.easemob.com/user/login
 
         /*
          *  Launch the consumer instance.
