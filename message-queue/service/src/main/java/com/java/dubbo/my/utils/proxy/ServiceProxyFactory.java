@@ -81,7 +81,15 @@ public class ServiceProxyFactory {
     }
 
     private static List<URL> getRemoteUrl(Class<?> sourceProxyClass) {
-        return RemoteMapRegister.get(sourceProxyClass.getName());
+        // 本地获取服务地址
+        List<URL> urls = RemoteMapRegister.get(sourceProxyClass.getName());
+        ApplicationFactory applicationFactory = ApplicationConfig.getApplicationFactory();
+        ZookeeperConfig zookeeperConfig = applicationFactory.getBean(ZookeeperConfig.class);
+        // zookeeper 注册服务替换本地服务
+        if (zookeeperConfig.getEnable()) {
+            urls = ZookeeperRegister.get(sourceProxyClass.getName());
+        }
+        return urls;
     }
 
     /**
