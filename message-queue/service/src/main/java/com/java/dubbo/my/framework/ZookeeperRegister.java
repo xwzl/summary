@@ -31,7 +31,9 @@ public class ZookeeperRegister {
     public static void register(String interfaceName, URL url) {
         try {
             String nodePath = String.format("/dubbo/service/%s/%s", interfaceName, JSONObject.toJSONString(url));
-            client.delete().guaranteed().deletingChildrenIfNeeded().forPath(nodePath);
+            if(client.getData().forPath(nodePath) != null){
+                client.delete().guaranteed().deletingChildrenIfNeeded().forPath(nodePath);
+            }
             client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(nodePath);
         } catch (Exception e) {
             e.printStackTrace();
