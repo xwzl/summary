@@ -11,9 +11,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-
-@Service(version = "rest")
+/**
+ * http 的方式访问就行了,两种协议共同存在是，service 必须指定具体协议，不然两个协议都会去创建，报错无法启动
+ *
+ */
 @Path("demo")
+@Service(version = "rest")
+// @Service(version = "rest",protocol = "rest")
 public class RestDemoService implements DemoService {
 
     @GET
