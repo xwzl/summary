@@ -9,6 +9,7 @@
     </parent>
     <modules>
         <module>common-tool</module>
+        <module>common-module</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>common</artifactId>

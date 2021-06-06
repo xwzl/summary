@@ -4,27 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.summary.java</groupId>
-        <artifactId>summary</artifactId>
+        <artifactId>common</artifactId>
         <version>1.0.0</version>
     </parent>
-    <modules>
-        <module>kafka</module>
-        <module>service</module>
-        <module>rocket-mq</module>
-        <module>mq</module>
-        <module>spring-stream</module>
-        <module>service-consumer</module>
-        <module>service-provider</module>
-    </modules>
-    <packaging>pom</packaging>
-    <artifactId>message-queue</artifactId>
+    <artifactId>common-module</artifactId>
     <version>1.0.0</version>
-    <name>message-queue</name>
-    <description>message-queue</description>
-
+    <name>common-module</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
     <properties>
-        <dubbo.version>2.7.5</dubbo.version>
+        <java.version>1.8</java.version>
     </properties>
+    <dependencies>
+
+    </dependencies>
 
     <build>
         <plugins>
@@ -34,4 +27,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
