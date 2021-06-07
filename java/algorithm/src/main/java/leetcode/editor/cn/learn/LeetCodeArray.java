@@ -2,7 +2,7 @@ package leetcode.editor.cn.learn;
 
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * 初级算法--数组
@@ -202,7 +202,7 @@ public class LeetCodeArray {
             int[] temps = new int[length];
             System.arraycopy(nums, 0, temps, 0, length);
             for (int i = 0; i < length; i++) {
-                    nums[(remainder + i) % length] = temps[i];
+                nums[(remainder + i) % length] = temps[i];
             }
         }
 
@@ -236,6 +236,262 @@ public class LeetCodeArray {
         }
     }
 
+    /**
+     * 存在重复元素
+     * 给定一个整数数组，判断是否存在重复元素。
+     * <p>
+     * 如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。
+     * <p>
+     * 示例 1:
+     * 输入: [1,2,3,1]
+     * 输出: true
+     * <p>
+     * 示例 2:
+     * 输入: [1,2,3,4]
+     * 输出: false
+     * <p>
+     * 示例 3:
+     * 输入: [1,1,1,3,3,4,3,2,4,2]
+     * 输出: true
+     */
+    @SuppressWarnings("all")
+    public static class RepeatArray {
+
+
+        public boolean containsDuplicate(int[] nums) {
+            int length = nums.length;
+            if (length == 0) {
+                return false;
+            }
+            int nodeLength = length / 8 + 1;
+            Node[] nodes = new Node[nodeLength];
+            for (int value : nums) {
+                int index = value % nodeLength;
+                if (add(nodes, index < 0 ? -index : index, value)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * 先排序
+         * 时间复杂度：O(N\log N)O(NlogN)，其中 NN 为数组的长度。需要对数组进行排序。
+         * 空间复杂度：O(\log N)O(logN)，其中 NN 为数组的长度。注意我们在这里应当考虑递归调用栈的深度。
+         */
+        public boolean containsDuplicate1(int[] nums) {
+            Arrays.sort(nums);
+            int n = nums.length;
+            for (int i = 0; i < n - 1; i++) {
+                if (nums[i] == nums[i + 1]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * 复杂度分析
+         * 时间复杂度：O(N)O(N)，其中 NN 为数组的长度。
+         * 空间复杂度：O(N)O(N)，其中 NN 为数组的长度。
+         */
+        public boolean containsDuplicate2(int[] nums) {
+            Set<Integer> set = new HashSet<>();
+            for (int x : nums) {
+                if (!set.add(x)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        public boolean add(Node[] nodes, int index, int data) {
+            Node node = nodes[index];
+            if (node == null) {
+                nodes[index] = new Node(data);
+                return false;
+            }
+            Node result = node.addNode(new Node(data));
+            if (result != null) {
+                nodes[index] = result;
+                return false;
+            }
+            return true;
+        }
+
+        @Test
+        public void isContainsDuplicate() {
+            for (int j = 1; j < 100; j++) {
+                int[] ints = new int[j];
+                for (int i = 0; i < ints.length; i++) {
+                    ints[i] = i;
+                }
+                System.out.println(containsDuplicate(ints));
+            }
+
+        }
+    }
+
+    public static class Node {
+
+        private final int data;
+
+        private Node next;
+
+        public Node(int data) {
+            this.data = data;
+        }
+
+        public Node addNode(Node node) {
+            Node temp = this;
+            do {
+                if (node.data == temp.data) {
+                    return null;
+                }
+            } while ((temp = temp.next) != null);
+            node.next = this;
+            return node;
+
+        }
+    }
+
+    /**
+     * 只出现一次的数字
+     * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+     * <p>
+     * 说明：
+     * 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+     * <p>
+     * 示例 1:
+     * 输入: [2,2,1]
+     * 输出: 1
+     * <p>
+     * 示例 2:
+     * 输入: [4,1,2,1,2]
+     * 输出: 4
+     */
+    public static class OnceNumber {
+        /**
+         * 异或解决问题
+         * 1. a 与 0 异或： a^0 = a;
+         * 2. a 与 a 异或： a^a = 0;
+         * 3. 异或满足交换律： a ^ b ^ a = b ^ (a ^ a)= b ^ 0 = b
+         */
+        public int singleNumber(int[] nums) {
+            int result = 0;
+            for (int num : nums) {
+                result ^= num;
+            }
+            return result;
+        }
+
+        @Test
+        public void testSingleNumber() {
+            int[] nums = {1, 2, 3, 4, 1, 2, 3, 4, 5};
+            System.out.println(singleNumber(nums));
+        }
+    }
+
+    /**
+     * 两个数组的交集
+     * 给定两个数组，编写一个函数来计算它们的交集。
+     * <p>
+     * 示例 1：
+     * 输入：nums1 = [1,2,2,1], nums2 = [2,2]
+     * 输出：[2,2]
+     * <p>
+     * 示例 2:
+     * 输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+     * 输出：[4,9]
+     * <p>
+     * 说明：
+     * 输出结果中每个元素出现的次数，应与元素在两个数组中出现次数的最小值一致。
+     * 我们可以不考虑输出结果的顺序。
+     * <p>
+     * 进阶：
+     * 如果给定的数组已经排好序呢？你将如何优化你的算法？
+     * 如果 nums1 的大小比 nums2 小很多，哪种方法更优？
+     * 如果 nums2 的元素存储在磁盘上，内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？
+     */
+    public static class IntersectionArrays {
+
+        /**
+         * 由于同一个数字在两个数组中都可能出现多次，因此需要用哈希表存储每个数字出现的次数。对于一个数字，其在交集中出现的次数等于该数字在两个数组中出现次数的最小值。
+         * <p>
+         * 首先遍历第一个数组，并在哈希表中记录第一个数组中的每个数字以及对应出现的次数，然后遍历第二个数组，对于第二个数组中的每个数字，如果在哈希表中存在这个数字，则
+         * 将该数字添加到答案，并减少哈希表中该数字出现的次数。
+         * <p>
+         * 为了降低空间复杂度，首先遍历较短的数组并在哈希表中记录每个数字以及对应出现的次数，然后遍历较长的数组得到交集。
+         * <p>
+         * 复杂度分析
+         * <p>
+         * 时间复杂度：O(m+n)O(m+n)，其中 mm 和 nn 分别是两个数组的长度。需要遍历两个数组并对哈希表进行操作，哈希表操作的时间复杂度是 O(1)O(1)，因此总时间复杂度与两
+         * 个数组的长度和呈线性关系。
+         * <p>
+         * 空间复杂度：O(min(m,n))O(min(m,n))，其中 mm 和 nn 分别是两个数组的长度。对较短的数组进行哈希表的操作，哈希表的大小不会超过较短的数组的长度。为返回值创建
+         * 一个数组 intersection，其长度为较短的数组的长度。
+         */
+        public int[] intersect(int[] nums1, int[] nums2) {
+            if (nums1.length > nums2.length) {
+                return intersect(nums2, nums1);
+            }
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int value : nums1) {
+                int count = map.getOrDefault(value, 0) + 1;
+                map.put(value, count);
+            }
+            int[] intersects = new int[nums1.length];
+            int index = 0;
+            for (int value : nums2) {
+                Integer count = map.get(value);
+                if (count != null) {
+                    intersects[index++] = value;
+                    if (count > 1) {
+                        map.put(value, --count);
+                    } else {
+                        map.remove(value);
+                    }
+                }
+            }
+            return Arrays.copyOfRange(intersects, 0, index);
+        }
+
+        /**
+         * 排序 + 双指针
+         * 如果两个数组是有序的，则可以使用双指针的方法得到两个数组的交集。
+         * 首先对两个数组进行排序，然后使用两个指针遍历两个数组。
+         * 初始时，两个指针分别指向两个数组的头部。每次比较两个指针指向的两个数组中的数字，如果两个数字不相等，则将指向较小数字的指针右移
+         * 一位，如果两个数字相等，将该数字添加到答案，并将两个指针都右移一位。当至少有一个指针超出数组范围时，遍历结束。
+         * <p>
+         * 时间复杂度：O(m log m+n log n)O(mlogm+nlogn)，其中 mm 和 nn 分别是两个数组的长度。对两个数组进行排序的时间复杂度是 O(m log m+n log n)O(mlogm+nlogn)，
+         * 遍历两个数组的时间复杂度是 O(m+n)O(m+n)，因此总时间复杂度是 O(m log m+n log n)O(mlogm+nlogn)。
+         * <p>
+         * 空间复杂度：O(min(m,n))O(min(m,n))，其中 mm 和 nn 分别是两个数组的长度。为返回值创建一个数组 intersection，其长度为较短的数组的长度。不过在 C++ 中，我们
+         * 可以直接创建一个 vector，不需要把答案临时存放在一个额外的数组中，所以这种实现的空间复杂度为 O(1)O(1)。
+         * <p>
+         * 如果 \textit{nums}_2nums2的元素存储在磁盘上，磁盘内存是有限的，并且你不能一次加载所有的元素到内存中。那么就无法高效地对 \textit{nums}_2nums2进行排序，因此
+         * 推荐使用方法一而不是方法二。在方法一中，\textit{nums}_2nums2只关系到查询操作，因此每次读取 \textit{nums}_2nums中的一部分数据，并进行处理即可
+         */
+        public int[] intersect2(int[] nums1, int[] nums2) {
+            Arrays.sort(nums1);
+            Arrays.sort(nums2);
+            int l1 = nums1.length, l2 = nums2.length;
+            int[] intersects = new int[Math.min(l1, l2)];
+            int index1 = 0, index2 = 0, index = 0;
+            while (index1 < l1 && index2 < l2) {
+                if (nums1[index1] < nums2[index2]) {
+                    index1++;
+                } else if (nums1[index1] > nums2[index2]) {
+                    index2++;
+                } else {
+                    intersects[index++] = nums1[index1++];
+                    index2++;
+                }
+            }
+            return Arrays.copyOfRange(intersects, 0, index);
+        }
+    }
 }
 
 
