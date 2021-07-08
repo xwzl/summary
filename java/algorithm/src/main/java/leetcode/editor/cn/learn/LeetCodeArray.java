@@ -612,6 +612,96 @@ public class LeetCodeArray {
         }
     }
 
+    /**
+     * 有效的数独
+     * 请你判断一个 9x9 的数独是否有效。只需要 根据以下规则 ，验证已经填入的数字是否有效即可。
+     * <p>
+     * 数字 1-9 在每一行只能出现一次。
+     * 数字 1-9 在每一列只能出现一次。
+     * 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）
+     * 数独部分空格内已填入了数字，空白格用 '.' 表示。
+     * <p>
+     * 注意：
+     * 一个有效的数独（部分已被填充）不一定是可解的。
+     * 只需要根据以上规则，验证已经填入的数字是否有效即可。
+     */
+    public static class Sudoku {
+
+        /**
+         * 利用循环填充数据，来判断是否为数独
+         *
+         * @param board 数据源
+         * @return 返回值
+         */
+        public boolean isValidSudoku(char[][] board) {
+            int len = 9;
+            boolean[][] row = new boolean[len][len];
+            boolean[][] col = new boolean[len][len];
+            boolean[][] checkered = new boolean[len][len];
+            for (int i = 0; i < len; i++) {
+                for (int j = 0; j < len; j++) {
+                    if (board[i][j] == '.') {
+                        continue;
+                    }
+                    int num = board[i][j] - '1';
+                    int index = (i / 3) * 3 + j / 3;
+                    if (row[i][num] || col[j][num] || checkered[index][num]) {
+                        return false;
+                    } else {
+                        row[i][num] = true;
+                        col[j][num] = true;
+                        checkered[index][num] = true;
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+     * <p>
+     * 你必须在 原地 旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要 使用另一个矩阵来旋转图像。
+     */
+    public static class RotateExample {
+
+        public void rotate(int[][] matrix) {
+            int cows = matrix.length;
+            int cowNumber = cows / 2;
+
+            for (int i = 0; i < cowNumber; i++) {
+                int end = cows - i * 2;
+                for (int j = 0; j < end - 1; j++) {
+                    int x1 = matrix[i][i + j];
+                    int x2 = matrix[i + j][cows - i - 1];
+                    int x3 = matrix[cows - i - 1][cows - j - i - 1];
+                    int x4 = matrix[cows - i - j - 1][i];
+                    matrix[i][i + j] = x4;
+                    matrix[i + j][i + end - 1] = x1;
+                    matrix[cows - i - 1][cows - j - i - 1] = x2;
+                    matrix[cows - i - j - 1][i] = x3;
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            int[][] nums = {
+                    {5, 1, 9, 11},
+                    {2, 4, 8, 10},
+                    {13, 3, 6, 7},
+                    {15, 14, 12, 16}
+            };
+            RotateExample rotateExample = new RotateExample();
+            rotateExample.rotate(nums);
+            for (int[] num : nums) {
+                for (int i : num) {
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+
 }
 
 

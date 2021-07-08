@@ -1,9 +1,13 @@
 package com.java.interview.java.base;
 
+import com.alibaba.fastjson.JSON;
+import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.lang.reflect.*;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -335,6 +339,46 @@ public class ReflectionExample {
                     ", name='" + name + '\'' +
                     '}';
         }
+
+        @Data
+        @ToString
+        public static class Baby {
+            private String babyName;
+            private Integer age;
+
+            @Test
+            public void babyTest() throws NoSuchFieldException, IllegalAccessException {
+                Baby baby = new Baby();
+                Class<Baby> babyClass = Baby.class;
+                Field age = babyClass.getDeclaredField("age");
+                //Map<String,Object> xx = JSON.parse();
+                age.setAccessible(true);
+                Object ageInstance1 = 1111;
+                Class<?> type = age.getType();
+                if (ageInstance1.getClass().equals(type)) {
+                    age.set(baby, ageInstance1);
+                }
+                System.out.println(type.getName());
+                Object ageInstance2 = "1111";
+                if (ageInstance2.getClass().equals(type)) {
+                    age.set(baby, ageInstance2);
+                }
+
+                System.out.println(baby);
+
+                Baby baby1 = new Baby();
+                baby1.setBabyName("11");
+                baby1.setAge(11);
+                String x = JSON.toJSONString(baby1);
+                Map map = JSON.parseObject(x, Map.class);
+                // age1 age2 age3
+                map.put("age", map.get("age").toString());
+                String x1 = JSON.toJSONString(map);
+                Baby x2 = JSON.parseObject(x1, Baby.class);
+                System.out.println(x2);
+            }
+        }
+
 
         public static class inner {
 
