@@ -46,7 +46,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
-        <spring-boot.version>2.5.0</spring-boot.version>
+        <spring-boot.version>2.5.2</spring-boot.version>
+        <fast-json.verson>1.2.76</fast-json.verson>
         <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
     </properties>
 
@@ -58,7 +59,12 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.70</version>
+            <version>${fast-json.verson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -73,7 +79,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
