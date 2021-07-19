@@ -12,6 +12,7 @@
         <module>mysql</module>
         <module>redis</module>
         <module>zookeeper</module>
+        <module>elasticsearch</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>database</artifactId>

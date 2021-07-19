@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.3
+    container_name: elasticsearch
+    privileged: true
+    environment:
+      cluster.name: elasticsearch
+      discovery.type: single-node
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.13.3
+    container_name: kibana
+    privileged: true
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    links:
+      # 可以用es这个域名访问elasticsearch服务
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    #    networks:
+    #      elk
+    ports:
+      - 5601:5601
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.13.3
+    container_name: logstash
+    ports:
+      - 4560:4560
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      #挂载logstash的配置文件
+      - ./config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    links:
+      #可以用es这个域名访问elasticsearch服务
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch

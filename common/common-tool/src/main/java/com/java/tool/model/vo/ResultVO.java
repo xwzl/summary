@@ -32,6 +32,13 @@ public class ResultVO<T> implements Serializable {
      */
     private T data;
 
+
+    public ResultVO(T data) {
+        this.status = SUCCESS.getStatus();
+        this.msg = SUCCESS.getMessage();
+        this.data = data;
+    }
+
     public ResultVO(Integer status, String msg, T data) {
         this.status = status;
         this.msg = msg;
