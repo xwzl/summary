@@ -1,4 +1,4 @@
-package com.summar.elasticsearch;
+package com.summayr.elasticsearch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

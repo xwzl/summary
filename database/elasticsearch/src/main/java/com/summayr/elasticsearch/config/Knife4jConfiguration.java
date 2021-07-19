@@ -1,4 +1,4 @@
-package com.summar.elasticsearch.config;
+package com.summayr.elasticsearch.config;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;

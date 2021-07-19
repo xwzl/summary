@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="LOG_HOME" value="./logs"/>
+
+    <springProperty scope="context" name="logstashHost" source="logging.logstash.host"/>
+
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <springProperty scope="context" name="profile" source="spring.profiles.active"/>
+    <springProperty scope="context" name="domain" source="spring.cloud.zookeeper.discovery.root"/>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!--&lt;!&ndash;        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+        <!--            &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;-->
+        <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg %n</pattern>-->
+        <!--        </encoder>&ndash;&gt;-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>trace</level>
+        </filter>
+        <encoder>
+            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <!-- 设置字符集 -->
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <destination>${logstashHost}</destination>
+        <includeCallerData>true</includeCallerData>
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+        <reconnectionDelay>5 second</reconnectionDelay>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- true:appName,profile,domain 字段才会被追加到日志 中-->
+            <includeContext>true</includeContext>
+            <includeCallerData>true</includeCallerData>
+            <timeZone>UTC</timeZone>
+            <!-- logstash 自动解析该字段并存储-->
+            <customFields>{"appName":"${appName}","profile":"${profile}","domain":"${domain}"}</customFields>
+            <customFields>{"appName":"${appName}"}</customFields>
+        </encoder>
+    </appender>
+
+
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="logstash"/>
+    </root>
+
+    <!--    <springProfile name="local">-->
+    <!--        <root level="info">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="LS"/>-->
+    <!--        </root>-->
+    <!--    </springProfile>-->
+
+    <!--    <springProfile name="node62">-->
+    <!--        <root level="info">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="LS"/>-->
+    <!--        </root>-->
+    <!--    </springProfile>-->
+
+    <!--    <springProfile name="node63">-->
+    <!--        <root level="info">-->
+    <!--            <appender-ref ref="CONSOLE"/>-->
+    <!--            <appender-ref ref="LS"/>-->
+    <!--        </root>-->
+    <!--    </springProfile>-->
+
+</configuration>

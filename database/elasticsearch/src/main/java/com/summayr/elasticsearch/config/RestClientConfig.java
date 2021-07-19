@@ -1,4 +1,4 @@
-package com.summar.elasticsearch.config;
+package com.summayr.elasticsearch.config;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
