@@ -1,8 +1,8 @@
-package com.summayr.elasticsearch.controller;
+package com.summary.elasticsearch.controller;
 
 import com.java.tool.model.vo.ResultVO;
-import com.summayr.elasticsearch.domain.model.BookDO;
-import com.summayr.elasticsearch.domain.vo.BookVO;
+import com.summary.elasticsearch.domain.model.BookDO;
+import com.summary.elasticsearch.domain.vo.BookVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

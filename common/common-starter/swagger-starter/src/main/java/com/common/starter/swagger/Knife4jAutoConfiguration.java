@@ -1,6 +1,8 @@
-package com.summayr.elasticsearch.config;
+package com.common.starter.swagger;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -16,9 +18,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
  *
  * @author xuweizhi
  */
+@Slf4j
 @Configuration
+@ConditionalOnMissingBean(Knife4jAutoConfiguration.class)
 @EnableSwagger2WebMvc
-public class Knife4jConfiguration {
+public class Knife4jAutoConfiguration {
 
     @Bean(value = "defaultApi")
     public Docket defaultApi() {
@@ -32,7 +36,6 @@ public class Knife4jConfiguration {
                 .build()
                 .securitySchemes(null);
     }
-
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()

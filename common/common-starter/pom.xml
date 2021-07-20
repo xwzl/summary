@@ -4,19 +4,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.summary.java</groupId>
-        <artifactId>summary</artifactId>
+        <artifactId>common</artifactId>
         <version>1.0.0</version>
     </parent>
     <modules>
-        <module>common-tool</module>
-        <module>common-module</module>
-        <module>common-starter</module>
+        <module>elasticsearch-starter</module>
+        <module>swagger-starter</module>
     </modules>
-    <packaging>pom</packaging>
-    <artifactId>common</artifactId>
+    <artifactId>common-starter</artifactId>
+    <name>common-starter</name>
     <version>1.0.0</version>
-    <name>common</name>
-    <description>common</description>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -25,4 +34,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

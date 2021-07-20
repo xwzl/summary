@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.domain.model;
+package com.summary.elasticsearch.domain.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

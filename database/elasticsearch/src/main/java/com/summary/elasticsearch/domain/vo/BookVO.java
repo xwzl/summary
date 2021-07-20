@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.domain.vo;
+package com.summary.elasticsearch.domain.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

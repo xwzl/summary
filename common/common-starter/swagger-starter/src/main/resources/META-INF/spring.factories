@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.common.starter.swagger.Knife4jAutoConfiguration
+

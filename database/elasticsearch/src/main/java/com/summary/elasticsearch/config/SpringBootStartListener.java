@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.config;
+package com.summary.elasticsearch.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,5 +20,6 @@ public class SpringBootStartListener implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         log.info("Swagger-ui 地址: http://localhost:8080/" + applicationName + "/doc.html");
+        log.info("Kibana 地址: http://localhost:5601/");
     }
 }

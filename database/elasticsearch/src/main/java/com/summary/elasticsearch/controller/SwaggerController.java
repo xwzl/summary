@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.controller;
+package com.summary.elasticsearch.controller;
 
 import com.java.tool.model.vo.ResultVO;
 import io.swagger.annotations.Api;

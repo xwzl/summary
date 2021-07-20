@@ -5,7 +5,7 @@ spring:
   profiles:
     active: default
   cloud:
-    zookeeper.discovery.root: test
+    zookeeper.discovery.root: default
 
 server:
   servlet:

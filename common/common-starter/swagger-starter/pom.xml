@@ -4,19 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.summary.java</groupId>
-        <artifactId>summary</artifactId>
+        <artifactId>common-starter</artifactId>
         <version>1.0.0</version>
     </parent>
-    <modules>
-        <module>common-tool</module>
-        <module>common-module</module>
-        <module>common-starter</module>
-    </modules>
-    <packaging>pom</packaging>
-    <artifactId>common</artifactId>
+    <artifactId>swagger-starter</artifactId>
+    <name>swagger-starter</name>
     <version>1.0.0</version>
-    <name>common</name>
-    <description>common</description>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -25,4 +31,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.config;
+package com.common.starter.logstash.config;
 
 /**
  * 日志注解

@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.common.starter.logstash.ElasticsearchAutoConfig,\
+com.common.starter.logstash.SystemLogAutoConfig,\
+com.common.starter.logstash.ConditionalAutoConfig
+

@@ -1,4 +1,4 @@
-package com.summayr.elasticsearch.controller;
+package com.summary.elasticsearch.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
