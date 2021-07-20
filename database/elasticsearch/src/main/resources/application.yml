@@ -16,3 +16,4 @@ logging:
   logstash.host: localhost:4560
   level:
     com.summary.elasticsearch.config: debug
+    org.springframework.data.elasticsearch.client.WIRE: trace

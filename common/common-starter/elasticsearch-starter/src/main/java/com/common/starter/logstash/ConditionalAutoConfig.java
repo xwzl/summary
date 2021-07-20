@@ -29,7 +29,7 @@ public class ConditionalAutoConfig {
     }
 
     /**
-     * 类路径存在时初始化
+     * classpath 中存在 DemoServiceMock 初始化
      *
      * @return 字段名称
      */
@@ -46,7 +46,7 @@ public class ConditionalAutoConfig {
      * @return 返回值
      */
     //@Bean
-    //@ConditionalOnBean(value = RestHighLevelClient.class)
+    //@ConditionalOnMissingBean(value = RestHighLevelClient.class)
     //public String stringConditionalOnBean() {
     //    log.info(RestHighLevelClient.class.getName() + " bean is exist");
     //    return "String conditional bean";

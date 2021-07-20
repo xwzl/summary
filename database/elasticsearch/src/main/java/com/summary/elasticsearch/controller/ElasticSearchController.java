@@ -3,6 +3,7 @@ package com.summary.elasticsearch.controller;
 import com.java.tool.model.vo.ResultVO;
 import com.summary.elasticsearch.domain.model.BookDO;
 import com.summary.elasticsearch.domain.vo.BookVO;
+import com.summary.elasticsearch.repository.BookRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,10 @@ import java.util.stream.Collectors;
 public class ElasticSearchController {
 
     @Resource
-    private ElasticsearchRestTemplate elasticsearchRestTemplate;
+    private BookRepository bookRepository;
 
+    @Resource
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
     /**
      * 查询数据
@@ -63,5 +66,18 @@ public class ElasticSearchController {
         BookDO bookDO = new BookDO();
         BeanUtils.copyProperties(bookVO, bookDO);
         return elasticsearchRestTemplate.save(bookDO);
+    }
+
+    /**
+     * 判断索引是否存在
+     *
+     * @param bookDO 索引名称
+     * @return 返回值
+     */
+    @ApiOperation("是否存在")
+    @GetMapping("indexExists")
+    public ResultVO<Boolean> indexExists(BookDO bookDO) {
+        BookDO result = bookRepository.getBookDOByAuthor(bookDO);
+        return new ResultVO<>(result != null);
     }
 }

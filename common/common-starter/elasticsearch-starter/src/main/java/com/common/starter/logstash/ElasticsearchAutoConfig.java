@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
+import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 @Configuration
 @SuppressWarnings("all")
 @ConditionalOnProperty(prefix = "spring.elasticsearch.rest", name = "uris")
-public class ElasticsearchAutoConfig {
+public class ElasticsearchAutoConfig extends AbstractElasticsearchConfiguration {
 
     @Value("${spring.elasticsearch.rest.uris}")
     private String urls;
@@ -34,7 +35,7 @@ public class ElasticsearchAutoConfig {
      */
     @Bean
     @ConditionalOnMissingBean(value = RestHighLevelClient.class)
-    public RestHighLevelClient restHighLevelClient() {
+    public RestHighLevelClient elasticsearchClient() {
         ClientConfiguration clientConfiguration = ClientConfiguration.builder().connectedTo(urls).build();
         return RestClients.create(clientConfiguration).rest();
     }
@@ -47,8 +48,8 @@ public class ElasticsearchAutoConfig {
      */
     @Bean
     @ConditionalOnMissingBean(value = ElasticsearchRestTemplate.class)
-    public ElasticsearchRestTemplate elasticsearchRestTemplate(RestHighLevelClient restHighLevelClient) {
-        return new ElasticsearchRestTemplate(restHighLevelClient);
+    public ElasticsearchRestTemplate elasticsearchRestTemplate(RestHighLevelClient elasticsearchClient) {
+        return new ElasticsearchRestTemplate(elasticsearchClient);
     }
 
 
