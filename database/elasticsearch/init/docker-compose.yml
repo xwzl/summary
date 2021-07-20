@@ -8,6 +8,11 @@ services:
       cluster.name: elasticsearch
       discovery.type: single-node
       ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes:
+      - ./config/plugins:/usr/share/elasticsearch/plugins
+#      - ./config/config:/usr/share/elasticsearch/config
+#      - ./config/data:/usr/share/elasticsearch/data
+#      - ./config/logs:/usr/share/elasticsearch/logs
     ports:
       - 9200:9200
       - 9300:9300
