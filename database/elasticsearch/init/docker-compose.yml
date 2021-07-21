@@ -10,9 +10,9 @@ services:
       ES_JAVA_OPTS: -Xms512m -Xmx512m
     volumes:
       - ./config/plugins:/usr/share/elasticsearch/plugins
-#      - ./config/config:/usr/share/elasticsearch/config
-#      - ./config/data:/usr/share/elasticsearch/data
-#      - ./config/logs:/usr/share/elasticsearch/logs
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./config/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12
+      - ./config/data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
       - 9300:9300
@@ -22,6 +22,8 @@ services:
     privileged: true
     environment:
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    volumes:
+      - ./config/kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
       # 可以用es这个域名访问elasticsearch服务
       - elasticsearch:elasticsearch

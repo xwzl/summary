@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -76,8 +77,9 @@ public class ElasticSearchController {
      */
     @ApiOperation("是否存在")
     @GetMapping("indexExists")
-    public ResultVO<Boolean> indexExists(BookDO bookDO) {
-        BookDO result = bookRepository.getBookDOByAuthor(bookDO);
-        return new ResultVO<>(result != null);
+    public ResultVO<Optional<BookDO>> indexExists(BookDO bookDO) {
+        Optional<BookDO> book = bookRepository.findByAuthor(bookDO.getAuthor());
+        log.info(bookRepository.findAllByAuthor(bookDO.getAuthor()).toString());
+        return new ResultVO<>(book);
     }
 }

@@ -1,11 +1,16 @@
 spring:
   application:
     name: elasticsearch
-  elasticsearch.rest.uris: localhost:9200
+  elasticsearch.rest:
+    uris: localhost:9200
+    username: elastic
+    password: elastic
   profiles:
     active: default
   cloud:
     zookeeper.discovery.root: default
+
+
 
 server:
   servlet:

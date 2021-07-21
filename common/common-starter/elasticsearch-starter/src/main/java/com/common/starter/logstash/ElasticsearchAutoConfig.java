@@ -2,15 +2,18 @@ package com.common.starter.logstash;
 
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 配置
@@ -24,8 +27,8 @@ import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 @ConditionalOnProperty(prefix = "spring.elasticsearch.rest", name = "uris")
 public class ElasticsearchAutoConfig extends AbstractElasticsearchConfiguration {
 
-    @Value("${spring.elasticsearch.rest.uris}")
-    private String urls;
+    @Resource
+    private ElasticsearchRestClientProperties elasticsearchRestClientProperties;
 
 
     /**
@@ -36,7 +39,9 @@ public class ElasticsearchAutoConfig extends AbstractElasticsearchConfiguration 
     @Bean
     @ConditionalOnMissingBean(value = RestHighLevelClient.class)
     public RestHighLevelClient elasticsearchClient() {
-        ClientConfiguration clientConfiguration = ClientConfiguration.builder().connectedTo(urls).build();
+        List<String> uris = elasticsearchRestClientProperties.getUris();
+        ClientConfiguration clientConfiguration = ClientConfiguration.builder().connectedTo(uris.get(0))
+                .withBasicAuth(elasticsearchRestClientProperties.getUsername(), elasticsearchRestClientProperties.getPassword()).build();
         return RestClients.create(clientConfiguration).rest();
     }
 
