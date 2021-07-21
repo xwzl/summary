@@ -346,4 +346,4 @@ curl -XPUT -u ryan:ryan123 http://localhost:9200/_xpack/security/user/elastic/_p
 --
 
 - [http://codingfundas.com/setting-up-elasticsearch-6-8-with-kibana-and-x-pack-security-enabled/index.html](http://codingfundas.com/setting-up-elasticsearch-6-8-with-kibana-and-x-pack-security-enabled/index.html)
-- [https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html]
+- [https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html)
