@@ -4,23 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.summary.java</groupId>
-        <artifactId>common</artifactId>
+        <artifactId>common-starter</artifactId>
         <version>1.0.0</version>
     </parent>
-    <modules>
-        <module>elasticsearch-starter</module>
-        <module>swagger-starter</module>
-        <module>customer-starter</module>
-        <module>web-starter</module>
-    </modules>
-    <artifactId>common-starter</artifactId>
-    <name>common-starter</name>
+    <artifactId>customer-starter</artifactId>
+    <name>customer-starter</name>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.summary.java</groupId>
+            <artifactId>web-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
