@@ -11,6 +11,7 @@
         <module>turing-java</module>
         <module>algorithm</module>
         <module>interview</module>
+        <module>fluent-mybatis</module>
         <module>web-app</module>
         <module>tomcat</module>
     </modules>

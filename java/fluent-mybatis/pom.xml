@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.summary.java</groupId>
+        <artifactId>java</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>fluent-mybatis</artifactId>
+    <name>fluent-mybatis</name>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.summary.java</groupId>
+            <artifactId>common-tool</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- 引入fluent-mybatis 运行依赖包, scope为compile -->
+        <dependency>
+            <groupId>com.github.atool</groupId>
+            <artifactId>fluent-mybatis</artifactId>
+            <version>1.6.13</version>
+        </dependency>
+        <!-- 引入fluent-mybatis-processor, scope设置为provider 编译需要，运行时不需要 -->
+        <dependency>
+            <groupId>com.github.atool</groupId>
+            <artifactId>fluent-mybatis-processor</artifactId>
+            <version>1.6.13</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.23</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
