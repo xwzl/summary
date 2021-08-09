@@ -1,29 +1,32 @@
 server:
   port: 8080
-#  servlet:
-#    context-path: /mall-order
+  servlet:
+    context-path: /spring-cloud-order
 
 spring:
   application:
     name: spring-cloud-order  #微服务名称
   cloud.nacos.discovery:
-        server-addr: 127.0.0.1:8848
+    server-addr: 127.0.0.1:8848
+    #group:  mall-order
+    #        cluster-name: SH
+    #        ephemeral: false
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/qq?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-  #group:  mall-order
-#        cluster-name: SH
-#        ephemeral: false
+
 
 
 #mybatis-plus
 mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
   mapper-locations: classpath*:/mapper/**/*.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.spring.cloud.order.entity.*.entity
+  type-aliases-package: com.spring.cloud.order.entity
+
 
 #暴露actuator端点   http://localhost:8020/actuator/sentinel
 management.endpoints.web.exposure.include: '*'

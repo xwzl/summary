@@ -10,15 +10,21 @@ import org.springframework.web.client.RestTemplate;
  * @author xuweizhi
  */
 @Configuration
+@SuppressWarnings("all")
 public class RestConfig {
 
+    // /**
+    //  * 注入负载均衡策略
+    //  */
+    // @Autowired
+    // private LoadBalancerClient loadBalancer;
 
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
-
-        return new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
+        // restTemplate.setInterceptors(Collections.singletonList(new LoadBalancerInterceptor(loadBalancerClient)));
+        return restTemplate;
     }
-
 
 }

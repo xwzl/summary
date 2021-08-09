@@ -2,17 +2,18 @@ package com.spring.cloud.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
+ * Nacos 不需要发现注解，自动注册
+ *
  * @author xuweizhi
  */
 @SpringBootApplication
-@EnableDiscoveryClient
-public class MallOrderApplication {
+// @EnableDiscoveryClient
+public class OrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MallOrderApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
 }
