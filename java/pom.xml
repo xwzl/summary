@@ -11,7 +11,8 @@
         <module>turing-java</module>
         <module>algorithm</module>
         <module>interview</module>
-        <module>fluent-mybatis</module>
+        <!--卡到爆-->
+        <!--        <module>fluent-mybatis</module>-->
         <module>web-app</module>
         <module>tomcat</module>
     </modules>

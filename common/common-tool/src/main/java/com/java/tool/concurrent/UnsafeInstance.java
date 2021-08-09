@@ -5,6 +5,9 @@ import sun.misc.Unsafe;
 import java.lang.reflect.Field;
 
 
+/**
+ * @author xuweizhi
+ */
 public class UnsafeInstance {
     public static Unsafe reflectGetUnsafe() {
         try {
