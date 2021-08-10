@@ -8,10 +8,10 @@
         <version>1.0.0</version>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>spring-cloud-user</artifactId>
+    <artifactId>spring-cloud-ribbon</artifactId>
     <version>1.0.0</version>
-    <name>spring-cloud-user</name>
-    <description>spring-cloud-user</description>
+    <name>spring-cloud-ribbon</name>
+    <description>spring-cloud-ribbon</description>
 
     <dependencies>
         <dependency>
@@ -24,31 +24,30 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>2.2.5.RELEASE</version>
         </dependency>
 
-        <!-- loadbalancer 远程调用 -->
+        <!-- LoadBalancer -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
 
+        <!--添加ribbon的依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>2.2.5.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
-        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>

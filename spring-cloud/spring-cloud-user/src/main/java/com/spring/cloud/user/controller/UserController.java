@@ -3,8 +3,11 @@ package com.spring.cloud.user.controller;
 import com.spring.cloud.commom.module.utils.PageVO;
 import com.spring.cloud.commom.module.utils.ResultVO;
 import com.spring.cloud.user.entity.UserEntity;
+import com.spring.cloud.user.feign.OrderFeignService;
 import com.spring.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -32,8 +37,8 @@ public class UserController {
     @Resource
     private RestTemplate restTemplate;
 
-//    @Autowired
-//    OrderFeignService orderFeignService;
+    @Resource
+    private OrderFeignService orderFeignService;
 
 
     @RequestMapping(value = "/findOrderByUserId/{id}")
@@ -46,7 +51,7 @@ public class UserController {
         //模拟ribbon实现
         //String url = getUri("mall-order")+"/order/findOrderByUserId/"+id;
         // 添加@LoadBalanced
-        String url = "http://spring-cloud-order/spring-cloud-order/order/findOrderByUserId/" + id;
+        String url = "http://spring-cloud-order/order/findOrderByUserId/" + id;
         ResultVO result = restTemplate.getForObject(url, ResultVO.class);
 
         //feign调用
@@ -56,29 +61,32 @@ public class UserController {
     }
 
 
-//    @Autowired
-//    private DiscoveryClient discoveryClient;
-//    public String getUri(String serviceName) {
-//        List<ServiceInstance> serviceInstances = discoveryClient.getInstances(serviceName);
-//        if (serviceInstances == null || serviceInstances.isEmpty()) {
-//            return null;
-//        }
-//        int serviceSize = serviceInstances.size();
-//        //轮询
-//        int indexServer = incrementAndGetModulo(serviceSize);
-//        return serviceInstances.get(indexServer).getUri().toString();
-//    }
-//    private AtomicInteger nextIndex = new AtomicInteger(0);
-//    private int incrementAndGetModulo(int modulo) {
-//        for (;;) {
-//            int current = nextIndex.get();
-//            int next = (current + 1) % modulo;
-//            if (nextIndex.compareAndSet(current, next) && current < modulo){
-//                return current;
-//            }
-//        }
-//    }
-//
+    @Resource
+    private DiscoveryClient discoveryClient;
+
+    public String getUri(String serviceName) {
+        List<ServiceInstance> serviceInstances = discoveryClient.getInstances(serviceName);
+        if (serviceInstances == null || serviceInstances.isEmpty()) {
+            return null;
+        }
+        int serviceSize = serviceInstances.size();
+        //轮询
+        int indexServer = incrementAndGetModulo(serviceSize);
+        return serviceInstances.get(indexServer).getUri().toString();
+    }
+
+    private AtomicInteger nextIndex = new AtomicInteger(0);
+
+    private int incrementAndGetModulo(int modulo) {
+        for (; ; ) {
+            int current = nextIndex.get();
+            int next = (current + 1) % modulo;
+            if (nextIndex.compareAndSet(current, next) && current < modulo) {
+                return current;
+            }
+        }
+    }
+
 
     /**
      * 列表

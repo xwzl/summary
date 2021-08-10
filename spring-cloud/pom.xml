@@ -11,6 +11,7 @@
         <module>spring-cloud-module</module>
         <module>spring-cloud-user</module>
         <module>spring-cloud-order</module>
+        <module>spring-cloud-ribbon</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -23,6 +24,7 @@
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <mysql.version>8.0.26</mysql.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -36,6 +38,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>

@@ -1,15 +1,15 @@
 server:
   port: 8080
-  servlet:
-    context-path: /spring-cloud-order
+#  servlet:
+#    context-path: /spring-cloud-order
 
 spring:
   application:
     name: spring-cloud-order  #微服务名称
   cloud.nacos.discovery:
     server-addr: 127.0.0.1:8848
-    #group:  mall-order
-    #        cluster-name: SH
+      #group:  mall-order
+#    cluster-name: SH
     #        ephemeral: false
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
