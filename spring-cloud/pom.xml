@@ -12,6 +12,7 @@
         <module>spring-cloud-user</module>
         <module>spring-cloud-order</module>
         <module>spring-cloud-ribbon</module>
+        <module>spring-cloud-feign</module>
     </modules>
 
     <packaging>pom</packaging>
