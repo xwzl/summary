@@ -13,8 +13,8 @@
     <modules>
         <module>spring-cloud-dubbo-api</module>
         <module>spring-cloud-dubbo-provider-user</module>
-        <module>spring-cloud-dubbo-provider-feign-user</module>
-        <module>spring-cloud-dubbo-consumer-feign-user</module>
+<!--        <module>spring-cloud-dubbo-provider-feign-user</module>-->
+<!--        <module>spring-cloud-dubbo-consumer-feign-user</module>-->
         <module>spring-cloud-dubbo-consumer-user</module>
     </modules>
     <packaging>pom</packaging>

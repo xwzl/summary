@@ -19,7 +19,7 @@ public class User implements Serializable {
      */
     private Integer id;
     /**
-     * name
+     * username
      */
-    private String name;
+    private String username;
 }
