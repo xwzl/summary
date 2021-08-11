@@ -1,5 +1,6 @@
-package com.spring.cloud.dubbo.controller;
+package com.spring.cloud.dubbo.consumer.controller;
 
+import com.spring.cloud.dubbo.api.entity.User;
 import com.spring.cloud.dubbo.api.service.UserService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +22,12 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/info/{id}")
-    public User info(@PathVariable("id") Integer id){
+    public User info(@PathVariable("id") Integer id) {
         return userService.getById(id);
     }
 
     @RequestMapping("/list")
-    public List<User> list(){
-
+    public List<User> list() {
         return userService.list();
     }
 }
