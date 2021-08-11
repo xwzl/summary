@@ -1,18 +1,17 @@
-package com.spring.cloud.feign;
+package com.spring.cloud.dubbo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author xuweizhi
+ * @since 2021/08/11 15:26
  */
+@SuppressWarnings("all")
 @SpringBootApplication
-@EnableFeignClients
-public class FeignApplication {
+public class DubboUserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FeignApplication.class, args);
+        SpringApplication.run(DubboUserApplication.class, args);
     }
-
 }

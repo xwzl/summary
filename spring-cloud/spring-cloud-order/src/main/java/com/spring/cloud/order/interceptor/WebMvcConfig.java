@@ -4,7 +4,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 
-//@Configuration
+/**
+ * @author xuweizhi
+ */
+// @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override

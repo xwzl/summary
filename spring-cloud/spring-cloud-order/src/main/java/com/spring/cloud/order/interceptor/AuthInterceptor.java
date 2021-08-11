@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/**
+ * @author xuweizhi
+ */
 @Slf4j
 public class AuthInterceptor implements HandlerInterceptor {
 
@@ -19,8 +22,8 @@ public class AuthInterceptor implements HandlerInterceptor {
         log.info("=========Authorization:" + authorization);
         if (StringUtils.isEmpty(authorization)) {
             // 从请求参数中获取access_token
-            String access_token = request.getParameter("access_token");
-            if (StringUtils.isEmpty(access_token)) {
+            String accessToken = request.getParameter("accessToken");
+            if (StringUtils.isEmpty(accessToken)) {
                 flag = false;
             }
         }
