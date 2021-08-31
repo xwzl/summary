@@ -6,8 +6,10 @@ import com.spring.cloud.user.entity.UserEntity;
 import com.spring.cloud.user.feign.OrderFeignService;
 import com.spring.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,18 @@ public class UserController {
 
     @Resource
     private OrderFeignService orderFeignService;
+
+
+    @Value("${common.age}")
+    private String age;
+
+    @Value("${common.name}")
+    private String name;
+
+    @GetMapping("/index")
+    public String hello() {
+        return name + "," + age;
+    }
 
 
     @RequestMapping(value = "/findOrderByUserId/{id}")

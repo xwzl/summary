@@ -1,0 +1,69 @@
+server:
+  port: 8081
+#  servlet:
+#    context-path: /spring-cloud-user
+
+spring:
+  application:
+    name: spring-cloud-user  #微服务名称
+  cloud.nacos.discovery:
+    server-addr: 127.0.0.1:8848
+    #group:  mall-order
+    #        cluster-name: SH
+    #        ephemeral: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: test
+        group: DEFAULT_GROUP
+        # data-id 为 yaml 的文件扩展名配置方式
+        # `${spring.application.name}.${file-extension:properties}`
+        # profile粒度的配置   `${spring.application.name}-${profile}.${file-extension:properties}`
+        file-extension: yml
+#        enabled: true # 关闭配置中心
+        # 自定义 Data Id 的配置
+        # 不同工程的通用配置 支持共享的 DataId   redis
+        sharedConfigs:
+          - data-id: common.yml
+            group: DEFAULT_GROUP
+            refresh: true
+        # 支持一个应用多个 DataId 的配置   nacos.yml  mybatis.yml
+        extension-configs:
+          - data-id: nacos.yml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: ext-common.yml
+            group: DEFAULT_GROUP
+            refresh: true
+#  profiles:
+#    active: dev
+
+# ${spring.application.name}-${profile}.${file-extension:properties}
+#${spring.application.name}.${file-extension:properties}
+#${spring.application.name}
+#extensionConfigs    nacos.yml
+#sharedConfigs     多个微服务公共配置  redis
+
+
+#mybatis-plus
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.spring.cloud.user.entity
+
+
+#暴露actuator端点   http://localhost:8020/actuator/sentinel
+management.endpoints.web.exposure.include: '*'
+
+#common:
+#  name: zhang_san
+#  age: 10
+

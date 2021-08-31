@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "common.name",
+      "type": "java.lang.String",
+      "description": "Description for common.name."
+    },
+    {
+      "name": "common.age",
+      "type": "java.lang.String",
+      "description": "Description for common.age."
+    }
+  ]
+}
