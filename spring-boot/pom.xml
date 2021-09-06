@@ -11,10 +11,10 @@
         <module>spring-config</module>
     </modules>
     <packaging>pom</packaging>
-    <artifactId>spring</artifactId>
+    <artifactId>spring-boot</artifactId>
     <version>1.0.0</version>
-    <name>spring</name>
-    <description>spring</description>
+    <name>spring-boot</name>
+    <description>spring-boot</description>
     <build>
         <plugins>
             <plugin>
