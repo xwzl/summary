@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 #  servlet:
 #    context-path: /spring-cloud-order
 
@@ -7,18 +7,20 @@ spring:
   application:
     name: spring-cloud-order  #微服务名称
   cloud.nacos.discovery:
-    server-addr: 127.0.0.1:8848
+      server-addr: 127.0.0.1:8848
       #group:  mall-order
-#    cluster-name: SH
-    #        ephemeral: false
+      #cluster-name: SH
+      #ephemeral: false
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8848
 
 #mybatis-plus
 mybatis-plus:

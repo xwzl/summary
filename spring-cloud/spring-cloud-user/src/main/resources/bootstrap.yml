@@ -6,11 +6,6 @@ server:
 spring:
   application:
     name: spring-cloud-user  #微服务名称
-  cloud.nacos.discovery:
-    server-addr: 127.0.0.1:8848
-    #group:  mall-order
-    #        cluster-name: SH
-    #        ephemeral: false
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
@@ -19,6 +14,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        #group: spring-cloud-user
+        #        cluster-name: SH
+        #        ephemeral: false
       config:
         server-addr: 127.0.0.1:8848
         namespace: test
@@ -27,7 +27,7 @@ spring:
         # `${spring.application.name}.${file-extension:properties}`
         # profile粒度的配置   `${spring.application.name}-${profile}.${file-extension:properties}`
         file-extension: yml
-#        enabled: true # 关闭配置中心
+        #        enabled: true # 关闭配置中心
         # 自定义 Data Id 的配置
         # 不同工程的通用配置 支持共享的 DataId   redis
         sharedConfigs:
@@ -42,8 +42,31 @@ spring:
           - data-id: ext-common.yml
             group: DEFAULT_GROUP
             refresh: true
+    sentinel:
+      transport:
+        # 添加sentinel的控制台地址
+        dashboard: 127.0.0.1:8080
+        # 指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer,被占用
+#        port: 8719
+      datasource:
+        db1:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 #  profiles:
 #    active: dev
+#true开启sentinel对resttemplate的支持，false则关闭  默认true
+resttemplate:
+  sentinel:
+    enabled: true
+
+feign:
+  sentinel:
+    enabled: true   #开启sentinel对feign的支持 默认false
+
 
 # ${spring.application.name}-${profile}.${file-extension:properties}
 #${spring.application.name}.${file-extension:properties}

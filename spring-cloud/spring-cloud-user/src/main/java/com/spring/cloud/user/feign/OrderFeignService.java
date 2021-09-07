@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @SuppressWarnings("all")
-@FeignClient(value = "spring-cloud-order", path = "/order")
+@FeignClient(value = "spring-cloud-order", path = "/order", fallbackFactory = FallbackOrderFeignServiceFactory.class)
 public interface OrderFeignService {
 
     @RequestMapping("/findOrderByUserId/{userId}")

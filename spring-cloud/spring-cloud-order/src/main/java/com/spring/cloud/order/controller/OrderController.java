@@ -43,9 +43,9 @@ public class OrderController {
 //            e.printStackTrace();
 //        }
         //模拟异常
-//        if(userId==5){
-//            throw new IllegalArgumentException("非法参数异常");
-//        }
+       if(userId==5){
+           throw new IllegalArgumentException("非法参数异常");
+       }
 
         log.info("根据userId:" + userId + "查询订单信息");
         List<OrderEntity> orderEntities = orderService.listByUserId(userId);

@@ -10,8 +10,11 @@ import java.util.Map;
 /**
  * @author xuweizhi
  */
+@SuppressWarnings("all")
 public interface UserService extends IService<UserEntity> {
 
     PageVO queryPage(Map<String, Object> params);
+
+    UserEntity getUser(int id);
 }
 
