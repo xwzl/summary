@@ -21,12 +21,12 @@
         <repository>
             <id>rdc-releases</id>
             <name>Spring Milestones</name>
-            <url>https://packages.aliyun.com/maven/repository</url>
+            <url>https://packages.aliyun.com/maven/repository/2137326-release-eZkkAF/</url>
         </repository>
         <repository>
             <id>rdc-snapshot</id>
             <name>Spring Milestones</name>
-            <url>https://packages.aliyun.com/maven/repository/2137326-snapshot-RSLD12/</url>
+            <url>https://packages.aliyun.com/maven/repository/2137326-snapshot-RSLD12</url>
         </repository>
         <repository>
             <id>central</id>
@@ -42,7 +42,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -56,9 +55,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <spring-boot.version>2.5.4</spring-boot.version>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
-        <spring-boot.version>2.5.3</spring-boot.version>
-        <fast-json.verson>1.2.76</fast-json.verson>
+        <docker.image.prefix>spring-cloud</docker.image.prefix>
         <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
     </properties>
 
@@ -70,12 +69,10 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fast-json.verson}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>30.1.1-jre</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -90,12 +87,10 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.9.6</version>
         </dependency>
     </dependencies>
 
@@ -120,6 +115,13 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-alibaba-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.common.cloud</groupId>
+                <artifactId>spring-common-dependencies</artifactId>
+                <version>1.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
