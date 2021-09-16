@@ -66,12 +66,13 @@ public class UserController {
         //String url = getUri("mall-order")+"/order/findOrderByUserId/"+id;
         // 添加@LoadBalanced
         String url = "http://spring-cloud-order/order/findOrderByUserId/" + id;
-        ResultVO result = restTemplate.getForObject(url, ResultVO.class);
+        // ResultVO result = restTemplate.getForObject(url, ResultVO.class);
 
         //feign调用
         //R result = orderFeignService.findOrderByUserId(id);
 
-        return result;
+        // return result;
+        return null;
     }
 
 

@@ -68,6 +68,13 @@
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
 
+        <!--本地 jar 包-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-datasource-extension-file-pull</artifactId>-->
+<!--            <version>1.8.2</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
