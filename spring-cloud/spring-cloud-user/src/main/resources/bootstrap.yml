@@ -47,15 +47,55 @@ spring:
         # 添加sentinel的控制台地址
         dashboard: 127.0.0.1:8080
         # 指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer,被占用
-#        port: 8719
+      #        port: 8719
+      #  该种配置方式没有改动 nacos 控制台源码，nacos 配置 spring-cloud-user 即可
+      #      datasource:
+      #        db1:
+      #          nacos:
+      #            server-addr: 127.0.0.1:8848
+      #            dataId: ${spring.application.name}
+      #            groupId: DEFAULT_GROUP
+      #            data-type: json
+      #            rule-type: flow
       datasource:
-        db1:
+        flow-rules:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}
-            groupId: test
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP   # 注意groupId对应Sentinel Dashboard中的定义
             data-type: json
             rule-type: flow
+        degrade-rules:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
+            data-type: json
+            rule-type: degrade
+        param-flow-rules:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-param-flow-rules
+            groupId: SENTINEL_GROUP
+            data-type: json
+            rule-type: param-flow
+        authority-rules:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
+            data-type: json
+            rule-type: authority
+        system-rules:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
+            data-type: json
+            rule-type: system
+
+
+
 #  profiles:
 #    active: dev
 #true开启sentinel对resttemplate的支持，false则关闭  默认true
