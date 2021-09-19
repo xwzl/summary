@@ -9,6 +9,7 @@
     </parent>
     <modules>
         <module>spring-config</module>
+        <module>spring-seata-multiple-datasource</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>spring-boot</artifactId>

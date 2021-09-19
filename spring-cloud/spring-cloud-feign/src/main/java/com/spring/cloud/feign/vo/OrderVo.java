@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author fox
+ * @author xuweizhi
  */
 @Data
 public class OrderVo implements Serializable {
