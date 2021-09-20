@@ -82,4 +82,4 @@ WHERE TABLE_SCHEMA = 'seata_order'
 
 分组信息
 
-[seata](https://note.youdao.com/s/J9a29Ei2)
+[seata](http://note.youdao.com/noteshare?id=b705e56b9e7b945c1dea6fa39fe3db45&sub=5618BA2C6EC24D819530AF995039C8BA)

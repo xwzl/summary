@@ -17,7 +17,7 @@ import java.util.Map;
  * @author xuweizhi
  */
 @Configuration
-@MapperScan("com.tuling.mutiple.datasource.mapper")
+@MapperScan("com.spring.seata.mutiple.datasource.mapper")
 public class DataSourceProxyConfig {
 
     @Bean("originOrder")

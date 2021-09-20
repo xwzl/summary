@@ -9,13 +9,22 @@
     </parent>
     <modules>
         <module>spring-config</module>
+        <module>spring-cloud-mysql-common</module>
         <module>spring-seata-multiple-datasource</module>
+        <module>spring-cloud-seata-account-service</module>
+        <module>spring-cloud-seata-storage-service</module>
+        <module>spring-cloud-seata-order-service</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>spring-boot</artifactId>
     <version>1.0.0</version>
     <name>spring-boot</name>
     <description>spring-boot</description>
+
+    <properties>
+        <seata.version>1.4.2</seata.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
