@@ -55,8 +55,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-        <spring-boot.version>2.5.4</spring-boot.version>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-boot.version>2.5.5</spring-boot.version>
+        <spring-cloud.version>2020.0.4</spring-cloud.version>
         <docker.image.prefix>spring-cloud</docker.image.prefix>
         <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
     </properties>
