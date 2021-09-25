@@ -16,6 +16,7 @@
  */
 package org.apache.rocketmq.example.quickstart;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -26,59 +27,79 @@ import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.example.untils.IpAddressConfig;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This example shows how to subscribe and consume messages using providing {@link DefaultMQPushConsumer}.
  */
+@Slf4j
 public class Consumer {
+
+    public static Map<String, Integer> countMap = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
 
-        /*
-         * Instantiate with specified consumer group name.
-         */
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
+        for (int j = 0; j < 3; j++) {
+            /*
+             * Instantiate with specified consumer group name.
+             */
+            DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("death_queue" + j);
 
-        /*
-         * Specify name server addresses.
-         * <p/>
-         *
-         * Alternatively, you may specify name server addresses via exporting environmental variable: NAMESRV_ADDR
-         * <pre>
-         * {@code
-         * consumer.setNamesrvAddr("name-server1-ip:9876;name-server2-ip:9876");
-         * }
-         * </pre>
-         */
-        consumer.setNamesrvAddr(IpAddressConfig.getRabbitMqAddress());
-        /*
-         * Specify where to start in case the specified consumer group is a brand new one.
-         */
-        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+            /*
+             * Specify name server addresses.
+             * <p/>
+             *
+             * Alternatively, you may specify name server addresses via exporting environmental variable: NAMESRV_ADDR
+             * <pre>
+             * {@code
+             * consumer.setNamesrvAddr("name-server1-ip:9876;name-server2-ip:9876");
+             * }
+             * </pre>
+             */
+            consumer.setNamesrvAddr(IpAddressConfig.getRabbitMqAddress());
+            /*
+             * Specify where to start in case the specified consumer group is a brand new one.
+             */
+            consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
 
-        /*
-         * Subscribe one more more topics to consume.
-         */
-        consumer.subscribe("TopicTest", "*");
+            /*
+             * Subscribe one more more topics to consume.
+             */
+            consumer.subscribe("TopicTest" + j, "*");
 
-        /*
-         *  Register callback to execute on arrival of messages fetched from brokers.
-         */
-        consumer.registerMessageListener(new MessageListenerConcurrently() {
+            consumer.setMaxReconsumeTimes(2);
 
-            @Override
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
-                                                            ConsumeConcurrentlyContext context) {
-                System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-            }
-        });
+            consumer.setConsumeThreadMin(4);
+            consumer.setConsumeThreadMax(10);
+            /*
+             *  Register callback to execute on arrival of messages fetched from brokers.
+             */
+            consumer.registerMessageListener(new MessageListenerConcurrently() {
 
-        /*
-         *  Launch the consumer instance.
-         */
-        consumer.start();
+                @Override
+                public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+                    for (MessageExt msg : msgs) {
+                        String keys = msg.getKeys();
+                        Integer orDefault = countMap.getOrDefault(keys, 0);
+                        countMap.put(keys, ++orDefault);
+                        if (keys.startsWith("death")) {
+                            log.info("第 {} 次尝试 {}", orDefault, new String(msg.getBody()));
+                            throw new RuntimeException("死信队列固定异常");
+                        }
+                        // log.info("消费成功:{}", new String(msg.getBody()));
+                    }
+                    return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                }
+            });
 
-        System.out.printf("Consumer Started.%n");
+            /*
+             *  Launch the consumer instance.
+             */
+            consumer.start();
+
+            System.out.printf("Consumer Started.%n");
+        }
     }
+
 }

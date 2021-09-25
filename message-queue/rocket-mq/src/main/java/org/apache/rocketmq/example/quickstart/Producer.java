@@ -27,57 +27,57 @@ import org.apache.rocketmq.remoting.common.RemotingHelper;
  * This class demonstrates how to send messages to brokers using provided {@link DefaultMQProducer}.
  */
 public class Producer {
+
     public static void main(String[] args) throws MQClientException, InterruptedException {
+        for (int j = 0; j < 3; j++) {
+            /*
+             * Instantiate with a producer group name.
+             */
+            DefaultMQProducer producer = new DefaultMQProducer("death_queue"+j);
 
-        /*
-         * Instantiate with a producer group name.
-         */
-        DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
+            /*
+             * Specify name server addresses.
+             * <p/>
+             *
+             * Alternatively, you may specify name server addresses via exporting environmental variable: NAMESRV_ADDR
+             * <pre>
+             * {@code
+             * producer.setNamesrvAddr("name-server1-ip:9876;name-server2-ip:9876");
+             * }
+             * </pre>
+             */
+            producer.setNamesrvAddr(IpAddressConfig.getRabbitMqAddress());
+            /*
+             * Launch the instance.
+             */
+            producer.start();
 
-        /*
-         * Specify name server addresses.
-         * <p/>
-         *
-         * Alternatively, you may specify name server addresses via exporting environmental variable: NAMESRV_ADDR
-         * <pre>
-         * {@code
-         * producer.setNamesrvAddr("name-server1-ip:9876;name-server2-ip:9876");
-         * }
-         * </pre>
-         */
-        producer.setNamesrvAddr(IpAddressConfig.getRabbitMqAddress());
-        /*
-         * Launch the instance.
-         */
-        producer.start();
+            for (int i = 120; i < 130; i++) {
+                try {
 
-        for (int i = 0; i < 2; i++) {
-            try {
+                    /*
+                     * Create a message instance, specifying topic, tag and message body.
+                     */
+                    Message msg = new Message("TopicTest" + j, "TagA", ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                    if (i % 2 == 0) {
+                        msg.setKeys("death" + j + ":" + i);
+                    } else {
+                        msg.setKeys("active");
+                    }
 
-                /*
-                 * Create a message instance, specifying topic, tag and message body.
-                 */
-                Message msg = new Message("TopicTest" /* Topic */,
-                    "TagA" /* Tag */,
-                    ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
-                );
-                //messageDelayLevel=1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
-                msg.setDelayTimeLevel(3);
-                /*
-                 * Call send message to deliver message to one of brokers.
-                 */
-                SendResult sendResult = producer.send(msg);
-
-                System.out.printf("%s%n", sendResult);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Thread.sleep(1000);
+                    SendResult sendResult = producer.send(msg);
+                    System.out.printf("%s%n", sendResult);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Thread.sleep(1000);
+                }
             }
+
+            /*
+             * Shut down once the producer instance is not longer in use.
+             */
+            producer.shutdown();
+        }
         }
 
-        /*
-         * Shut down once the producer instance is not longer in use.
-         */
-        producer.shutdown();
-    }
 }
