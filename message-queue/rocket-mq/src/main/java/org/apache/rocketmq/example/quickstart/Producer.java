@@ -52,7 +52,7 @@ public class Producer {
              */
             producer.start();
 
-            for (int i = 120; i < 130; i++) {
+            for (int i = 120; i < 124; i++) {
                 try {
 
                     /*
