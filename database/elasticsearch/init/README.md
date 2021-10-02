@@ -36,7 +36,7 @@
     node.name: node-1
     path.data: /home/elk/data
     path.logs: /home/elk/logs
-    network.host: 192.168.222.52
+    network.host: 192.168.2
     http.port: 9200
     discovery.seed_hosts: ["192.168.222.52", "192.168.222.51"]
     cluster.initial_master_nodes: ["node-1", "node-2"]

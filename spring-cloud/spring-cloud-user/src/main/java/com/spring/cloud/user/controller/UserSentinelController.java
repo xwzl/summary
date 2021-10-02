@@ -51,7 +51,8 @@ public class UserSentinelController {
         // findOrderByUserId  限流规则  2    sentinel dashboard 定义规则
 
         //feign调用
-        return orderFeignService.findOrderByUserId(id);
+        ResultVO orderByUserId = orderFeignService.findOrderByUserId(id);
+        return orderByUserId;
     }
 
 

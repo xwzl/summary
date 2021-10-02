@@ -26,7 +26,13 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-            <version>2021.1</version>
+            <!--最新版本启动报错-->
+            <!--            <version>2021.1</version>-->
+        </dependency>
+        <!--sentinel持久化 采用 Nacos 作为规则配置数据源-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>

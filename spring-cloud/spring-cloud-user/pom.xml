@@ -24,6 +24,13 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <!--  nacos 中 ribbon 会造成 loadbalance 包失效-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- loadbalancer 远程调用 -->
@@ -54,6 +61,8 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <!--最新版本启动报错-->
+            <version>2021.1</version>
         </dependency>
 
         <!--- 解决流控链路不生效的问题-->

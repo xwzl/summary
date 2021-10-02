@@ -58,7 +58,7 @@
         <spring-boot.version>2.5.5</spring-boot.version>
         <spring-cloud.version>2020.0.4</spring-cloud.version>
         <docker.image.prefix>spring-cloud</docker.image.prefix>
-        <spring-alibaba-cloud.version>2021.1</spring-alibaba-cloud.version>
+        <spring-alibaba-cloud.version>2.2.6.RELEASE</spring-alibaba-cloud.version>
     </properties>
 
     <dependencies>

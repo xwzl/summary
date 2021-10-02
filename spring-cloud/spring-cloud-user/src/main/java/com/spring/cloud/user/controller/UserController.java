@@ -1,5 +1,6 @@
 package com.spring.cloud.user.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.spring.cloud.commom.module.utils.PageVO;
 import com.spring.cloud.commom.module.utils.ResultVO;
 import com.spring.cloud.user.entity.UserEntity;
@@ -69,10 +70,10 @@ public class UserController {
         // ResultVO result = restTemplate.getForObject(url, ResultVO.class);
 
         //feign调用
-        //R result = orderFeignService.findOrderByUserId(id);
+        ResultVO resultVO = orderFeignService.findOrderByUserId(id);
 
         // return result;
-        return null;
+        return resultVO;
     }
 
 

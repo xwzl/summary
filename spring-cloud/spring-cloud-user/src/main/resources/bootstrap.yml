@@ -98,6 +98,7 @@ spring:
 
 #  profiles:
 #    active: dev
+
 #true开启sentinel对resttemplate的支持，false则关闭  默认true
 resttemplate:
   sentinel:
@@ -105,7 +106,7 @@ resttemplate:
 
 feign:
   sentinel:
-    enabled: true   #开启sentinel对feign的支持 默认false
+    enabled: true  #开启sentinel对feign的支持 默认false
 
 
 # ${spring.application.name}-${profile}.${file-extension:properties}
@@ -126,7 +127,7 @@ mybatis-plus:
 #暴露actuator端点   http://localhost:8020/actuator/sentinel
 management.endpoints.web.exposure.include: '*'
 
-#common:
-#  name: zhang_san
-#  age: 10
+common:
+  name: zhang_san
+  age: 10
 
