@@ -23,6 +23,13 @@
     <name>spring-cloud-dubbo</name>
     <description>spring-cloud-dubbo</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

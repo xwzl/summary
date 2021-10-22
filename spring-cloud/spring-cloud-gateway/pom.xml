@@ -4,38 +4,30 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.summary.java</groupId>
-        <artifactId>summary</artifactId>
+        <artifactId>spring-cloud</artifactId>
         <version>1.0.0</version>
     </parent>
-    <modules>
-        <module>spring-cloud-xa</module>
-        <module>spring-cloud-module</module>
-        <module>spring-cloud-user</module>
-        <module>spring-cloud-order</module>
-        <module>spring-cloud-ribbon</module>
-        <module>spring-cloud-feign</module>
-        <module>spring-cloud-dubbo</module>
-        <module>spring-cloud-gateway</module>
-    </modules>
-
-    <packaging>pom</packaging>
-    <artifactId>spring-cloud</artifactId>
+    <packaging>jar</packaging>
+    <artifactId>spring-cloud-gateway</artifactId>
     <version>1.0.0</version>
-    <name>spring-cloud</name>
-    <description>spring-cloud</description>
-
-    <properties>
-        <mybatis-plus.version>3.4.0</mybatis-plus.version>
-        <mysql.version>8.0.26</mysql.version>
-    </properties>
-
+    <name>spring-cloud-gateway</name>
+    <description>spring-cloud-gateway</description>
     <dependencies>
+        <!-- gateway网关 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <!-- nacos服务注册与发现 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>

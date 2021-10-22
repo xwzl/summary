@@ -1,0 +1,38 @@
+# https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+spring.cloud:
+  gateway:
+    #设置路由：路由id、路由到微服务的uri、断言
+    routes:
+      - id: spring-cloud-user-route  #路由ID，全局唯一
+        uri: http://localhost:8081  #目标微服务的请求地址和端口
+        predicates:
+          # Cookie匹配
+          # 简单配置 Cookie = username=fox
+          #- Cookie=username, fox
+          # name: 指定使用的断言工厂, name 和 regexp 规则自定义
+          - name: Business
+            args:
+              type: type
+              data: data
+              time: 2021
+          - name: Cookie
+            args:
+              # Cookie 配置 ip-address=zg,访问地址 http://localhost:8888/user/findOrderByUserId/1
+              name: ip-address
+              regexp: zg
+          # 该路由匹配时间 2021-10-21 11 后的代码
+          - After=2021-10-21T11:15:43.632+08:00[Asia/Shanghai]
+          #- Before=2021-10-21T12:15:43.632+08:00[Asia/Shanghai]
+          # 请求头断言
+          - Header=X-Request-Id, \d+
+          # 请求方法断言
+          - Method=GET,POST
+          # 域名限制
+          - Host=**.somehost.org,**.anotherhost.org,local**
+          # 请求包含 red 和 gree 值，gree 满足正则匹配即可
+          # http://localhost:8888/user/findOrderByUserId/1?red=grees
+          - Query=red, gree.
+          # 自定义CheckAuth断言工厂
+          - name: CheckAuth
+            args.name: check
+          # - CheckAuth=fox

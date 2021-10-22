@@ -1,0 +1,28 @@
+# https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+spring.cloud:
+  gateway:
+    #设置路由：路由id、路由到微服务的uri、断言
+    routes:
+      - id: spring-cloud-user-route  #路由ID，全局唯一
+        uri: http://localhost:8081  #目标微服务的请求地址和端口
+        predicates:
+          #- Path=/gateway/people/{name}
+          - After=2021-10-21T11:15:43.632+08:00[Asia/Shanghai]
+        filters:
+          - AddRequestHeader=X-Request-Red, Blue
+          #- AddRequestHeader=X-Request-color, red-{name}  #添加请求头
+          - AddRequestParameter=red, blue # 添加 query
+          - AddResponseHeader=X-Response-Red, Blue # 添加 response
+          # 这消除了重复的值Access-Control-Allow-Credentials和Access-Control-Allow-Origin在情况下响应头当两个网关CORS逻辑和下游逻辑添加它们。
+          # - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+          # 熔断相关
+          # - name: CircuitBreaker
+          #    args:
+          #      name: myCircuitBreaker
+          #      fallbackUri: forward:/inCaseOfFailureUseThis
+          # - RewritePath=/consumingServiceEndpoint, /backingServiceEndpoint
+          # - PrefixPath=/mypath # 统一添加请求前缀，类似于 contentPath
+          - MapRequestHeader=Blue, X-Request-Red
+          #          - RedirectTo=302, https://www.baidu.com/  #重定向到百度
+          # 自定义过滤器
+          - CheckAuth=自定义过滤器,男
