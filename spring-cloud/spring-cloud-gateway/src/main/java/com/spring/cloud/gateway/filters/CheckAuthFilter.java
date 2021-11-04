@@ -1,4 +1,4 @@
-package com.spring.cloud.gateway.config;
+package com.spring.cloud.gateway.filters;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @Order(-1)
-@Component
+// @Component
 public class CheckAuthFilter implements GlobalFilter {
 
     @Override

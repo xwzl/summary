@@ -28,4 +28,14 @@ public class GatewayController {
         return header;
     }
 
+    @RequestMapping("different")
+    public String different() {
+        return "user";
+    }
+
+    @RequestMapping("equalMethod")
+    public String equalMethod1() {
+        return "user";
+    }
+
 }

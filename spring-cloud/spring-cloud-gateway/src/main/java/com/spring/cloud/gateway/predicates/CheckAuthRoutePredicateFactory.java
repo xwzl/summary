@@ -1,4 +1,4 @@
-package com.spring.cloud.gateway.config;
+package com.spring.cloud.gateway.predicates;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.handler.predicate.AbstractRoutePredicateFactory;

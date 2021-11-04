@@ -1,5 +1,6 @@
 package com.spring.cloud.gateway.config;
 
+import com.spring.cloud.gateway.predicates.BusinessRoutePredicateFactory;
 import org.springframework.cloud.gateway.config.conditional.ConditionalOnEnabledPredicate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

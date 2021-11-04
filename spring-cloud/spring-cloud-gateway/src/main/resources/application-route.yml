@@ -1,0 +1,15 @@
+# https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+spring.cloud:
+  gateway:
+    routes:
+      # 下游服务项目要加 content-path
+      - id: spring-cloud-order-route
+        uri: lb://spring-cloud-order
+        predicates:
+          - Path=/gateway1/**
+      - id: spring-cloud-user-route
+        uri: lb://spring-cloud-user
+        predicates:
+          - Path=/gateway/**
+
+

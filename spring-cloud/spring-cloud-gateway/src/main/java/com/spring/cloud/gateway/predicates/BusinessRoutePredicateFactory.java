@@ -1,4 +1,4 @@
-package com.spring.cloud.gateway.config;
+package com.spring.cloud.gateway.predicates;
 
 import org.springframework.cloud.gateway.handler.predicate.AbstractRoutePredicateFactory;
 import org.springframework.cloud.gateway.handler.predicate.GatewayPredicate;
