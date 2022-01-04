@@ -12,17 +12,12 @@
     <artifactId>java-agent</artifactId>
     <version>1.0.0</version>
     <name>java-agent</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <description>Demo project for Spring Boot</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
-    <dependencies>
-
-
-    </dependencies>
+    <modules>
+        <module>byte-buddy</module>
+        <module>instrument</module>
+    </modules>
 
     <build>
         <plugins>

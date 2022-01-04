@@ -85,6 +85,10 @@
             <artifactId>guava</artifactId>
             <version>30.0-jre</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+        </dependency>
 
     </dependencies>
 

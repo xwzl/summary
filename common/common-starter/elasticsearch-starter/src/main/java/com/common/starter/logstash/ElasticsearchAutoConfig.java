@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientProperties;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
@@ -28,7 +28,7 @@ import java.util.List;
 public class ElasticsearchAutoConfig extends AbstractElasticsearchConfiguration {
 
     @Resource
-    private ElasticsearchRestClientProperties elasticsearchRestClientProperties;
+    private ElasticsearchProperties elasticsearchProperties;
 
 
     /**
@@ -39,9 +39,9 @@ public class ElasticsearchAutoConfig extends AbstractElasticsearchConfiguration 
     @Bean
     @ConditionalOnMissingBean(value = RestHighLevelClient.class)
     public RestHighLevelClient elasticsearchClient() {
-        List<String> uris = elasticsearchRestClientProperties.getUris();
+        List<String> uris = elasticsearchProperties.getUris();
         ClientConfiguration clientConfiguration = ClientConfiguration.builder().connectedTo(uris.get(0))
-                .withBasicAuth(elasticsearchRestClientProperties.getUsername(), elasticsearchRestClientProperties.getPassword()).build();
+                .withBasicAuth(elasticsearchProperties.getUsername(), elasticsearchProperties.getPassword()).build();
         return RestClients.create(clientConfiguration).rest();
     }
 

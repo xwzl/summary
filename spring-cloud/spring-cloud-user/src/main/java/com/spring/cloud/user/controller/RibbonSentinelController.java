@@ -1,6 +1,5 @@
 package com.spring.cloud.user.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.spring.cloud.commom.module.utils.ResultVO;
 import com.spring.cloud.user.feign.OrderFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
