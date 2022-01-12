@@ -16,6 +16,8 @@
         <module>spring-cloud-feign</module>
         <module>spring-cloud-dubbo</module>
         <module>spring-cloud-gateway</module>
+        <module>spring-cloud-oauth2</module>
+        <module>spring-cloud-security</module>
     </modules>
 
     <packaging>pom</packaging>

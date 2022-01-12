@@ -1,0 +1,41 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+      roles: ADMIN
+  session:
+    store-type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+  datasource:
+    url: jdbc:mysql://123.57.107.76:3306/security?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com/summary/security/mapper/*.xml
+  type-aliases-package: com.summary.security.entity
+
+logging:
+  level:
+    com.summary.security.mapper: debug
+
+server:
+  port: 10086
+  servlet:
+    session:
+      timeout: 61s
+#我们可以使用 httpOnly 和 secure 标签来保护我们的会话
+#httpOnly：如果为true，那么浏览器脚本将无法访问
+#secure：如果为true，则cookie将仅通过HTTPS连接发送
+#      cookie:
+#        http-only: true
+#        secure: true
