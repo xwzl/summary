@@ -14,12 +14,16 @@ dubbo:
 #    address: spring-cloud://127.0.0.1:8848
 
 spring:
+  cloud:
+    compatibility-verifier:
+      enabled: false
   application:
     name: spring-cloud-dubbo-provider-user
   main:
     # Spring Boot2.1及更高的版本需要设定
     allow-bean-definition-overriding: true
-#  cloud:
+    allow-circular-references: true
+  #  cloud:
 #    nacos:
 #      # Nacos 服务发现与注册配置
 #      discovery:
