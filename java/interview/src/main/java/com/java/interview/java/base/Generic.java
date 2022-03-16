@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 泛型演示
@@ -36,7 +38,7 @@ public class Generic {
     public static void main(String[] args) {
 
         // 未限定泛型边界
-        List<GenericTemplate<? extends Object>> genericList = Lists.newArrayList();
+        List<GenericTemplate<?>> genericList = Lists.newArrayList();
         DogTemplate dogTemplate = new DogTemplate();
         CatTemplate catTemplate = new CatTemplate();
 
@@ -48,6 +50,17 @@ public class Generic {
             Object obj = createGeneric(genericTemplate);
             log.info(obj.getClass().toString());
         });
+
+        Map<String, GenericTemplate<?>> genericTemplateMap = new HashMap<>(2);
+        genericTemplateMap.put("dog", dogTemplate);
+        genericTemplateMap.put("cat", catTemplate);
+
+        GenericTemplate<?> dog = genericTemplateMap.get("dog");
+
+        Object obj = dog.create();
+        Dog dogCast = (Dog) obj;
+        log.info(dogCast.getAge() + "");
+
 
         // 限定泛型边界
         List<LimitGeneric<? extends Context>> limitList = Lists.newArrayList();
@@ -78,7 +91,9 @@ public class Generic {
 
         @Override
         public Dog create() {
-            return new Dog();
+            Dog dog = new Dog();
+            dog.setAge(12);
+            return dog;
         }
     }
 
