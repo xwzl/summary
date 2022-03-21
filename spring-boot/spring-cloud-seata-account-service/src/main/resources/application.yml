@@ -11,6 +11,11 @@ spring:
     alibaba:
       seata:
         tx-service-group: my_test_tx_group # seata 服务事务分组
+    compatibility-verifier:
+      enabled: false
+
+  main:
+    allow-circular-references: true
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -44,7 +49,7 @@ spring:
 
 #spring cloud alibaba 2.1.4 之后支持yml中配置seata属性，可以用来替换registry.conf文件
 seata:
-  #application-id: ${spring.application.name}
+  application-id: seata-server
   # seata 服务分组，要与服务端nacos-config.txt中service.vgroup_mapping的后缀对应
   tx-service-group: my_test_tx_group
   registry:
@@ -52,7 +57,7 @@ seata:
     type: nacos
     nacos:
       server-addr: 127.0.0.1:8848
-#      namespace: "seata-server"
+      namespace: "seata-server"
       group: SEATA_GROUP
 
   config:

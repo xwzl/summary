@@ -24,7 +24,7 @@ public class AtomikosDemo {
       AtomikosDataSourceBean ds = new AtomikosDataSourceBean();
       //设置resourceName 唯一
       ds.setUniqueResourceName(dbName);
-      ds.setXaDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
+      ds.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
       ds.setXaProperties(p);
       return ds;
    }
