@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.summary.java</groupId>
+        <artifactId>spring-cloud</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <packaging>jar</packaging>
+    <artifactId>spring-cloud-inventory</artifactId>
+    <version>1.0.0</version>
+    <name>spring-cloud-inventory</name>
+    <description>spring-cloud-inventory</description>
+    <dependencies>
+        <dependency>
+            <groupId>com.summary.java</groupId>
+            <artifactId>spring-cloud-module</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- nacos服务注册与发现 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <!--最新版本启动报错-->
+            <!--            <version>2021.1</version>-->
+        </dependency>
+        <!--sentinel持久化 采用 Nacos 作为规则配置数据源-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- tcc 事务-->
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
+            <version>2.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.dromara</groupId>
+                    <artifactId>hmily-repository-mongodb</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>1.5.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.netflix.archaius</groupId>
+            <artifactId>archaius-core</artifactId>
+            <version>0.7.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- loadbalancer 远程调用 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>transmittable-thread-local</artifactId>
+            <version>2.12.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <!-- 防止主清单为空 -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

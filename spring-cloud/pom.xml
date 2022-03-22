@@ -18,6 +18,7 @@
         <module>spring-cloud-gateway</module>
         <module>spring-cloud-oauth2</module>
         <module>spring-cloud-security</module>
+        <module>spring-cloud-inventory</module>
     </modules>
 
     <packaging>pom</packaging>
