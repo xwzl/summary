@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "provider.consumer.group",
+      "type": "java.lang.String",
+      "description": "Description for provider.consumer.group."
+    },
+    {
+      "name": "provider.consumer.topic",
+      "type": "java.lang.String",
+      "description": "Description for provider.consumer.topic."
+    }
+  ]
+}
