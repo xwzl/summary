@@ -1,7 +1,7 @@
 package com.spring.cloud.ribbon.controller;
 
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;

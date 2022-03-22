@@ -1,4 +1,4 @@
-package com.spring.cloud.commom.module.utils;
+package com.spring.cloud.commom.utils;
 
 import org.apache.http.HttpStatus;
 

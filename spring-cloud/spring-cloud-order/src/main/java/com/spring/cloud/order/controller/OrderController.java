@@ -1,15 +1,11 @@
 package com.spring.cloud.order.controller;
 
-import com.spring.cloud.commom.module.utils.PageVO;
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.PageVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import com.spring.cloud.order.entity.OrderEntity;
 import com.spring.cloud.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -37,15 +33,15 @@ public class OrderController {
     @RequestMapping("/findOrderByUserId/{userId}")
     public ResultVO findOrderByUserId(@PathVariable("userId") Integer userId) {
 
-       // try {
-       //     Thread.sleep(8000);
-       // } catch (InterruptedException e) {
-       //     e.printStackTrace();
-       // }
+        // try {
+        //     Thread.sleep(8000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
         //模拟异常
-       if(userId==5){
-           throw new IllegalArgumentException("非法参数异常");
-       }
+        if (userId == 5) {
+            throw new IllegalArgumentException("非法参数异常");
+        }
 
         log.info("根据userId:" + userId + "查询订单信息");
         List<OrderEntity> orderEntities = orderService.listByUserId(userId);

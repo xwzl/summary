@@ -1,6 +1,6 @@
 package com.spring.cloud.user.controller;
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import com.spring.cloud.user.feign.OrderFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

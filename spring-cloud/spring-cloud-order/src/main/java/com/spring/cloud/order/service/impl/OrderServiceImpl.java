@@ -3,11 +3,11 @@ package com.spring.cloud.order.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.spring.cloud.commom.module.utils.PageVO;
-import com.spring.cloud.commom.module.utils.Query;
+import com.spring.cloud.commom.utils.PageVO;
+import com.spring.cloud.commom.utils.Query;
 import com.spring.cloud.order.dao.OrderDao;
-import com.spring.cloud.order.service.OrderService;
 import com.spring.cloud.order.entity.OrderEntity;
+import com.spring.cloud.order.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     @Override
     public List<OrderEntity> listByUserId(Integer userId) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("user_id",userId);
+        queryWrapper.eq("user_id", userId);
         return baseMapper.selectList(queryWrapper);
     }
 

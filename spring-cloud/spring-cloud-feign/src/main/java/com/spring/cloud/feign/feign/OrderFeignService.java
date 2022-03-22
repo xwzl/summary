@@ -1,6 +1,6 @@
 package com.spring.cloud.feign.feign;
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import com.spring.cloud.feign.vo.OrderVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;

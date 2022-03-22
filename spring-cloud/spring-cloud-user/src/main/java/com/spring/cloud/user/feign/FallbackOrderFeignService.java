@@ -1,6 +1,6 @@
 package com.spring.cloud.user.feign;
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import org.springframework.stereotype.Component;
 
 /**

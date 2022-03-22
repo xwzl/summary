@@ -6,10 +6,10 @@
  * 版权所有，侵权必究！
  */
 
-package com.spring.cloud.commom.module.xss;
+package com.spring.cloud.commom.xss;
 
 
-import com.spring.cloud.commom.module.exception.ServiceException;
+import com.spring.cloud.commom.exception.ServiceException;
 import org.apache.commons.lang.StringUtils;
 
 /**

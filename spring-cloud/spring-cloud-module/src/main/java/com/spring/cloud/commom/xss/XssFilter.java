@@ -1,4 +1,4 @@
-package com.spring.cloud.commom.module.xss;
+package com.spring.cloud.commom.xss;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

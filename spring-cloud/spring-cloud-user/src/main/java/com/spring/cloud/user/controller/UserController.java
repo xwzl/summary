@@ -1,7 +1,7 @@
 package com.spring.cloud.user.controller;
 
-import com.spring.cloud.commom.module.utils.PageVO;
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.PageVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import com.spring.cloud.user.entity.UserEntity;
 import com.spring.cloud.user.feign.OrderFeignService;
 import com.spring.cloud.user.service.UserService;

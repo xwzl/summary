@@ -11,13 +11,17 @@ spring:
       #group:  mall-order
       #cluster-name: SH
       #ephemeral: false
+  main:
+    allow-circular-references: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/cloud_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
+    compatibility-verifier:
+      enabled: false
     sentinel:
       transport:
         dashboard: 127.0.0.1:8080

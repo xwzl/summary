@@ -1,9 +1,9 @@
-package com.spring.cloud.commom.module.utils;
+package com.spring.cloud.commom.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.spring.cloud.commom.module.xss.SQLFilter;
+import com.spring.cloud.commom.xss.SQLFilter;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Map;

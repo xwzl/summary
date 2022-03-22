@@ -1,4 +1,4 @@
-package com.spring.cloud.commom.module.exception;
+package com.spring.cloud.commom.exception;
 
 /**
  * 自定义异常

@@ -32,6 +32,7 @@ CREATE TABLE `t_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(50) DEFAULT NULL,
   `balance` int(11) DEFAULT 0  comment '账户余额',
+  `bank_card` varchar(60) DEFAULT NULL COMMENT '银行卡号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

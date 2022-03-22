@@ -7,12 +7,16 @@ spring:
   application:
     name: spring-cloud-user  #微服务名称
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/cloud_user?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-circular-references: true
   cloud:
+    compatibility-verifier:
+      enabled: false
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
@@ -95,7 +99,6 @@ spring:
             rule-type: system
 
 
-
 #  profiles:
 #    active: dev
 
@@ -103,6 +106,15 @@ spring:
 resttemplate:
   sentinel:
     enabled: true
+
+hmily:
+  ribbon:
+    rule:
+      enabled: true
+
+ribbon:
+  MaxAutoRetriesNextServer : 0
+  MaxAutoRetries: 0
 
 feign:
   sentinel:

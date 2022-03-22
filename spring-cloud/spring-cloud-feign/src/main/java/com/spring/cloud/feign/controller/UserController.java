@@ -1,10 +1,8 @@
 package com.spring.cloud.feign.controller;
 
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 import com.spring.cloud.feign.feign.OrderFeignService;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 

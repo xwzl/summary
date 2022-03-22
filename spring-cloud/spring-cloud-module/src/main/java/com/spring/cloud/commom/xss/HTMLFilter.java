@@ -1,4 +1,4 @@
-package com.spring.cloud.commom.module.xss;
+package com.spring.cloud.commom.xss;
 
 import java.util.ArrayList;
 import java.util.Collections;

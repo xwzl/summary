@@ -5,9 +5,9 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.spring.cloud.commom.module.utils.PageVO;
-import com.spring.cloud.commom.module.utils.Query;
-import com.spring.cloud.user.dao.UserDao;
+import com.spring.cloud.commom.utils.PageVO;
+import com.spring.cloud.commom.utils.Query;
+import com.spring.cloud.user.mapper.UserMapper;
 import com.spring.cloud.user.entity.UserEntity;
 import com.spring.cloud.user.service.UserService;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Service("userService")
 @SuppressWarnings("all")
-public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
     @Override
     public PageVO queryPage(Map<String, Object> params) {

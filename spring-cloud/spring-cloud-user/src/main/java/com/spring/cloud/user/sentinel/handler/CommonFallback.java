@@ -1,6 +1,6 @@
 package com.spring.cloud.user.sentinel.handler;
 
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 
 /**
  * CommonFallback

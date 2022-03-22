@@ -1,4 +1,4 @@
-package com.spring.cloud.commom.module.xss;
+package com.spring.cloud.commom.xss;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;

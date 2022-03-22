@@ -1,7 +1,7 @@
 package com.spring.cloud.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.spring.cloud.commom.module.utils.PageVO;
+import com.spring.cloud.commom.utils.PageVO;
 import com.spring.cloud.user.entity.UserEntity;
 
 import java.util.Map;

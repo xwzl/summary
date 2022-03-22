@@ -1,7 +1,7 @@
 package com.spring.cloud.user.utils;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.spring.cloud.commom.module.utils.ResultVO;
+import com.spring.cloud.commom.utils.ResultVO;
 
 @SuppressWarnings("all")
 public class ExceptionUtil {

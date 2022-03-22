@@ -1,7 +1,7 @@
 package com.spring.cloud.order.dao;
 
-import com.spring.cloud.order.entity.OrderEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.spring.cloud.order.entity.OrderEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 
