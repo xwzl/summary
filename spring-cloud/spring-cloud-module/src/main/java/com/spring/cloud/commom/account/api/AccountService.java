@@ -1,9 +1,9 @@
 
 package com.spring.cloud.commom.account.api;
 
-import com.spring.cloud.commom.account.dto.AccountDTO;
+import com.spring.cloud.commom.account.dto.HmilyAccountDTO;
 import com.spring.cloud.commom.account.dto.AccountNestedDTO;
-import com.spring.cloud.commom.account.entity.AccountDO;
+import com.spring.cloud.commom.account.entity.HmilyAccountDO;
 import org.dromara.hmily.annotation.Hmily;
 
 /**
@@ -19,7 +19,7 @@ public interface AccountService {
      * @param accountDTO 参数dto
      */
     @Hmily
-    boolean payment(AccountDTO accountDTO);
+    boolean payment(HmilyAccountDTO accountDTO);
 
     /**
      * Mock try payment exception.
@@ -27,7 +27,7 @@ public interface AccountService {
      * @param accountDTO the account dto
      */
     @Hmily
-    boolean mockTryPaymentException(AccountDTO accountDTO);
+    boolean mockTryPaymentException(HmilyAccountDTO accountDTO);
 
     /**
      * Mock try payment timeout.
@@ -35,7 +35,7 @@ public interface AccountService {
      * @param accountDTO the account dto
      */
     @Hmily
-    boolean mockTryPaymentTimeout(AccountDTO accountDTO);
+    boolean mockTryPaymentTimeout(HmilyAccountDTO accountDTO);
 
     /**
      * Test payment boolean.
@@ -44,7 +44,7 @@ public interface AccountService {
      * @return the boolean
      */
     @Hmily
-    boolean testPayment(AccountDTO accountDTO);
+    boolean testPayment(HmilyAccountDTO accountDTO);
 
     /**
      * 扣款支付
@@ -70,5 +70,5 @@ public interface AccountService {
      * @param userId 用户id
      * @return AccountDO account do
      */
-    AccountDO findByUserId(String userId);
+    HmilyAccountDO findByUserId(String userId);
 }

@@ -2,7 +2,7 @@ package com.spring.cloud.user.config;
 
 
 import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
-import com.spring.cloud.user.utils.GlobalExceptionUtil;
+import com.spring.cloud.commom.utils.GlobalExceptionUtil;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

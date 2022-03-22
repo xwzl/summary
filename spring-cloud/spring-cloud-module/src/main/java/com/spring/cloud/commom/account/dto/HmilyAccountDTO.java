@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author xuweizhi
  */
 @Data
-public class AccountDTO implements Serializable {
+public class HmilyAccountDTO implements Serializable {
 
     private static final long serialVersionUID = 7223470850578998427L;
 

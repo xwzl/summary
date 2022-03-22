@@ -12,7 +12,7 @@ import java.util.Date;
  * @author xuweizhi
  */
 @Data
-public class AccountDO implements Serializable {
+public class HmilyAccountDO implements Serializable {
 
     private static final long serialVersionUID = -81849676368907419L;
 

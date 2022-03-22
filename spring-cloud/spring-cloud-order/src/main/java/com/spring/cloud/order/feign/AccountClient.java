@@ -1,6 +1,6 @@
 package com.spring.cloud.order.feign;
 
-import com.spring.cloud.commom.account.dto.AccountDTO;
+import com.spring.cloud.commom.account.dto.HmilyAccountDTO;
 import com.spring.cloud.commom.account.dto.AccountNestedDTO;
 import org.dromara.hmily.annotation.Hmily;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  *
  * @author xuweizhi
  */
-@FeignClient(value = "account-service")
+@FeignClient(value = "spring-cloud-user")
 public interface AccountClient {
 
     /**
@@ -24,9 +24,9 @@ public interface AccountClient {
      * @param accountDO 实体类
      * @return true 成功
      */
-    @RequestMapping("/account-service/account/payment")
+    @RequestMapping("/account/payment")
     @Hmily
-    Boolean payment(@RequestBody AccountDTO accountDO);
+    Boolean payment(@RequestBody HmilyAccountDTO accountDO);
 
     /**
      * Test payment boolean.
@@ -34,8 +34,8 @@ public interface AccountClient {
      * @param accountDO the account do
      * @return the boolean
      */
-    @RequestMapping("/account-service/account/testPayment")
-    Boolean testPayment(@RequestBody AccountDTO accountDO);
+    @RequestMapping("/account/testPayment")
+    Boolean testPayment(@RequestBody HmilyAccountDTO accountDO);
 
     /**
      * 获取用户账户信息.
@@ -43,7 +43,7 @@ public interface AccountClient {
      * @param userId 用户id
      * @return AccountDO big decimal
      */
-    @RequestMapping("/account-service/account/findByUserId")
+    @RequestMapping("/account/findByUserId")
     BigDecimal findByUserId(@RequestParam("userId") String userId);
 
     /**
@@ -53,8 +53,8 @@ public interface AccountClient {
      * @return the boolean
      */
     @Hmily
-    @RequestMapping("/account-service/account/mockWithTryException")
-    Boolean mockWithTryException(@RequestBody AccountDTO accountDO);
+    @RequestMapping("/account/mockWithTryException")
+    Boolean mockWithTryException(@RequestBody HmilyAccountDTO accountDO);
 
     /**
      * Mock with try timeout boolean.
@@ -63,8 +63,8 @@ public interface AccountClient {
      * @return the boolean
      */
     @Hmily
-    @RequestMapping("/account-service/account/mockWithTryTimeout")
-    Boolean mockWithTryTimeout(@RequestBody AccountDTO accountDO);
+    @RequestMapping("/account/mockWithTryTimeout")
+    Boolean mockWithTryTimeout(@RequestBody HmilyAccountDTO accountDO);
 
     /**
      * Payment with nested boolean.
@@ -73,7 +73,7 @@ public interface AccountClient {
      * @return the boolean
      */
     @Hmily
-    @RequestMapping("/account-service/account/paymentWithNested")
+    @RequestMapping("/account/paymentWithNested")
     Boolean paymentWithNested(@RequestBody AccountNestedDTO nestedDTO);
 
     /**
@@ -83,6 +83,6 @@ public interface AccountClient {
      * @return the boolean
      */
     @Hmily
-    @RequestMapping("/account-service/account/paymentWithNestedException")
+    @RequestMapping("/account/paymentWithNestedException")
     Boolean paymentWithNestedException(@RequestBody AccountNestedDTO nestedDTO);
 }

@@ -1,6 +1,7 @@
 package com.spring.cloud.commom.order.entity;
 
 import lombok.Data;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -12,7 +13,8 @@ import java.util.Date;
  * @author xuweizhi
  */
 @Data
-public class Order implements Serializable {
+@Mapper
+public class HmilyOrder implements Serializable {
 
     private static final long serialVersionUID = -8551347266419380333L;
 

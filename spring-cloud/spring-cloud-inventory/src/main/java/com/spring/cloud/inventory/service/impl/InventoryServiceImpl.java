@@ -2,7 +2,7 @@ package com.spring.cloud.inventory.service.impl;
 
 import com.spring.cloud.commom.inventory.dto.InventoryDTO;
 import com.spring.cloud.commom.inventory.entity.InventoryDO;
-import com.spring.cloud.commom.inventory.mapper.InventoryMapper;
+import com.spring.cloud.inventory.mapper.InventoryMapper;
 import com.spring.cloud.inventory.service.InventoryService;
 import org.dromara.hmily.annotation.HmilyTCC;
 import org.dromara.hmily.common.exception.HmilyRuntimeException;
@@ -37,10 +37,22 @@ public class InventoryServiceImpl implements InventoryService {
      * @return true
      */
     @Override
+    @Transactional
     @HmilyTCC(confirmMethod = "confirmMethod", cancelMethod = "cancelMethod")
     public Boolean decrease(InventoryDTO inventoryDTO) {
         LOGGER.info("==========try扣减库存decrease===========");
-        inventoryMapper.decrease(inventoryDTO);
+        // 从打印日志可以看出，Hmily 超时解决了悬挂空回滚问题: 下游业务超时，导致上游认为失败，上下游同时 cancel
+        // 但是此时,下游业务有可能执行成功，但是 cancel 已经无法回滚数据
+        // try confirm cancel 方法没有做幂等，要禁止重试
+        // 空回滚：下游超时，上下游同时 cancel,但是下游有可能出现 try 失败的情况
+        // 悬挂: 下游超时, 上下游同时 cancel,但是下游有可能出现 try 成功的情况，导致数据不一致
+        // try {
+        //     Thread.sleep(61000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
+        // inventoryMapper.decrease(inventoryDTO);
+        // throw new RuntimeException("xxx");
         return true;
     }
 

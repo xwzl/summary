@@ -4,6 +4,8 @@ server:
 #    context-path: /spring-cloud-order
 
 spring:
+# 解决 2.6.x swagger 报错，SpringBoot 由 AntPathMatcher 变为 PathPatternMatcher
+
   application:
     name: spring-cloud-order  #微服务名称
   cloud.nacos.discovery:
@@ -72,3 +74,21 @@ mybatis-plus:
 
 #暴露actuator端点   http://localhost:8020/actuator/sentinel
 management.endpoints.web.exposure.include: '*'
+
+#true开启sentinel对resttemplate的支持，false则关闭  默认true
+resttemplate:
+  sentinel:
+    enabled: true
+
+hmily:
+  ribbon:
+    rule:
+      enabled: true
+
+ribbon:
+  MaxAutoRetriesNextServer : 0
+  MaxAutoRetries: 0
+
+feign:
+  sentinel:
+    enabled: true  #开启sentinel对feign的支持 默认false

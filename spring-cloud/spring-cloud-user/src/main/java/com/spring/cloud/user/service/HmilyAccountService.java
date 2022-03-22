@@ -1,8 +1,8 @@
 package com.spring.cloud.user.service;
 
-import com.spring.cloud.commom.account.dto.AccountDTO;
+import com.spring.cloud.commom.account.dto.HmilyAccountDTO;
 import com.spring.cloud.commom.account.dto.AccountNestedDTO;
-import com.spring.cloud.commom.account.entity.AccountDO;
+import com.spring.cloud.commom.account.entity.HmilyAccountDO;
 
 /**
  * @author xuweizhi
@@ -15,7 +15,7 @@ public interface HmilyAccountService {
      * @param accountDTO 参数dto
      * @return true boolean
      */
-    boolean payment(AccountDTO accountDTO);
+    boolean payment(HmilyAccountDTO accountDTO);
 
     /**
      * Test payment boolean.
@@ -23,7 +23,7 @@ public interface HmilyAccountService {
      * @param accountDTO the account dto
      * @return the boolean
      */
-    boolean testPayment(AccountDTO accountDTO);
+    boolean testPayment(HmilyAccountDTO accountDTO);
 
     /**
      * Mock with try exception boolean.
@@ -31,7 +31,7 @@ public interface HmilyAccountService {
      * @param accountDTO the account dto
      * @return the boolean
      */
-    boolean mockWithTryException(AccountDTO accountDTO);
+    boolean mockWithTryException(HmilyAccountDTO accountDTO);
 
     /**
      * Mock with try timeout boolean.
@@ -39,7 +39,7 @@ public interface HmilyAccountService {
      * @param accountDTO the account dto
      * @return the boolean
      */
-    boolean mockWithTryTimeout(AccountDTO accountDTO);
+    boolean mockWithTryTimeout(HmilyAccountDTO accountDTO);
 
     /**
      * Payment with nested boolean.
@@ -63,6 +63,6 @@ public interface HmilyAccountService {
      * @param userId 用户id
      * @return AccountDO account do
      */
-    AccountDO findByUserId(String userId);
+    HmilyAccountDO findByUserId(String userId);
 
 }

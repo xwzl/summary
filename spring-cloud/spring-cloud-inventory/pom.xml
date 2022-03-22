@@ -26,6 +26,13 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <!--  nacos 中 ribbon 会造成 loadbalance 包失效-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -41,19 +48,16 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
         </dependency>
 
         <!-- tcc 事务-->
         <dependency>
             <groupId>org.dromara</groupId>
             <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
-            <version>2.1.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.dromara</groupId>

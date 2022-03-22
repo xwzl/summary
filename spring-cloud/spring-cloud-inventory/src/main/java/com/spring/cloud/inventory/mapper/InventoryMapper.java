@@ -1,7 +1,8 @@
-package com.spring.cloud.commom.inventory.mapper;
+package com.spring.cloud.inventory.mapper;
 
 import com.spring.cloud.commom.inventory.dto.InventoryDTO;
 import com.spring.cloud.commom.inventory.entity.InventoryDO;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -10,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
  *
  * @author xuweizhi
  */
+@Mapper
 public interface InventoryMapper {
 
     /**

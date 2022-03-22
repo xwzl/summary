@@ -1,6 +1,6 @@
 package com.spring.cloud.order.service;
 
-import com.spring.cloud.commom.order.entity.Order;
+import com.spring.cloud.commom.order.entity.HmilyOrder;
 
 import java.math.BigDecimal;
 
@@ -89,5 +89,5 @@ public interface HmilyOrderService {
      *
      * @param order 订单实体类
      */
-    void updateOrderStatus(Order order);
+    void updateOrderStatus(HmilyOrder order);
 }

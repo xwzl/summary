@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package com.spring.cloud.commom.order.mapper;
+package com.spring.cloud.order.mapper;
 
-import com.spring.cloud.commom.order.entity.Order;
+import com.spring.cloud.commom.order.entity.HmilyOrder;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -28,7 +29,8 @@ import java.util.List;
  *
  * @author xuweizhi
  */
-public interface OrderMapper {
+@Mapper
+public interface HmilyOrderMapper {
 
     /**
      * 保存订单.
@@ -38,7 +40,7 @@ public interface OrderMapper {
      */
     @Insert(" insert into `order` (create_time,number,status,product_id,total_amount,count,user_id) " +
             " values ( #{createTime},#{number},#{status},#{productId},#{totalAmount},#{count},#{userId})")
-    int save(Order order);
+    int save(HmilyOrder order);
 
     /**
      * 更新订单.
@@ -47,7 +49,7 @@ public interface OrderMapper {
      * @return rows int
      */
     @Update("update `order` set status = #{status}  where number = #{number}")
-    int update(Order order);
+    int update(HmilyOrder order);
 
     /**
      * 获取所有的订单
@@ -55,5 +57,5 @@ public interface OrderMapper {
      * @return List<Order> list
      */
     @Select("select * from  order")
-    List<Order> listAll();
+    List<HmilyOrder> listAll();
 }

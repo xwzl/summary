@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author xuweizhi
  */
-@FeignClient(value = "inventory-service")
+@FeignClient(value = "spring-cloud-inventory")
 public interface InventoryClient {
 
     /**
@@ -22,7 +22,7 @@ public interface InventoryClient {
      * @param inventoryDTO 实体对象
      * @return true 成功
      */
-    @RequestMapping("/inventory-service/inventory/decrease")
+    @RequestMapping("/inventory/decrease")
     @Hmily
     Boolean decrease(@RequestBody InventoryDTO inventoryDTO);
 
@@ -32,7 +32,7 @@ public interface InventoryClient {
      * @param inventoryDTO the inventory dto
      * @return the boolean
      */
-    @RequestMapping("/inventory-service/inventory/testDecrease")
+    @RequestMapping("/inventory/testDecrease")
     Boolean testDecrease(@RequestBody InventoryDTO inventoryDTO);
 
     /**
@@ -41,7 +41,7 @@ public interface InventoryClient {
      * @param productId 商品id
      * @return InventoryDO integer
      */
-    @RequestMapping("/inventory-service/inventory/findByProductId")
+    @RequestMapping("/inventory/findByProductId")
     Integer findByProductId(@RequestParam("productId") String productId);
 
     /**
@@ -51,7 +51,7 @@ public interface InventoryClient {
      * @return true 成功
      */
     @Hmily
-    @RequestMapping("/inventory-service/inventory/mockWithTryException")
+    @RequestMapping("/inventory/mockWithTryException")
     Boolean mockWithTryException(@RequestBody InventoryDTO inventoryDTO);
 
     /**
@@ -61,6 +61,6 @@ public interface InventoryClient {
      * @return true 成功
      */
     @Hmily
-    @RequestMapping("/inventory-service/inventory/mockWithTryTimeout")
+    @RequestMapping("/inventory/mockWithTryTimeout")
     Boolean mockWithTryTimeout(@RequestBody InventoryDTO inventoryDTO);
 }

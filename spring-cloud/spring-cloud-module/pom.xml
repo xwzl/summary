@@ -16,7 +16,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.0</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -29,11 +28,16 @@
             <version>8.0.25</version>
             <optional>true</optional>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <!--最新版本启动报错-->
+            <version>2021.1</version>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.4.14</version>
         </dependency>
 
         <dependency>
@@ -41,7 +45,11 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.dromara</groupId>
+            <artifactId>hmily-spring-boot-starter-springcloud</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -50,10 +58,8 @@
         <dependency>
             <groupId>org.dromara</groupId>
             <artifactId>hmily-annotation</artifactId>
-            <version>2.1.1</version>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

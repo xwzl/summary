@@ -1,7 +1,7 @@
 
 package com.spring.cloud.user.controller;
 
-import com.spring.cloud.commom.account.dto.AccountDTO;
+import com.spring.cloud.commom.account.dto.HmilyAccountDTO;
 import com.spring.cloud.commom.account.dto.AccountNestedDTO;
 import com.spring.cloud.user.service.HmilyAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,22 +29,22 @@ public class AccountController {
     }
 
     @RequestMapping("/payment")
-    public Boolean payment(@RequestBody AccountDTO accountDO) {
+    public Boolean payment(@RequestBody HmilyAccountDTO accountDO) {
         return hmilyAccountService.payment(accountDO);
     }
 
     @RequestMapping("/testPayment")
-    public Boolean testPayment(@RequestBody AccountDTO accountDO) {
+    public Boolean testPayment(@RequestBody HmilyAccountDTO accountDO) {
         return hmilyAccountService.testPayment(accountDO);
     }
 
     @RequestMapping("/mockWithTryException")
-    public Boolean mockWithTryException(@RequestBody AccountDTO accountDO) {
+    public Boolean mockWithTryException(@RequestBody HmilyAccountDTO accountDO) {
         return hmilyAccountService.mockWithTryException(accountDO);
     }
 
     @RequestMapping("/mockWithTryTimeout")
-    public Boolean mockWithTryTimeout(@RequestBody AccountDTO accountDO) {
+    public Boolean mockWithTryTimeout(@RequestBody HmilyAccountDTO accountDO) {
         return hmilyAccountService.mockWithTryTimeout(accountDO);
     }
 

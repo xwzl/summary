@@ -2,7 +2,7 @@
 package com.spring.cloud.order.service;
 
 
-import com.spring.cloud.commom.order.entity.Order;
+import com.spring.cloud.commom.order.entity.HmilyOrder;
 
 /**
  * PaymentService.
@@ -16,14 +16,14 @@ public interface PaymentService {
      *
      * @param order 订单实体
      */
-    void makePayment(Order order);
+    void makePayment(HmilyOrder order);
 
     /**
      * Test make payment.
      *
      * @param order the order
      */
-    void testMakePayment(Order order);
+    void testMakePayment(HmilyOrder order);
 
     /**
      * mock订单支付的时候库存异常.
@@ -31,7 +31,7 @@ public interface PaymentService {
      * @param order 订单实体
      * @return String string
      */
-    String mockPaymentInventoryWithTryException(Order order);
+    String mockPaymentInventoryWithTryException(HmilyOrder order);
 
     /**
      * Mock payment account with try exception string.
@@ -39,7 +39,7 @@ public interface PaymentService {
      * @param order the order
      * @return the string
      */
-    String mockPaymentAccountWithTryException(Order order);
+    String mockPaymentAccountWithTryException(HmilyOrder order);
 
     /**
      * mock订单支付的时候库存超时.
@@ -47,7 +47,7 @@ public interface PaymentService {
      * @param order 订单实体
      * @return String string
      */
-    String mockPaymentInventoryWithTryTimeout(Order order);
+    String mockPaymentInventoryWithTryTimeout(HmilyOrder order);
 
     /**
      * Mock payment account with try timeout string.
@@ -55,7 +55,7 @@ public interface PaymentService {
      * @param order the order
      * @return the string
      */
-    String mockPaymentAccountWithTryTimeout(Order order);
+    String mockPaymentAccountWithTryTimeout(HmilyOrder order);
 
     /**
      * Make payment with nested.
@@ -63,7 +63,7 @@ public interface PaymentService {
      * @param order the order
      * @return the string
      */
-    String makePaymentWithNested(Order order);
+    String makePaymentWithNested(HmilyOrder order);
 
     /**
      * Make payment with nested exception.
@@ -71,5 +71,5 @@ public interface PaymentService {
      * @param order the order
      * @return the string
      */
-    String makePaymentWithNestedException(Order order);
+    String makePaymentWithNestedException(HmilyOrder order);
 }
