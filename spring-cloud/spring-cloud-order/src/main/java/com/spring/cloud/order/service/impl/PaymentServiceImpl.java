@@ -1,6 +1,7 @@
 
 package com.spring.cloud.order.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.spring.cloud.commom.account.dto.AccountNestedDTO;
 import com.spring.cloud.commom.account.dto.HmilyAccountDTO;
 import com.spring.cloud.commom.inventory.dto.InventoryDTO;
@@ -74,7 +75,7 @@ public class PaymentServiceImpl implements PaymentService {
         updateOrderStatus(order, OrderStatusEnum.PAYING);
         //扣除用户余额
         accountClient.payment(buildAccountDTO(order));
-        inventoryClient.mockWithTryException(buildInventoryDTO(order));
+        Boolean aBoolean = inventoryClient.mockWithTryException(buildInventoryDTO(order));
         return "success";
     }
 

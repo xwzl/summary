@@ -54,17 +54,17 @@ public class OrderServiceImpl implements OrderService {
         //扣减余额   服务降级  throw
         Boolean debit = accountFeignService.debit(orderVo.getUserId(), orderVo.getMoney());
 
-//        if(!debit){
-//            // 解决 feign整合sentinel降级导致SeaTa失效的处理
-//            throw new RuntimeException("账户服务异常降级了");
-//        }
+        if (!debit) {
+            // 解决 feign整合sentinel降级导致SeaTa失效的处理
+            throw new RuntimeException("账户服务异常降级了");
+        }
 
 
         //更新订单
         Integer updateOrderRecord = orderMapper.updateOrderStatus(order.getId(), OrderStatus.SUCCESS.getValue());
-        if (orderVo.getCount() == 1) {
-            throw new RuntimeException("失败");
-        }
+        // if (orderVo.getCount() == 1) {
+        //     throw new RuntimeException("失败");
+        // }
         log.info("更新订单id:{} {}", order.getId(), updateOrderRecord > 0 ? "成功" : "失败");
 
         return order;

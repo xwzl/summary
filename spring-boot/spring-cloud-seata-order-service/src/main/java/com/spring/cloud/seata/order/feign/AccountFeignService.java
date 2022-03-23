@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author xuweizhi
  */
-@FeignClient(name = "account-service",path = "/account")
+@FeignClient(name = "account-service",path = "/account",fallbackFactory = FallbackAccountFeignServiceFactory.class)
 public interface AccountFeignService {
 
     @RequestMapping("/debit")
