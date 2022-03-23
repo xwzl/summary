@@ -64,7 +64,10 @@ public class AccountServiceImpl implements AccountService {
             return;
         }
         //扣减金额
-        accountMapper.subtractAccountBalance(accountChangeEvent.getFromAccountNo(), accountChangeEvent.getAmount());
+        int count = accountMapper.subtractAccountBalance(accountChangeEvent.getFromAccountNo(), accountChangeEvent.getAmount());
+        if (count == 0) {
+            throw new RuntimeException("余额不足");
+        }
         //添加事务日志
         accountMapper.addTx(accountChangeEvent.getTxNo());
         if (accountChangeEvent.getAmount() == 20) {
