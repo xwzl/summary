@@ -17,6 +17,8 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+CREATE DATABASE IF NOT EXISTS `cloud_user` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+alter user cloud_user;
 -- ----------------------------
 -- Table structure for account
 -- ----------------------------
