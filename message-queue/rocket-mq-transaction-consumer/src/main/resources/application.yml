@@ -1,17 +1,20 @@
 server:
   port: 8020
 
+remote:
+  server:
+    url: 1.15.19.68
 spring:
   application:
     name: rocket-mq-consumer
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cloud_order?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://${remote.server.url}:3306/cloud_order?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
 
 rocketmq:
-  name-server: localhost:9876
+  name-server: ${remote.server.url}:9876
 
 provider:
   consumer:

@@ -1,13 +1,15 @@
 server:
   port: 8050
-
+remote:
+  server:
+    url: 1.15.19.68
 spring:
   application:
     name: account-service
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: ${remote.server.url}:8848
     alibaba:
       seata:
         tx-service-group: my_test_tx_group # seata 服务事务分组
@@ -21,7 +23,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/seata_account?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://${remote.server.url}:3306/seata_account?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
       password: root
       initial-size: 10
@@ -56,7 +58,7 @@ seata:
     # 指定nacos作为注册中心
     type: nacos
     nacos:
-      server-addr: 127.0.0.1:8848
+      server-addr: ${remote.server.url}:8848
       namespace: "seata-server"
       group: SEATA_GROUP
 
@@ -64,7 +66,7 @@ seata:
     # 指定nacos作为配置中心
     type: nacos
     nacos:
-      server-addr: 127.0.0.1:8848
+      server-addr: ${remote.server.url}:8848
       namespace: "seata"
       group: SEATA_GROUP
 
