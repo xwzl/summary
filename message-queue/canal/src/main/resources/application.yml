@@ -2,3 +2,12 @@ remote.server.url: 1.15.19.68
 
 rocketmq:
   name-server: ${remote.server.url}:9876
+spring:
+  redis:
+    host: ${remote.server.url}
+    port: 6379
+    password: 158262751
+  elasticsearch:
+    uris: ${remote.server.url}:9200
+    username: elastic
+    password: elastic
