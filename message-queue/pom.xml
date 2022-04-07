@@ -9,6 +9,7 @@
     </parent>
     <modules>
         <module>kafka</module>
+        <module>canal</module>
         <module>service</module>
         <module>rocket-mq</module>
         <module>mq</module>

@@ -1,0 +1,4 @@
+remote.server.url: 1.15.19.68
+
+rocketmq:
+  name-server: ${remote.server.url}:9876
