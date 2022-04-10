@@ -17,37 +17,21 @@ public class AgentDemo {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("premain：获取方法调用时间");
 
-        AgentBuilder.Transformer transformer = (builder, typeDescription, classLoader) -> builder
-                // 拦截任意方法
-                .method(ElementMatchers.any())
-                // 指定方法拦截器，此拦截器中做具体的操作
-                .intercept(MethodDelegation.to(TimeInterceptor.class));
-
-        AgentBuilder.Listener listener = new AgentBuilder.Listener() {
+        AgentBuilder.Transformer transformer = new AgentBuilder.Transformer() {
             @Override
-            public void onTransformation(TypeDescription typeDescription, ClassLoader classLoader, JavaModule module, DynamicType dynamicType) {
-            }
-
-            @Override
-            public void onIgnored(TypeDescription typeDescription, ClassLoader classLoader, JavaModule module) {
-            }
-
-            @Override
-            public void onError(String typeName, ClassLoader classLoader, JavaModule module, Throwable throwable) {
-            }
-
-            @Override
-            public void onComplete(String typeName, ClassLoader classLoader, JavaModule module) {
+            public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder, TypeDescription typeDescription, ClassLoader classLoader, JavaModule module) {
+                return builder
+                        // 方法拦截
+                        .method(ElementMatchers.nameStartsWith("say"))
+                        .intercept(MethodDelegation.to(TimeInterceptor.class));
             }
         };
 
         new AgentBuilder.Default()
-                // 指定需要拦截的类
-                .type(ElementMatchers.nameStartsWith("com"))
+                // 拦截类
+                .type(ElementMatchers.nameStartsWith("com.turing.java.agent"))
                 .transform(transformer)
-                .with(listener)
                 .installOn(inst);
-
     }
 
 }

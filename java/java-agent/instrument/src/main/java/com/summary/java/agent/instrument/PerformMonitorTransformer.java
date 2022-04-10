@@ -19,7 +19,7 @@ public class PerformMonitorTransformer implements ClassFileTransformer {
 
     static {
         // 直接定位
-        classNameSet.add("com.agent.HelloService");
+        classNameSet.add("com.turing.java.agent.instrument.HelloService");
         // 间接定位   注解  继承关系
     }
 
