@@ -1,26 +1,26 @@
 package com.java.canal.tcp;
 
-import java.net.InetSocketAddress;
-import java.util.List;
-import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.client.CanalConnector;
-import com.alibaba.otter.canal.common.utils.AddressUtils;
-import com.alibaba.otter.canal.protocol.Message;
+import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.protocol.CanalEntry.Column;
 import com.alibaba.otter.canal.protocol.CanalEntry.Entry;
 import com.alibaba.otter.canal.protocol.CanalEntry.EntryType;
 import com.alibaba.otter.canal.protocol.CanalEntry.EventType;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowChange;
 import com.alibaba.otter.canal.protocol.CanalEntry.RowData;
+import com.alibaba.otter.canal.protocol.Message;
+
+import java.net.InetSocketAddress;
+import java.util.List;
 
 
 public class SimpleCanalClientExample {
 
 
     public static void main(String args[]) {
+
         // 创建链接
-        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1",
-                11111), "example", "", "");
+        CanalConnector connector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1", 11111), "my", "", "");
         int batchSize = 1000;
         int emptyCount = 0;
         try {

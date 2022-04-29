@@ -28,6 +28,11 @@
             <artifactId>canal.protocol</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.summary.java</groupId>
+            <artifactId>common-tool</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-spring-boot-starter</artifactId>
         </dependency>

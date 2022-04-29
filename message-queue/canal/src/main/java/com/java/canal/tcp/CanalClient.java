@@ -16,7 +16,7 @@ public class CanalClient {
     public static void main(String[] args) throws InterruptedException, InvalidProtocolBufferException {
 
         //TODO 获取连接
-        CanalConnector canalConnector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1", 11111), "example", "", "");
+        CanalConnector canalConnector = CanalConnectors.newSingleConnector(new InetSocketAddress("127.0.0.1", 11111), "my", "", "");
 
         while (true) {
 
@@ -24,7 +24,7 @@ public class CanalClient {
             canalConnector.connect();
 
             //TODO 订阅数据库.表
-            canalConnector.subscribe("test.xdual");
+            canalConnector.subscribe("db_user.user");
 
             //TODO 获取数据
             Message message = canalConnector.get(100);

@@ -42,6 +42,26 @@ public class TwoSum {
 
     }
 
+    public static void main(String[] args) {
+        int x  =1;
+        String x1 = (x + "");
+        String replace = x1.replace("-", "");
+        char[] chars = replace.toCharArray();
+        for (int i = 0; i < chars.length / 2; i++) {
+            chars[i] ^= chars[chars.length - i - 1];
+            chars[chars.length - i - 1] ^= chars[i];
+            chars[i] ^= chars[chars.length - i - 1];
+        }
+        // return Integer.reverse(x);
+        Integer integer = 0;
+        try {
+             integer = Integer.parseInt((x1.length() == replace.length() ? "" : "-") + new String(chars));
+        } catch (NumberFormatException e) {
+
+        }
+
+    }
+
     @Test
     public void test() {
         long result1 = 0l;
