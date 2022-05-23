@@ -2,8 +2,8 @@ dubbo:
   scan:
     # 指定 Dubbo 服务实现类的扫描基准包
     base-packages: com.spring.cloud.dubbo.provider.service
-  application:
-      name: spring-cloud-dubbo-provider-user
+#  application:
+#      name: spring-cloud-dubbo-provider-user
   protocol:
     # dubbo 协议
     name: dubbo
@@ -11,25 +11,24 @@ dubbo:
     port: -1
 #  registry:
 #    #挂载到 Spring Cloud 注册中心  高版本可选
-#    address: spring-cloud://127.0.0.1:8848
+#    address: spring-cloud://1.15.19.68:8848
 
 spring:
   cloud:
     compatibility-verifier:
       enabled: false
+    nacos:
+      discovery:
+        server-addr: 1.15.19.68:8848
   application:
     name: spring-cloud-dubbo-provider-user
   main:
     # Spring Boot2.1及更高的版本需要设定
     allow-bean-definition-overriding: true
     allow-circular-references: true
-  #  cloud:
-#    nacos:
-#      # Nacos 服务发现与注册配置
-#      discovery:
-#        server-addr: 127.0.0.1:8848
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/cloud?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+    url: jdbc:mysql://1.15.19.68:3306/cloud?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
     username: root
     password: root

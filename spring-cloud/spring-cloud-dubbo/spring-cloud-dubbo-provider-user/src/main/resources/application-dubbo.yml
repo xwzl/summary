@@ -19,7 +19,6 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
 
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false

@@ -15,7 +15,7 @@ public class ThreadLocalSample {
     private static ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
     private static ThreadLocal<String> threadLocal3 = new ThreadLocal<>();
 
-    
+
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_LOOP_SIZE);
@@ -26,6 +26,8 @@ public class ThreadLocalSample {
                 threadLocal3.set("345");
             });
         }
+
+        String strOne = threadLocal1.get();
         System.out.println("");
         executorService.shutdown();
     }
