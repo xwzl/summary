@@ -1,12 +1,12 @@
 package com.java.interview.java.report.domain;
 
+import com.java.interview.java.report.handler.Handler;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.logging.Handler;
 
 /**
  * 模板配置

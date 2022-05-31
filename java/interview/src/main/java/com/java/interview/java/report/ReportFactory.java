@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.java.interview.java.report.enums.HandlerEnum.HEALTHCARE_RECORD_ENUM;
+import static com.java.interview.java.report.enums.HandlerEnum.HEALTHCARE_RECORD;
 
 /**
  * 模型工厂
@@ -29,7 +29,6 @@ import static com.java.interview.java.report.enums.HandlerEnum.HEALTHCARE_RECORD
 public class ReportFactory {
 
     public static void main(String[] args) {
-
 
 
         // 1. 初始化 context holder
@@ -48,12 +47,13 @@ public class ReportFactory {
         for (Handler handler : handlers) {
             handler.prepare();
         }
+        Handler handler = handlers.get(0);
         // 3.2 主数据获取
-        List<Map<String, Object>> dataSource = (List<Map<String, Object>>) ContextHolder.getDataSource(HEALTHCARE_RECORD_ENUM.key);
+        List<Map<String, Object>> dataSource = (List<Map<String, Object>>) ContextHolder.getDataSource(handler.getRouteKey());
         // 3.3 处理链转换数据
         List<Map<String, Object>> healthId = dataSource.stream().map(x -> {
             Map<String, Object> target = new HashMap<>(2);
-            handlers.forEach(handler1 -> handler1.transfer(target));
+            // handlers.forEach(handler1 -> handler1.transfer(, target, ));
             return target;
         }).collect(Collectors.toList());
 
@@ -66,7 +66,7 @@ public class ReportFactory {
 
     private static Map<String, Resolve> buildResolve() {
         Map<String, Resolve> handlers = new HashMap<>(2);
-        handlers.put(HEALTHCARE_RECORD_ENUM.getKey(), buildHealthResolve());
+        handlers.put(HEALTHCARE_RECORD.getKey(), buildHealthResolve());
         return handlers;
     }
 
@@ -84,7 +84,7 @@ public class ReportFactory {
         CommonParam commonParam = new CommonParam();
         commonParam.setParam1("11");
         commonParam.setParam2("22");
-        dataSource.put(HEALTHCARE_RECORD_ENUM.getParam(), commonParam);
+        dataSource.put(HEALTHCARE_RECORD.getParam(), commonParam);
         return dataSource;
     }
 

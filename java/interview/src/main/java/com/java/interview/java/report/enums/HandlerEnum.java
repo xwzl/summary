@@ -14,7 +14,10 @@ public enum HandlerEnum {
     /**
      * 诊疗记录
      */
-    HEALTHCARE_RECORD_ENUM("test", "d");
+    COMMON_PARAM("param", "公用参数枚举"),
+    HEALTHCARE_RECORD("healthcare_record", "诊疗记录"),
+
+    AREA_LOG("area_log", "病区日志");
 
     public final String key;
 

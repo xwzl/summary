@@ -1,14 +1,13 @@
 package com.java.interview.java.report.monitor;
 
 import com.java.interview.java.report.Monitor;
-import com.java.interview.java.report.domain.CommonParam;
 import com.java.interview.java.report.domain.ContextHolder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
 
-import static com.java.interview.java.report.enums.HandlerEnum.HEALTHCARE_RECORD_ENUM;
+import static com.java.interview.java.report.enums.HandlerEnum.COMMON_PARAM;
 
 /**
  * @author xuweizhi
@@ -20,8 +19,8 @@ public class LogMonitor implements Monitor {
 
     @Override
     public void start() {
-        CommonParam param = (CommonParam) ContextHolder.getDataSource(HEALTHCARE_RECORD_ENUM.getParam());
-        log.info("数据上报入参打印:{}", param);
+        Object dataSource = ContextHolder.getDataSource(COMMON_PARAM.getKey());
+        log.info("数据上报入参打印:{}", dataSource);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class LogMonitor implements Monitor {
         }
         // todo 异步数据上传
         log.info("异步数据上传");
-        log.info("数据上报统计:累计数据 {},无效数据 {}", list.size(), emptyIndex);
+        log.info("数据上报统计:累计数据 {},无效数据 {},数据为:{}", list.size(), emptyIndex,list);
     }
 
 

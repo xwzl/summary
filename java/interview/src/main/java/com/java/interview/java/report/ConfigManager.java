@@ -14,10 +14,11 @@ import com.java.interview.java.report.domain.mapper.ConfigUnitMapper;
 import com.java.interview.java.report.domain.mapper.TemplateConfigMapper;
 import com.java.interview.java.report.domain.mapper.TemplateMapper;
 import com.java.interview.java.report.enums.TypeEnum;
-import com.java.interview.java.report.handler.EqualNice;
-import com.java.interview.java.report.handler.LocalDateTimeToString;
-import com.java.interview.java.report.handler.LocalDateToString;
-import com.java.interview.java.report.handler.Nice;
+import com.java.interview.java.report.handler.nice.EqualNice;
+import com.java.interview.java.report.handler.Handler;
+import com.java.interview.java.report.handler.nice.LocalDateTimeToString;
+import com.java.interview.java.report.handler.nice.LocalDateToString;
+import com.java.interview.java.report.handler.nice.Nice;
 import com.java.interview.java.report.monitor.LogMonitor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.objenesis.instantiator.util.ClassUtils;
@@ -29,7 +30,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.logging.Handler;
 import java.util.stream.Collectors;
 
 import static com.java.interview.java.report.enums.SystemConfigEnum.SYSTEM_UNIT_CUSTOMIZE;
@@ -71,6 +71,7 @@ public class ConfigManager {
 
         List<ConfigItemDO> configItemList = ChainWrappers.lambdaQueryChain(configItemMapper)
                 .in(ConfigItemDO::getId, configUnitList.stream().map(ConfigUnitDO::getConfigItemId).collect(Collectors.toList()))
+                .eq(ConfigItemDO::getIsDeleted, 0)
                 .list();
 
         return configItemList.stream().map(this::getConfigItem).collect(Collectors.toList());
@@ -92,9 +93,9 @@ public class ConfigManager {
 
         List<String> sList = Arrays.asList(LOCALDATE.getCode(), TypeEnum.LOCALDATETIME.getCode());
         // 1. 类型相同
-        if (configItem.getDocTarget().equals(configItem.getSourceType())) {
+        if (configItem.getTargetType().equals(configItem.getSourceType())) {
             if (StringUtils.isNotEmpty(configItem.getRule()) && sList.contains(configItem.getSourceType())) {
-                return Objects.equals(configItem.getDocTarget(), LOCALDATE.getCode()) ? new LocalDateToString(configItem.getRule()) :
+                return Objects.equals(configItem.getSourceType(), LOCALDATE.getCode()) ? new LocalDateToString(configItem.getRule()) :
                         new LocalDateTimeToString(configItem.getRule());
             }
             return new EqualNice();
@@ -120,6 +121,7 @@ public class ConfigManager {
         buildCommon(templateDO, templateConfigs);
 
         return Template.builder().logMonitor(logMonitor)
+                .dataSetCode(dataSetCode)
                 .switchLogMonitor(templateDO.getSwitchLogMonitor())
                 .templateName(templateDO.getTemplateName())
                 .templateConfigs(templateConfigs)

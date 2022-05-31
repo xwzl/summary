@@ -1,6 +1,6 @@
 package com.java.interview.java.report.domain;
 
-import com.java.interview.java.report.handler.Nice;
+import com.java.interview.java.report.handler.nice.Nice;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

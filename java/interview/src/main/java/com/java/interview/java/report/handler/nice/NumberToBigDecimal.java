@@ -1,4 +1,6 @@
-package com.java.interview.java.report.handler;
+package com.java.interview.java.report.handler.nice;
+
+import com.java.interview.java.report.handler.nice.Nice;
 
 import java.math.BigDecimal;
 

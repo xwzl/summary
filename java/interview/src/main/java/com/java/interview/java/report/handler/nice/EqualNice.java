@@ -1,4 +1,4 @@
-package com.java.interview.java.report.handler;
+package com.java.interview.java.report.handler.nice;
 
 /**
  * @author xuweizhi
