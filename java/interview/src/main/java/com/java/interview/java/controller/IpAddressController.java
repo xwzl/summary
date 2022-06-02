@@ -20,6 +20,6 @@ public class IpAddressController {
 
     @GetMapping("printIpAddress")
     public String printIpAddress() throws UnknownHostException {
-        return LocalDateTime.now() + " 新版本 " + Inet4Address.getLocalHost().getHostAddress();
+        return LocalDateTime.now() + " 新版本 222" + Inet4Address.getLocalHost().getHostAddress();
     }
 }
