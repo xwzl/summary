@@ -1,13 +1,10 @@
 package com.java.interview.java.report.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.Maps;
 import com.java.interview.java.report.ConfigManager;
-import com.java.interview.java.report.domain.Context;
-import com.java.interview.java.report.domain.ContextHolder;
-import com.java.interview.java.report.domain.Template;
-import com.java.interview.java.report.domain.TemplateConfig;
+import com.java.interview.java.report.domain.*;
 import com.java.interview.java.report.handler.Handler;
-import com.java.interview.java.report.monitor.LogMonitor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static com.java.interview.java.report.enums.HandlerEnum.HEALTHCARE_RECORD;
+import static com.java.interview.java.report.enums.HandlerEnum.COMMON_PARAM;
 
 /**
  * 基础配置
@@ -37,8 +34,6 @@ public class ConfigContainer implements InitializingBean {
 
     @SuppressWarnings("all")
     public void initContextHolder(String dataSetCode) {
-
-
         Template template = templates.get(dataSetCode);
 
         if (Objects.isNull(template)) {
@@ -46,18 +41,10 @@ public class ConfigContainer implements InitializingBean {
             templates.put(dataSetCode, template);
         }
 
-        Context context = new Context();
-        // for (TemplateConfig templateConfig : template.getTemplateConfigs()) {
-        //     String name = templateConfig.getHandler().getClass().getName();
-        //     ContextHolder.setValue(name, templateConfig);
-        // }
-
-        ContextHolder.setContextHolder(context);
-
-        ContextHolder.setValue(HEALTHCARE_RECORD.getKey(), dataSetCode);
-
-        LogMonitor logMonitor = template.getLogMonitor();
-        logMonitor.start();
+        Context context = initContext(dataSetCode, template);
+        if (template.getSwitchLogMonitor()) {
+            template.getLogMonitor().start();
+        }
 
         List<TemplateConfig> templateConfigs = template.getTemplateConfigs();
         for (TemplateConfig templateConfig : templateConfigs) {
@@ -65,23 +52,42 @@ public class ConfigContainer implements InitializingBean {
         }
 
         Handler handler = template.getTemplateConfigs().get(0).getHandler();
-        Map<String, Map<String, Object>> dataSource = (Map<String, Map<String, Object>>) ContextHolder.getDataSource(handler.getRouteKey());
+        Map<String, Object> dataSource = (Map<String, Object>) ContextHolder.getDataSource(handler.getClass().getName());
 
         List<Map<String, Object>> collect = dataSource.values().stream().map(source -> {
             Map<String, Object> target = new HashMap<>();
+            if (source instanceof Map) {
+                context.setTempSource((Map<String, Object>) source);
+            } else {
+                context.setTempSource(JsonUtils.toJavaMap(source, new TypeReference<Map<String, Object>>() {
+                }));
+            }
             for (TemplateConfig templateConfig : templateConfigs) {
                 Handler handler1 = templateConfig.getHandler();
-                Map<String, Map<String, Object>> dataSource1 = (Map<String, Map<String, Object>>) ContextHolder.getDataSource(handler1.getRouteKey());
-                Object key = source.get(templateConfig.getMappingField());
-                Map<String, Object> source1 = dataSource1.get(Long.parseLong(key.toString()));
-                handler1.transfer(target, source1, templateConfig);
+                context.setTemplateConfig(templateConfig);
+                context.setHandler(handler1);
+                handler1.transfer(target);
             }
             return target;
         }).collect(Collectors.toList());
 
-        logMonitor.statics(collect);
+        if (template.getSwitchLogMonitor()) {
+            template.getLogMonitor().statics(collect);
+        }
+
 
         ContextHolder.remove();
+    }
+
+    private Context initContext(String dataSetCode, Template template) {
+        Context context = new Context();
+        context.setSwitchDoc(template.getSwitchDoc());
+        context.setSwitchLogMonitor(template.getSwitchLogMonitor());
+        ContextHolder.setContextHolder(context);
+        CommonParam commonParam = new CommonParam();
+        commonParam.setParam1(dataSetCode);
+        ContextHolder.setValue(COMMON_PARAM.getKey(), commonParam);
+        return context;
     }
 
     @Override

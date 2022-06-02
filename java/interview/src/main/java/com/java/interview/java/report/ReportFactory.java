@@ -49,7 +49,7 @@ public class ReportFactory {
         }
         Handler handler = handlers.get(0);
         // 3.2 主数据获取
-        List<Map<String, Object>> dataSource = (List<Map<String, Object>>) ContextHolder.getDataSource(handler.getRouteKey());
+        List<Map<String, Object>> dataSource = (List<Map<String, Object>>) ContextHolder.getDataSource(handler.getClass().getName());
         // 3.3 处理链转换数据
         List<Map<String, Object>> healthId = dataSource.stream().map(x -> {
             Map<String, Object> target = new HashMap<>(2);

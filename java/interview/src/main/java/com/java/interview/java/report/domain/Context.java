@@ -1,5 +1,6 @@
 package com.java.interview.java.report.domain;
 
+import com.java.interview.java.report.handler.Handler;
 import com.java.interview.java.report.resolve.Resolve;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,13 +20,23 @@ import java.util.Map;
 @AllArgsConstructor
 public class Context {
 
-    /**
-     * List map
-     */
     private Map<String, Object> dataSource = new HashMap<>();
-
-
     private Map<String, Resolve> handlers = new HashMap<>();
+
+    private TemplateConfig templateConfig;
+
+    private Handler handler;
+
+    private Map<String, Object> tempSource;
+
+    private Boolean switchDoc;
+
+    private Boolean switchLogMonitor;
+
+    public <T> T getSource(Class<T> clazz) {
+        Map<Object, T> objectObjectMap = (Map<Object, T>) dataSource.get(handler.getClass().getName());
+        return objectObjectMap.get(Long.parseLong(tempSource.get(templateConfig.getMappingField()).toString()));
+    }
 
     public void putDataSource(String handlerKey, Object value) {
         dataSource.put(handlerKey, value);

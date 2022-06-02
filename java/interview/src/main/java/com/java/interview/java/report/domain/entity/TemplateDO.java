@@ -47,6 +47,7 @@ public class TemplateDO implements Serializable {
      * 监听器开关
      */
     private Boolean switchLogMonitor;
+    private Boolean switchDoc;
 
     /**
      * 创建时间
@@ -62,6 +63,5 @@ public class TemplateDO implements Serializable {
      * 是否删除
      */
     private Integer isDeleted;
-
 
 }

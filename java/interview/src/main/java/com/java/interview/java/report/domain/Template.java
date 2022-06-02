@@ -28,6 +28,8 @@ public class Template {
 
     private Boolean switchLogMonitor;
 
+    private Boolean switchDoc;
+
     private List<TemplateConfig> templateConfigs;
 
 }

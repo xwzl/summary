@@ -67,6 +67,7 @@ public class ConfigManager {
     private List<ConfigItem> getConfigItems(TemplateConfigDO templateConfigDO) {
         List<ConfigUnitDO> configUnitList = ChainWrappers.lambdaQueryChain(configUnitMapper)
                 .eq(ConfigUnitDO::getTemplateConfigId, templateConfigDO.getId())
+                // .eq(ConfigUnitDO::getIsDeleted, 0)
                 .list();
 
         List<ConfigItemDO> configItemList = ChainWrappers.lambdaQueryChain(configItemMapper)
@@ -122,6 +123,7 @@ public class ConfigManager {
 
         return Template.builder().logMonitor(logMonitor)
                 .dataSetCode(dataSetCode)
+                .switchDoc(templateDO.getSwitchDoc())
                 .switchLogMonitor(templateDO.getSwitchLogMonitor())
                 .templateName(templateDO.getTemplateName())
                 .templateConfigs(templateConfigs)
@@ -132,6 +134,7 @@ public class ConfigManager {
         List<TemplateConfigDO> list = ChainWrappers.lambdaQueryChain(templateConfigMapper)
                 .eq(TemplateConfigDO::getTemplateId, templateDO.getId())
                 .gt(TemplateConfigDO::getConfigSuitType, SYSTEM_UNIT_CUSTOMIZE.getCode())
+                .eq(TemplateConfigDO::getIsDeleted,0)
                 .list();
         Map<Integer, TemplateConfigDO> templateConfigMap = list.stream()
                 .collect(Collectors.toMap(TemplateConfigDO::getConfigSuitType, Function.identity()));

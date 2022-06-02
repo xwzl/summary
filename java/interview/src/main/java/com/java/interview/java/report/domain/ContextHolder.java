@@ -20,6 +20,10 @@ public class ContextHolder {
         CACHE.set(context);
     }
 
+    public static Context getContext() {
+        return CACHE.get();
+    }
+
     public static Object getDataSource(String key) {
         return CACHE.get().getDataSource(key);
     }

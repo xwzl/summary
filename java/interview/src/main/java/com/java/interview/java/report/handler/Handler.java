@@ -1,7 +1,5 @@
 package com.java.interview.java.report.handler;
 
-import com.java.interview.java.report.domain.TemplateConfig;
-
 import java.util.Map;
 
 /**
@@ -10,9 +8,7 @@ import java.util.Map;
  */
 public interface Handler {
 
-    String getRouteKey();
+    void prepare();
 
-    boolean prepare();
-
-    boolean transfer(Map<String, Object> target, Map<String, Object> source, TemplateConfig templateConfig);
+    void transfer(Map<String, Object> target);
 }
