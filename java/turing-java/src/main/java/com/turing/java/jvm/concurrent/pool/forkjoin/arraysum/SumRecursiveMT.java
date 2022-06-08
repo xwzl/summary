@@ -11,9 +11,7 @@ import java.util.concurrent.Future;
 /**
  * @author ：杨过
  * @date ：Created in 2020/9/2 13:55
- * @version: V1.0
- * @slogan: 天下风云出我辈，一入代码岁月催
- * @description: 任务切分,递归求和
+  任务切分,递归求和
  **/
 public class SumRecursiveMT {
     public static class RecursiveSumTask implements Callable<Long> {

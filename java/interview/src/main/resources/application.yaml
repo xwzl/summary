@@ -4,10 +4,23 @@
 #      driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #      username: SA
 #      password: root123456.
-
 spring:
+  application:
+    name: interview
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://1.15.19.68:3306/test?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
     username: root
     password: root
+
+#
+#logging:
+#  config: classpath:logback-springs.xml
+#  # 需要资源过多，暂时注释掉
+#  logstash:
+#    host: 1.15.19.68:4560
+
+
+
+test:
+  my: {"2":{"99":"留诊急观察","1":"盘亏","2":"亏损","3":"科室领用","4":"外借","5":"其他"}}
