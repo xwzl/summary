@@ -1,6 +1,12 @@
 package com.turing.java.jvm;
 
+import com.turing.java.refactor.Customer;
 import org.openjdk.jol.info.ClassLayout;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 计算对象大小
@@ -13,7 +19,7 @@ public class JOLSample {
         System.out.println(layout.toPrintable());
 
         System.out.println();
-        ClassLayout layout1 = ClassLayout.parseInstance(new int[]{});
+        ClassLayout layout1 = ClassLayout.parseInstance(new int[10]);
         System.out.println(layout1.toPrintable());
 
         System.out.println();

@@ -2,6 +2,8 @@ package com.turing.java.jvm;
 
 import org.openjdk.jol.info.ClassLayout;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class Blog {
 
 
@@ -19,5 +21,9 @@ public class Blog {
         System.out.println(ClassLayout.parseInstance(blogArray).toPrintable());
         System.out.println(ClassLayout.parseInstance(objArray).toPrintable());
         System.out.println(ClassLayout.parseInstance(intArray).toPrintable());
+
+        ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
+        concurrentHashMap.put("1","1");
+        concurrentHashMap.put("1","1");
     }
 }

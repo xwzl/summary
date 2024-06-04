@@ -20,27 +20,51 @@
     <repositories>
         <repository>
             <id>central</id>
-            <name>阿里云maven</name>
-            <url>https://maven.aliyun.com/repository/public/</url>
+            <name>阿里云 maven1</name>
+            <url>https://maven.aliyun.com/repository/central</url>
             <layout>default</layout>
-            <!-- 是否开启发布版构件下载 -->
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <!-- 是否开启快照版构件下载 -->
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
         <repository>
-            <id>rdc-releases</id>
-            <name>Spring Milestones</name>
-            <url>https://packages.aliyun.com/maven/repository/2137326-release-eZkkAF/</url>
+            <id>public</id>
+            <name>阿里云 maven2</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <layout>default</layout>
         </repository>
         <repository>
-            <id>rdc-snapshot</id>
-            <name>Spring Milestones</name>
-            <url>https://packages.aliyun.com/maven/repository/2137326-snapshot-RSLD12</url>
+            <id>google</id>
+            <name>阿里云 maven4</name>
+            <url>https://maven.aliyun.com/repository/google</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>gradle-plugin</id>
+            <name>阿里云 maven5</name>
+            <url>https://maven.aliyun.com/repository/gradle-plugin</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>spring</id>
+            <name>阿里云 maven5</name>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>spring-plugin</id>
+            <name>阿里云 maven6</name>
+            <url>https://maven.aliyun.com/repository/spring-plugin</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>grails-core</id>
+            <name>阿里云 maven7</name>
+            <url>https://maven.aliyun.com/repository/grails-core</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>apache-snapshots</id>
+            <name>阿里云 maven8</name>
+            <url>https://maven.aliyun.com/repository/apache-snapshots</url>
+            <layout>default</layout>
         </repository>
         <repository>
             <id>spring-milestones</id>
@@ -118,7 +142,7 @@
             <dependency>
                 <groupId>com.common.cloud</groupId>
                 <artifactId>spring-common-dependencies</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.2-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
