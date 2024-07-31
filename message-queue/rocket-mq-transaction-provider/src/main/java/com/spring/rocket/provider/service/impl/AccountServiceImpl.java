@@ -9,9 +9,8 @@ import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * @author Fox
@@ -56,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
      * @param accountChangeEvent
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void reduceAccountBalance(AccountChangeEvent accountChangeEvent) {
         log.info("bank1更新本地账号，账号：{},金额：{}", accountChangeEvent.getFromAccountNo(), accountChangeEvent.getAmount());
         //幂等判断

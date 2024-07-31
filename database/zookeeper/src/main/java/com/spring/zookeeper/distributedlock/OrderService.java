@@ -8,7 +8,7 @@ import com.spring.zookeeper.distributedlock.mapper.ProductMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 

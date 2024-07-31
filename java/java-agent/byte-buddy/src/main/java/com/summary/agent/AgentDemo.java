@@ -8,6 +8,7 @@ import net.bytebuddy.matcher.ElementMatchers;
 import net.bytebuddy.utility.JavaModule;
 
 import java.lang.instrument.Instrumentation;
+import java.security.ProtectionDomain;
 
 /**
  * @author xuweizhi
@@ -19,7 +20,7 @@ public class AgentDemo {
 
         AgentBuilder.Transformer transformer = new AgentBuilder.Transformer() {
             @Override
-            public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder, TypeDescription typeDescription, ClassLoader classLoader, JavaModule module) {
+            public DynamicType.Builder<?> transform(DynamicType.Builder<?> builder, TypeDescription typeDescription, ClassLoader classLoader, JavaModule javaModule, ProtectionDomain protectionDomain) {
                 return builder
                         // 方法拦截
                         .method(ElementMatchers.nameStartsWith("say"))

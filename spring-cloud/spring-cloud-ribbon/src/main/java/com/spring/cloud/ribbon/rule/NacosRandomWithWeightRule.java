@@ -1,7 +1,6 @@
 package com.spring.cloud.ribbon.rule;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
-import com.alibaba.cloud.nacos.ribbon.NacosServer;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
@@ -11,7 +10,7 @@ import com.netflix.loadbalancer.DynamicServerListLoadBalancer;
 import com.netflix.loadbalancer.Server;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 
 @Slf4j
@@ -30,7 +29,7 @@ public class NacosRandomWithWeightRule extends AbstractLoadBalancerRule {
             //nacos基于权重的算法
             Instance instance = namingService.selectOneHealthyInstance(serviceName);
             log.info(instance.getIp() + ":" + instance.getPort());
-            return new NacosServer(instance);
+//            return new NacosServer(instance);
         } catch (NacosException e) {
             log.error("获取服务实例异常：{}", e.getMessage());
             e.printStackTrace();

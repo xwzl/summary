@@ -1,7 +1,6 @@
 package com.spring.cloud.user.controller.request;
 
 import com.spring.cloud.commom.model.BaseTransaction;
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +12,6 @@ import java.io.Serializable;
  * @since 2022/03/22 14:01
  */
 @Data
-@ApiModel(description = "支付")
 public class AccountRequest extends BaseTransaction implements Serializable {
 
     /**

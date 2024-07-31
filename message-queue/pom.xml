@@ -13,7 +13,6 @@
         <module>service</module>
         <module>rocket-mq</module>
         <module>mq</module>
-        <module>spring-stream</module>
         <module>service-consumer</module>
         <module>service-provider</module>
         <module>rocket-mq-transaction-consumer</module>

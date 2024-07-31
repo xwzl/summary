@@ -1,6 +1,6 @@
 package com.turing.java.jvm;
 
-import org.apache.tomcat.jni.User;
+import com.turing.java.module.User;
 
 /**
  * JVM 类加载机制

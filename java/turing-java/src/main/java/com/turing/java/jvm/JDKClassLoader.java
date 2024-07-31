@@ -1,8 +1,5 @@
 package com.turing.java.jvm;
 
-import sun.misc.Launcher;
-
-import java.net.URL;
 
 /**
  * <h2>ClassLoader 双亲委派机制</h2>
@@ -37,10 +34,10 @@ public class JDKClassLoader {
 
         System.out.println();
         System.out.println("bootstrapLoader加载以下文件：");
-        URL[] urls = Launcher.getBootstrapClassPath().getURLs();
-        for (int i = 0; i < urls.length; i++) {
-            System.out.println(urls[i]);
-        }
+//        URL[] urls = Launcher.getBootstrapClassPath().getURLs();
+//        for (int i = 0; i < urls.length; i++) {
+//            System.out.println(urls[i]);
+//        }
 
         System.out.println();
         System.out.println("extClassloader加载以下文件：");

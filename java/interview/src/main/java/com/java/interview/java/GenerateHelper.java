@@ -18,7 +18,7 @@ public class GenerateHelper {
         String root = "root";
         FastAutoGenerator.create(new DataSourceConfig.Builder(url, root, root))
                 // 全局配置
-                .globalConfig((scanner, builder) -> builder.author(scanner.apply("请输入作者名称？")).fileOverride())
+                .globalConfig((scanner, builder) -> builder.author(scanner.apply("请输入作者名称？")))
                 // 包配置
                 .packageConfig((scanner, builder) -> builder.parent(scanner.apply("请输入包名？")))
                 // 策略配置

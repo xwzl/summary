@@ -7,7 +7,7 @@ import com.java.canal.mapper.InventoryRepository;
 import com.java.canal.message.CanalMessageHandler;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 

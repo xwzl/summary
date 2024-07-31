@@ -1,6 +1,7 @@
 package com.java.tomcat.example.zookeeper;
 
 import org.apache.jute.*;
+import org.apache.jute.Record;
 
 import java.io.*;
 import java.util.Set;
