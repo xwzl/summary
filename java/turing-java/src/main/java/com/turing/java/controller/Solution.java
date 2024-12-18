@@ -1,9 +1,7 @@
 package com.turing.java.controller;
 
-import javax.xml.soap.Node;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * Definition for singly-linked list.

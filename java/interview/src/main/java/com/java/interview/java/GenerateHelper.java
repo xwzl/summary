@@ -14,9 +14,9 @@ import java.util.List;
 public class GenerateHelper {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://1.15.19.68:3306/test?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false";
+        String url = "jdbc:mysql://192.168.110.72:3308/emr_dev?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false";
         String root = "root";
-        FastAutoGenerator.create(new DataSourceConfig.Builder(url, root, root))
+        FastAutoGenerator.create(new DataSourceConfig.Builder(url, root, "zxcd!@mysql3306.1"))
                 // 全局配置
                 .globalConfig((scanner, builder) -> builder.author(scanner.apply("请输入作者名称？")))
                 // 包配置

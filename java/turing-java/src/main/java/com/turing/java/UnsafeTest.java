@@ -1,6 +1,6 @@
 package com.turing.java;
 
-import org.springframework.objenesis.instantiator.util.UnsafeUtils;
+
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -19,7 +19,7 @@ public class UnsafeTest {
 
     private Integer tat;
 
-    public static Unsafe U = UnsafeUtils.getUnsafe();
+    public static Unsafe U = Unsafe.getUnsafe();
 
     public static Class<?> unsafeTestClass = UnsafeTest.class;
 

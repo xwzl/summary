@@ -1,6 +1,5 @@
 package com.turing.java.jvm;
 
-import org.apache.tomcat.jni.Thread;
 import org.junit.Test;
 
 import java.util.Random;
