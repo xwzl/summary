@@ -1,12 +1,12 @@
 package com.java.interview.java.report.handler;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.java.interview.java.report.config.JsonUtils;
 import com.java.interview.java.report.domain.ConfigItem;
 import com.java.interview.java.report.domain.Context;
 import com.java.interview.java.report.domain.ContextHolder;
 import com.java.interview.java.report.domain.TemplateConfig;
 import com.java.interview.java.report.handler.nice.Nice;
+import tools.jackson.core.type.TypeReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +30,7 @@ public class AreaLogHandler implements Handler {
         Context context = ContextHolder.getContext();
         TemplateConfig templateConfig = context.getTemplateConfig();
         AreaLog source = context.getSource(AreaLog.class);
-        Map<String, Object> stringMapMap = JsonUtils.toJavaMap(source, new TypeReference<Map<String, Object>>() {
-        });
+        Map<String, Object> stringMapMap = JsonUtils.toJavaMap(source, new TypeReference<Map<String, Object>>() {});
         Boolean switchDoc = context.getSwitchDoc();
         for (ConfigItem configItem : templateConfig.getConfigItem()) {
             Nice nice = configItem.getNice();

@@ -1,6 +1,5 @@
 package com.java.tool.model.enums;
 
-import lombok.Getter;
 
 /**
  * 公用返回枚举
@@ -8,7 +7,6 @@ import lombok.Getter;
  * @author xuweizhi
  * @since 2021/05/25 14:05
  */
-@Getter
 public enum ApiExceptionEnum {
     /**
      * 失败
@@ -31,5 +29,13 @@ public enum ApiExceptionEnum {
     ApiExceptionEnum(Integer status, String message) {
         this.status = status;
         this.message = message;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

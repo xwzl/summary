@@ -1,12 +1,11 @@
 package com.java.tool.model.vo;
 
+import com.java.tool.model.enums.ApiExceptionEnum;
 import lombok.Data;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-import static com.java.tool.model.enums.ApiExceptionEnum.SUCCESS;
 
 /**
  * 返回结果值 vo
@@ -16,7 +15,7 @@ import static com.java.tool.model.enums.ApiExceptionEnum.SUCCESS;
  */
 @Data
 @ToString
-@Accessors(chain = true)
+// @Accessors(chain = true)
 public class ResultVO<T> implements Serializable {
 
     /**
@@ -34,8 +33,8 @@ public class ResultVO<T> implements Serializable {
 
 
     public ResultVO(T data) {
-        this.status = SUCCESS.getStatus();
-        this.msg = SUCCESS.getMessage();
+        this.status = ApiExceptionEnum.SUCCESS.getStatus();
+        this.msg = ApiExceptionEnum.SUCCESS.getMessage();
         this.data = data;
     }
 
@@ -51,17 +50,17 @@ public class ResultVO<T> implements Serializable {
     }
 
     public static <T> ResultVO<T> success() {
-        return new ResultVO<T>(SUCCESS.getStatus(), SUCCESS.getMessage());
+        return new ResultVO<>(ApiExceptionEnum.SUCCESS.getStatus(), ApiExceptionEnum.SUCCESS.getMessage());
     }
 
 
     public static <T> ResultVO<T> success(Integer status, String message, T data) {
-        return new ResultVO<T>(status, message, data);
+        return new ResultVO<>(status, message, data);
     }
 
 
     public static <T> ResultVO<T> success(T data) {
-        return new ResultVO<T>(SUCCESS.getStatus(), SUCCESS.getMessage(), data);
+        return new ResultVO<T>(ApiExceptionEnum.SUCCESS.getStatus(), ApiExceptionEnum.SUCCESS.getMessage(), data);
     }
 
 }

@@ -9,7 +9,7 @@
     </parent>
 
     <modules>
-        <module>mysql</module>
+<!--        <module>mysql</module>-->
         <module>redis</module>
 <!--        <module>zookeeper</module>-->
         <module>elasticsearch</module>

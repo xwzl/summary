@@ -12,6 +12,13 @@
     <name>spring-cloud-dubbo-api</name>
     <description>spring-cloud-dubbo-api</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>

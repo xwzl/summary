@@ -1,6 +1,5 @@
 package com.java.interview.java.report.config;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.Maps;
 import com.java.interview.java.report.ConfigManager;
 import com.java.interview.java.report.domain.*;
@@ -9,6 +8,8 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.Resource;
+import tools.jackson.core.type.TypeReference;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

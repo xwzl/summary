@@ -1,10 +1,10 @@
 package com.spring.cloud.ribbon.demo;
 
-import com.google.common.collect.Lists;
 import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.LoadBalancerBuilder;
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.reactive.LoadBalancerCommand;
+import org.assertj.core.util.Lists;
 import rx.Observable;
 
 import java.io.InputStream;
