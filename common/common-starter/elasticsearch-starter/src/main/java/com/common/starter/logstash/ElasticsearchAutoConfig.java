@@ -1,9 +1,7 @@
 package com.common.starter.logstash;
 
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -18,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "spring.elasticsearch.rest", name = "uris")
 public class ElasticsearchAutoConfig {
 
-    @Resource
-    private ElasticsearchProperties elasticsearchProperties;
+    // @Resource
+    // private ElasticsearchProperties elasticsearchProperties;
 
 
 //    /**

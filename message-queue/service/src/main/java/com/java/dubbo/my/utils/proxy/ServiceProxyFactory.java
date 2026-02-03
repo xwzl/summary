@@ -13,7 +13,7 @@ import com.java.dubbo.my.framework.register.RemoteMapRegister;
 import com.java.dubbo.my.utils.ApplicationFactory;
 import lombok.Data;
 import lombok.ToString;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

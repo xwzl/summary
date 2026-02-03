@@ -1,6 +1,5 @@
 package leetcode.editor.cn.utils;
 
-import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,7 +40,8 @@ public class NioUtil {
             FileChannel ch = out.getChannel();
             int capacity = 1024 * 8;
             ByteBuffer bf = ByteBuffer.allocate(capacity);
-            String s = JSONObject.toJSONString(nums);
+            // String s = JSONObject.toJSONString(nums);
+            String s = "";
             byte[] bytes = s.getBytes();
             int index = bytes.length / capacity;
             int remainder = bytes.length % capacity;

@@ -3,7 +3,7 @@ package zookeeper.curator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.zookeeper.CreateMode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +14,7 @@ public class CuratorBaseOperations extends CuratorStandaloneBase {
 
 
    // 递归创建子节点
-    @Test
+    @org.junit.jupiter.api.Test
     public void testCreateWithParent() throws Exception {
         CuratorFramework curatorFramework = getCuratorFramework();
 

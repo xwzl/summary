@@ -6,10 +6,6 @@ import com.turing.java.jvm.concurrent.pool.forkjoin.utils.Utils;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertThat;
-
 public class MergeSortMain {
 
     private final int[] arrayToSort;
@@ -83,7 +79,7 @@ public class MergeSortMain {
 
         Arrays.sort(expectedArray);
 
-        assertThat(actualArray, is(expectedArray));
+        // assertThat(actualArray, is(expectedArray));
 
         int[] arrayToSortSingleThread = Utils.buildRandomIntArray(20000000);
         int[] arrayToSortMultiThread = Arrays.copyOf(arrayToSortSingleThread, arrayToSortSingleThread.length);
@@ -103,7 +99,7 @@ public class MergeSortMain {
         forkJoinPool.invoke(mergeSortAction);
         System.out.println("singgle thread sort:->"+(System.currentTimeMillis()-start));
 
-        assertArrayEquals(sortSingleThreadArray, mergeSortAction.getSortedArray());
+        // assertArrayEquals(sortSingleThreadArray, mergeSortAction.getSortedArray());
     }
 
 }

@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>summary</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modules>
         <module>turing-java</module>
@@ -19,7 +19,6 @@
     </modules>
     <packaging>pom</packaging>
     <artifactId>java</artifactId>
-    <version>1.0.0</version>
     <name>java</name>
     <description>java</description>
 

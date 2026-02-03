@@ -1,6 +1,6 @@
 package com.turing.java.database.kafka;
 
-import com.alibaba.fastjson.JSON;
+import com.java.tool.utils.JsonUtil;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
@@ -56,7 +56,7 @@ public class MsgProducer {
             Order order = new Order(i, 100 + i, 1, 1000.00);
             //指定发送分区
             ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC_NAME
-                    , 0, order.getOrderId().toString(), JSON.toJSONString(order));
+                    , 0, order.getOrderId().toString(), JsonUtil.toJsonString(order));
             //未指定发送分区，具体发送的分区计算公式：hash(key)%partitionNum
             //ProducerRecord<String, String> producerRecord = new ProducerRecord<String, String>(TOPIC_NAME
             //        , order.getOrderId().toString(), JSON.toJSONString(order));

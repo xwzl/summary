@@ -5,7 +5,6 @@ import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CuratorClusterBaseOperations extends CuratorClusterBase {
 
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testCluster() throws Exception {
         CuratorFramework curatorFramework = getCuratorFramework();
         String pathWithParent = "/test";

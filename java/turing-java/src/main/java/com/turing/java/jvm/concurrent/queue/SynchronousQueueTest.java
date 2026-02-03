@@ -1,6 +1,6 @@
 package com.turing.java.jvm.concurrent.queue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.security.SecureRandom;
 import java.util.concurrent.CountDownLatch;

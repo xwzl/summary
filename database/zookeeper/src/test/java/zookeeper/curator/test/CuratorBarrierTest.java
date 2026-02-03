@@ -3,7 +3,7 @@ package zookeeper.curator.test;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.barriers.DistributedDoubleBarrier;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import zookeeper.curator.CuratorBaseOperations;
 
 import java.util.Random;

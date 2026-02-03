@@ -4,26 +4,23 @@ import com.alibaba.fastjson.TypeReference;
 import com.message.queue.rocketmq.domain.OrderPaidEvent;
 import com.message.queue.rocketmq.domain.ProductWithPayload;
 import com.message.queue.rocketmq.domain.User;
+import jakarta.annotation.Resource;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.spring.core.RocketMQLocalRequestCallback;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.MimeTypeUtils;
 
-import jakarta.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringRocketTest {
 

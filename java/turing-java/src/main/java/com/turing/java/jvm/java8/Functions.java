@@ -1,7 +1,7 @@
 package com.turing.java.jvm.java8;
 
 import lombok.Data;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;

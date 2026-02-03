@@ -1,7 +1,7 @@
 package com.message.queue;
 
 import com.message.queue.config.RabbitConfig;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import jakarta.annotation.Resource;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = {QueueApplication.class})// 指定启动类
 public class ApplicationTests {
 

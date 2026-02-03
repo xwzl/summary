@@ -6,7 +6,7 @@ import org.apache.curator.framework.recipes.cache.ChildData;
 import org.apache.curator.framework.recipes.cache.TreeCache;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import zookeeper.curator.CuratorBaseOperations;
 
 import java.util.Map;

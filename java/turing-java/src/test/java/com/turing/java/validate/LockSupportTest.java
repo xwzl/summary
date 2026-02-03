@@ -1,6 +1,6 @@
 package com.turing.java.validate;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.locks.LockSupport;
 

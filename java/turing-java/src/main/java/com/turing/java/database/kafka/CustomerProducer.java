@@ -1,6 +1,6 @@
 package com.turing.java.database.kafka;
 
-import com.alibaba.fastjson.JSON;
+import com.java.tool.utils.JsonUtil;
 import lombok.Data;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -127,8 +127,8 @@ public class CustomerProducer {
 
     private static ProducerRecord<String, String> getProducerRecord(String topicName, Order order, Boolean isRegular) {
         return isRegular ?
-                new ProducerRecord<>(topicName, 0, order.getOrderId().toString(), JSON.toJSONString(order)) ://指定发送分区
-                new ProducerRecord<>(topicName, order.getOrderId().toString(), JSON.toJSONString(order)); //未指定发送分区，具体发送的分区计算公式：hash(key)%partitionNum
+                new ProducerRecord<>(topicName, 0, order.getOrderId().toString(), JsonUtil.toJsonString(order)) ://指定发送分区
+                new ProducerRecord<>(topicName, order.getOrderId().toString(), JsonUtil.toJsonString(order)); //未指定发送分区，具体发送的分区计算公式：hash(key)%partitionNum
     }
 
 

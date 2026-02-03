@@ -5,7 +5,7 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.leader.LeaderSelector;
 import org.apache.curator.framework.recipes.leader.LeaderSelectorListener;
 import org.apache.curator.framework.recipes.leader.LeaderSelectorListenerAdapter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import zookeeper.curator.CuratorBaseOperations;
 
 import java.util.concurrent.TimeUnit;

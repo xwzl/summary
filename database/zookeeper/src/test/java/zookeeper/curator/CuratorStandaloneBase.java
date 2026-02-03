@@ -7,8 +7,6 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.data.Stat;
-import org.junit.After;
-import org.junit.Before;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +18,6 @@ public abstract  class CuratorStandaloneBase {
     private static final int connectionTimeoutMs = 5000;
     private static CuratorFramework curatorFramework;
 
-    @Before
     public void init() {
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(5000, 30);
         curatorFramework = CuratorFrameworkFactory.builder().connectString(getConnectStr())
@@ -51,7 +48,6 @@ public abstract  class CuratorStandaloneBase {
         return curatorFramework;
     }
 
-    @After
     public void   test(){
         try {
             TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);

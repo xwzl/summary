@@ -6,7 +6,7 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import zookeeper.curator.CuratorBaseOperations;
 
 @Slf4j

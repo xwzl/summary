@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>spring-cloud-dubbo</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <packaging>jar</packaging>
     <artifactId>spring-cloud-dubbo-provider-user</artifactId>
-    <version>1.0.0</version>
     <name>spring-cloud-dubbo-provider-user</name>
     <description>spring-cloud-dubbo-provider-user</description>
     <dependencies>

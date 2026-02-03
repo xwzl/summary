@@ -1,6 +1,6 @@
 package com.turing.java.binary;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * 位运算的妙用

@@ -15,9 +15,9 @@ public class AgentExample {
         helloService.say();
         helloService.say2();
 
-        HelloService2 helloService2 = new HelloService2();
-        helloService2.say();
-        helloService2.say2();
+        // HelloService2 helloService2 = new HelloService2();
+        // helloService2.say();
+        // helloService2.say2();
     }
 
 }

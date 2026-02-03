@@ -1,8 +1,8 @@
 package com.spring.zookeeper.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.zookeeper.utils.ZookeeperUtils;
-import lombok.SneakyThrows;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -55,13 +55,22 @@ public class ZookeeperClient {
 
     public static class ConfigWatcher implements Watcher {
 
-        @SneakyThrows
         @Override
         public void process(WatchedEvent event) {
             if (event.getPath() != null && "/config".equals(event.getPath()) && event.getType() == NodeDataChanged) {
                 System.out.printf("%s 路径原始数据发生了变化%n", event.getPath());
-                byte[] data = zooKeeper.getData("/config", this, null);
-                MyConfig myConfig = objectMapper.readValue(new String(data), MyConfig.class);
+                byte[] data = null;
+                try {
+                    data = zooKeeper.getData("/config", this, null);
+                } catch (KeeperException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                MyConfig myConfig = null;
+                try {
+                    myConfig = objectMapper.readValue(new String(data), MyConfig.class);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
                 System.out.println("变化数据为" + myConfig.toString());
             }
         }

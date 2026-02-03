@@ -7,17 +7,14 @@ import com.roy.sharding.entity.User;
 import com.roy.sharding.mapper.CourseMapper;
 import com.roy.sharding.mapper.DictMapper;
 import com.roy.sharding.mapper.UserMapper;
-import org.apache.shardingsphere.api.hint.HintManager;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import jakarta.annotation.Resource;
+import org.apache.shardingsphere.api.hint.HintManager;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import java.security.SecureRandom;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class ShardingJDBCTest {
     @Resource

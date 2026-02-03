@@ -5,12 +5,9 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>spring-boot</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>spring-cloud-seata-account-service</artifactId>
-    <version>1.0.0</version>
-
-
 
     <dependencies>
 

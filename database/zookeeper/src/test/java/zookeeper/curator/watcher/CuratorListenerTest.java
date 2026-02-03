@@ -3,7 +3,7 @@ package zookeeper.curator.watcher;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.api.CuratorEvent;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import zookeeper.curator.CuratorBaseOperations;
 
 @Slf4j

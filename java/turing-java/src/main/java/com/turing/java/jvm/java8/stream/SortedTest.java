@@ -1,7 +1,6 @@
 package com.turing.java.jvm.java8.stream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,7 +16,6 @@ public class SortedTest {
         return o2.getScore() - o1.getScore();
     }
 
-    @Before
     public void before() {
         students.add(new Student(2, 100, "小花"));
         students.add(new Student(1, 100, "小华"));

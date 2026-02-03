@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>java</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>fluent-mybatis</artifactId>
     <name>fluent-mybatis</name>
-    <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 

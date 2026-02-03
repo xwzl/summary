@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>common</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modules>
         <module>elasticsearch-starter</module>
@@ -15,7 +15,6 @@
     </modules>
     <artifactId>common-starter</artifactId>
     <name>common-starter</name>
-    <version>1.0.0</version>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 

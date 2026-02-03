@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>spring-cloud</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <packaging>jar</packaging>
     <artifactId>spring-cloud-inventory</artifactId>
-    <version>1.0.0</version>
     <name>spring-cloud-inventory</name>
     <description>spring-cloud-inventory</description>
     <dependencies>

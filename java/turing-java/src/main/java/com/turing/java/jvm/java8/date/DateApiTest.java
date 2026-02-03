@@ -1,8 +1,7 @@
 package com.turing.java.jvm.java8.date;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
@@ -37,7 +36,6 @@ public class DateApiTest {
 
     SecureRandom secureRandom = new SecureRandom();
 
-    @Before
     public void initValue() {
         year = secureRandom.nextInt(10000) + "";
         month = secureRandom.nextInt(13) + "";

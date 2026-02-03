@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>summary</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modules>
         <module>kafka</module>
-        <module>canal</module>
-        <module>service</module>
+<!--        <module>canal</module>-->
+<!--        <module>service</module>-->
         <module>rocket-mq</module>
-        <module>mq</module>
+<!--        <module>mq</module>-->
         <module>service-consumer</module>
         <module>service-provider</module>
         <module>rocket-mq-transaction-consumer</module>
@@ -20,7 +20,6 @@
     </modules>
     <packaging>pom</packaging>
     <artifactId>message-queue</artifactId>
-    <version>1.0.0</version>
     <name>message-queue</name>
     <description>message-queue</description>
 

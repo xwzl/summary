@@ -5,10 +5,9 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>message-queue</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>rocket-mq-transaction-provider</artifactId>
-    <version>1.0.0</version>
     <name>rocket-mq-transaction-provider</name>
     <packaging>jar</packaging>
     <description>rocket-mq-transaction-provider</description>

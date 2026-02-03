@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>common-starter</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>swagger-starter</artifactId>
     <name>swagger-starter</name>
-    <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 
@@ -30,7 +29,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>

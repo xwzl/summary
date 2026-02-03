@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import org.junit.After;
-import org.junit.Before;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
@@ -36,7 +34,6 @@ public abstract class StandaloneBase {
     };
 
 
-    @Before
     public void init() {
         try {
             log.info(" start to connect to zookeeper server: {}", getConnectStr());
@@ -56,7 +53,6 @@ public abstract class StandaloneBase {
     }
 
 
-    @After
     public void test() {
         try {
             TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);

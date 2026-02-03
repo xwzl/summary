@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>java-agent</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>byte-buddy</artifactId>
     <version>1.0.0</version>

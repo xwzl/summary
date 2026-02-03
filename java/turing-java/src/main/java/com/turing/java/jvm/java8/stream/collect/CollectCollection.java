@@ -1,7 +1,6 @@
 package com.turing.java.jvm.java8.stream.collect;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -143,7 +142,6 @@ public class CollectCollection {
 
     List<Student> students = new ArrayList<>();
 
-    @Before
     public void before() {
         students.add(new Student(1, 55, "小花"));
         students.add(new Student(2, 100, "小华"));

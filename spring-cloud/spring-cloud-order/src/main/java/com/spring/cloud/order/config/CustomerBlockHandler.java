@@ -1,6 +1,6 @@
 package com.spring.cloud.order.config;
 
-import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
+import com.alibaba.csp.sentinel.adapter.spring.webmvc_v6x.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class CustomerBlockHandler implements BlockExceptionHandler {
 
     @Override
-    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws Exception {
+    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, String s, BlockException e) throws Exception {
         SentinelErrorMsg sentinelErrorMsg = new SentinelErrorMsg();
         if (e instanceof FlowException) {
             sentinelErrorMsg.setMsg("接口限流了");
@@ -58,6 +58,8 @@ public class CustomerBlockHandler implements BlockExceptionHandler {
     public void init() {
         new CustomerBlockHandler();
     }
+
+
 
     @Data
     static class SentinelErrorMsg {

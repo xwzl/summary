@@ -1,7 +1,7 @@
 package com.message.queue;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.ReturnedMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

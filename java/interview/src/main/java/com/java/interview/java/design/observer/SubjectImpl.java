@@ -1,8 +1,7 @@
 package com.java.interview.java.design.observer;
 
 
-import com.google.common.collect.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public class SubjectImpl implements Subject {
 
-    private final List<Observer> observers = Lists.newArrayList();
+    private final List<Observer> observers = new ArrayList<>();
 
     @Override
     public void registerObserver(Observer observer) {

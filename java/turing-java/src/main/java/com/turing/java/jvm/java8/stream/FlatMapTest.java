@@ -1,7 +1,6 @@
 package com.turing.java.jvm.java8.stream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ public class FlatMapTest {
 
     List<String> words = new ArrayList<>();
 
-    @Before
     public void before() {
         words.add("hello");
         words.add("word");

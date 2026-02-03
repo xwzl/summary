@@ -9,7 +9,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.NettyRuntime;
 import io.netty.util.internal.SystemPropertyUtil;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ChatServer {
 

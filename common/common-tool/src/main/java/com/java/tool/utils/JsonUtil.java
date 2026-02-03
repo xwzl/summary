@@ -1,12 +1,11 @@
 package com.java.tool.utils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.java.tool.exceptions.JsonException;
 import org.apache.commons.lang3.StringUtils;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -20,72 +19,48 @@ import java.util.Map;
  */
 public class JsonUtil {
 
-    private final static ObjectMapper mapper = new ObjectMapper();
+    private final static JsonMapper mapper = new JsonMapper();
 
     public static <T> T fromJson(String json, Class<T> type) {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, type);
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readValue(json, type);
     }
 
     public static <T> T fromJson(String json, TypeReference<T> typeReference) {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, typeReference);
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readValue(json, typeReference);
     }
 
     public static <T> List<T> fromJsonToList(String json, Class<T> type) {
         if (StringUtils.isBlank(json)) {
             return Collections.emptyList();
         }
-        try {
-            return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, type));
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, type));
     }
 
     public static <T> T[] fromJsonToArray(String json, Class<T> type) {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, mapper.getTypeFactory().constructArrayType(type));
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readValue(json, mapper.getTypeFactory().constructArrayType(type));
     }
 
     public static <K, V> Map<K, V> fromJsonToMap(String json, Class<K> keyType, Class<V> valueType) {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        try {
-            return mapper.readValue(json, mapper.getTypeFactory().constructMapType(HashMap.class, keyType, valueType));
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readValue(json, mapper.getTypeFactory().constructMapType(HashMap.class, keyType, valueType));
     }
 
     public static JsonNode fromJson(String json) {
         if (StringUtils.isBlank(json)) {
             return null;
         }
-        try {
-            return mapper.readTree(json);
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.readTree(json);
     }
 
     public static ObjectMapper getMapper() {
@@ -96,10 +71,6 @@ public class JsonUtil {
         if (object == null) {
             return null;
         }
-        try {
-            return mapper.writeValueAsString(object);
-        } catch (IOException e) {
-            throw new JsonException(e);
-        }
+        return mapper.writeValueAsString(object);
     }
 }

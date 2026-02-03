@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>common-starter</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>customer-starter</artifactId>
     <name>customer-starter</name>
-    <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
 

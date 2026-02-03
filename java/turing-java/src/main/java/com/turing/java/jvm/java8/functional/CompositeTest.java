@@ -1,7 +1,6 @@
 package com.turing.java.jvm.java8.functional;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,7 +13,6 @@ public class CompositeTest {
 
     ArrayList<User> userArrayList = new ArrayList<>();
 
-    @Before
     public void beforeTest() {
         User user4 = new User(20, "da");
         User user1 = new User(25, "张三");

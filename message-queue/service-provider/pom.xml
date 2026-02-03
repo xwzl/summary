@@ -5,10 +5,9 @@
     <parent>
         <groupId>com.summary.java</groupId>
         <artifactId>message-queue</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
     <artifactId>service-provider</artifactId>
-    <version>1.0.0</version>
     <name>service-provider</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot</description>
